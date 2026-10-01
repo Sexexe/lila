@@ -10,507 +10,84 @@
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Mukta:wght@300;400;500;600&family=Tiro+Devanagari+Sanskrit:ital@0;1&family=Noto+Sans+Devanagari:wght@400;500;600&family=Yatra+One&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-
 :root {
-    --bg-0: #0a0705;
-    --bg-1: #14100a;
-    --gold: #b08a34;
-    --gold-mid: #d4a94e;
-    --gold-bright: #e8c46a;
-    --gold-pale: #f0d488;
-    --text: #e0c084;
-    --text-dim: #b89858;
-    --line: rgba(176, 138, 52, 0.55);
-    --line-soft: rgba(176, 138, 52, 0.25);
+    --bg-0: #0a0705; --bg-1: #14100a;
+    --gold: #b08a34; --gold-mid: #d4a94e; --gold-bright: #e8c46a; --gold-pale: #f0d488;
+    --text: #e0c084; --text-dim: #b89858;
+    --line: rgba(176, 138, 52, 0.55); --line-soft: rgba(176, 138, 52, 0.25);
 }
-
-body {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    background: var(--bg-0);
-    color: var(--text);
-    overflow: hidden;
-    height: 100vh;
-    user-select: none;
-    -webkit-font-smoothing: antialiased;
-}
-
-#app {
-    display: flex;
-    height: 100vh;
-    width: 100vw;
-    position: relative;
-    overflow: hidden;
-}
-
-#sidebar {
-    width: 240px;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 24px 20px;
-    background: linear-gradient(180deg, rgba(20, 16, 10, 0.95), rgba(10, 7, 5, 0.98));
-    z-index: 5;
-}
-
-#sidebar .top-block {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    width: 100%;
-}
-
-/* ============ ЛОГОТИП: लीला и LEELA — одинаковой ширины ============ */
-.title {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
-    margin-bottom: 12px;
-    padding-left: 2px;
-}
-
-.title .sanskrit-line,
-.title .latin-line {
-    display: block;
-    width: 100%;
-    text-align: center;
-    color: var(--gold-bright);
-    line-height: 1;
-    text-shadow:
-        0 0 4px rgba(232, 196, 106, 0.9),
-        0 0 18px rgba(212, 169, 78, 0.6),
-        0 2px 0 rgba(0, 0, 0, 0.9);
-    white-space: nowrap;
-}
-
-/* Санскрит — растягиваем letter-spacing и размер шрифта так,
-   чтобы обе строки заняли одинаковую ширину блока */
-.title .sanskrit-line {
-    font-family: 'Tiro Devanagari Sanskrit', 'Noto Sans Devanagari', serif;
-    font-size: 46px;
-    letter-spacing: 22px;
-    padding-left: 22px; /* компенсация последней буквы */
-    margin-bottom: 2px;
-}
-
-.title .latin-line {
-    font-family: 'Yatra One', 'Baloo 2', sans-serif;
-    font-size: 26px;
-    letter-spacing: 10px;
-    padding-left: 10px;
-    color: var(--gold-pale);
-    text-shadow:
-        0 0 3px rgba(240, 212, 136, 0.9),
-        0 0 14px rgba(212, 169, 78, 0.5),
-        0 1px 0 rgba(0, 0, 0, 0.9);
-}
-
-.stats {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    font-family: 'Mukta', sans-serif;
-    font-size: 14px;
-    letter-spacing: 2.2px;
-    text-transform: uppercase;
-    color: var(--text-dim);
-}
-
+body { font-family: 'Cormorant Garamond', Georgia, serif; background: var(--bg-0); color: var(--text); overflow: hidden; height: 100vh; user-select: none; -webkit-font-smoothing: antialiased; }
+#app { display: flex; height: 100vh; width: 100vw; position: relative; overflow: hidden; }
+#sidebar { width: 240px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; padding: 24px 20px; background: linear-gradient(180deg, rgba(20, 16, 10, 0.95), rgba(10, 7, 5, 0.98)); z-index: 5; }
+#sidebar .top-block { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+.title { display: flex; flex-direction: column; align-items: stretch; width: 100%; margin-bottom: 12px; padding-left: 2px; }
+.title .sanskrit-line, .title .latin-line { display: block; width: 100%; text-align: center; color: var(--gold-bright); line-height: 1; text-shadow: 0 0 4px rgba(232, 196, 106, 0.9), 0 0 18px rgba(212, 169, 78, 0.6), 0 2px 0 rgba(0, 0, 0, 0.9); white-space: nowrap; }
+.title .sanskrit-line { font-family: 'Tiro Devanagari Sanskrit', 'Noto Sans Devanagari', serif; font-size: 46px; letter-spacing: 22px; padding-left: 22px; margin-bottom: 2px; }
+.title .latin-line { font-family: 'Yatra One', 'Baloo 2', sans-serif; font-size: 26px; letter-spacing: 10px; padding-left: 10px; color: var(--gold-pale); text-shadow: 0 0 3px rgba(240, 212, 136, 0.9), 0 0 14px rgba(212, 169, 78, 0.5), 0 1px 0 rgba(0, 0, 0, 0.9); }
+.stats { display: flex; flex-direction: column; gap: 6px; font-family: 'Mukta', sans-serif; font-size: 14px; letter-spacing: 2.2px; text-transform: uppercase; color: var(--text-dim); }
 .stat { display: flex; align-items: baseline; gap: 10px; }
-
-.stat b {
-    color: var(--gold-bright);
-    font-family: 'Baloo 2', sans-serif;
-    font-weight: 600;
-    font-size: 19px;
-    letter-spacing: 1px;
-    text-shadow: 0 0 10px rgba(212, 169, 78, 0.4);
-}
-
-#chakra-bar {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 9px;
-    margin-top: 20px;
-}
-
-.chakra-dot {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    transition: all 0.35s ease;
-    opacity: 0.3;
-    border: 1px solid rgba(212, 169, 78, 0.3);
-}
-
-.chakra-dot.active {
-    opacity: 1;
-    transform: scale(1.8);
-    border-color: transparent;
-    box-shadow: 0 0 12px currentColor;
-}
-
-#restart {
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    border: 1px solid var(--line);
-    background: transparent;
-    color: var(--text-dim);
-    font-size: 19px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.25s ease;
-    margin-top: 16px;
-}
-
+.stat b { color: var(--gold-bright); font-family: 'Baloo 2', sans-serif; font-weight: 600; font-size: 19px; letter-spacing: 1px; text-shadow: 0 0 10px rgba(212, 169, 78, 0.4); }
+#chakra-bar { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 20px; }
+.chakra-dot { width: 9px; height: 9px; border-radius: 50%; transition: all 0.35s ease; opacity: 0.3; border: 1px solid rgba(212, 169, 78, 0.3); }
+.chakra-dot.active { opacity: 1; transform: scale(1.8); border-color: transparent; box-shadow: 0 0 12px currentColor; }
+#restart { width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--line); background: transparent; color: var(--text-dim); font-size: 19px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.25s ease; margin-top: 16px; }
 #restart:hover { color: var(--gold-bright); border-color: var(--gold); }
 #restart:active { transform: scale(0.9) rotate(-180deg); }
 #restart:disabled { opacity: 0.4; cursor: not-allowed; }
-
-#board-wrap {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    min-width: 0;
-    position: relative;
-    z-index: 2;
-    background:
-        radial-gradient(ellipse at 50% 30%, rgba(80, 56, 26, 0.35), transparent 65%),
-        linear-gradient(180deg, var(--bg-0) 0%, var(--bg-1) 50%, var(--bg-0) 100%);
-}
-
-#board {
-    position: relative;
-    height: 100%;
-    max-height: calc(100vh - 40px);
-    aspect-ratio: 1 / 1;
-    background-image: url('lila-board.jpg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    border-radius: 12px;
-    box-shadow:
-        0 0 0 1px rgba(176, 138, 52, 0.25),
-        0 20px 60px rgba(0, 0, 0, 0.85);
-}
-
-.cell {
-    position: absolute;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 3;
-    border: none;
-    background: transparent;
-    transition: all 0.25s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    pointer-events: none;
-}
-
+#board-wrap { flex: 1; display: flex; align-items: center; justify-content: center; padding: 20px; min-width: 0; position: relative; z-index: 2; background: radial-gradient(ellipse at 50% 30%, rgba(80, 56, 26, 0.35), transparent 65%), linear-gradient(180deg, var(--bg-0) 0%, var(--bg-1) 50%, var(--bg-0) 100%); }
+#board { position: relative; height: 100%; max-height: calc(100vh - 40px); aspect-ratio: 1 / 1; background-image: url('lila-board.jpg'); background-size: contain; background-repeat: no-repeat; background-position: center; border-radius: 12px; box-shadow: 0 0 0 1px rgba(176, 138, 52, 0.25), 0 20px 60px rgba(0, 0, 0, 0.85); }
+.cell { position: absolute; aspect-ratio: 1; border-radius: 50%; transform: translate(-50%, -50%); z-index: 3; border: none; background: transparent; transition: all 0.25s ease; display: flex; align-items: center; justify-content: center; overflow: hidden; pointer-events: none; }
 .cell .num { display: none; }
-
-.cell.center-core {
-    background: radial-gradient(circle at 35% 30%, rgba(232, 196, 106, 0.35), rgba(180, 130, 50, 0.15));
-    box-shadow: 0 0 14px rgba(232, 196, 106, 0.7);
-    border-radius: 50%;
-}
-
-.cell.start-finish {
-    background: radial-gradient(circle at 35% 30%, rgba(232, 196, 106, 0.55), rgba(180, 130, 50, 0.25));
-    box-shadow: 0 0 18px rgba(232, 196, 106, 0.9);
-    border-radius: 50%;
-}
-
-.cell.trap {
-    background: radial-gradient(circle at 35% 30%, rgba(200, 90, 80, 0.35), rgba(120, 40, 30, 0.15));
-    box-shadow: 0 0 12px rgba(200, 90, 80, 0.6);
-    border-radius: 50%;
-}
-
-#player {
-    position: absolute;
-    width: 3.4%;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 30%, #f0d488, #a8863a 55%, #4a3818);
-    transform: translate(-50%, -50%);
-    z-index: 20;
-    transition: left 0.3s cubic-bezier(0.4, 0.0, 0.2, 1),
-                top  0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
-    box-shadow:
-        0 0 0 2px rgba(255, 240, 180, 1),
-        0 0 20px rgba(255, 200, 80, 1),
-        0 2px 8px rgba(0, 0, 0, 0.9);
-}
-
-#player::after {
-    content: '';
-    position: absolute;
-    inset: -8px;
-    border-radius: 50%;
-    border: 2px solid rgba(255, 220, 120, 0.8);
-    animation: playerHalo 2s infinite ease-in-out;
-}
-
-@keyframes playerHalo {
-    0%, 100% { opacity: 0.4; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.25); }
-}
-
-#dice-panel {
-    width: 200px;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    padding: 24px 20px;
-    background: linear-gradient(180deg, rgba(20, 16, 10, 0.95), rgba(10, 7, 5, 0.98));
-    z-index: 5;
-}
-
-#dice {
-    width: 86px;
-    height: 86px;
-    border-radius: 26px;
-    background: linear-gradient(145deg, #2a1f12, #14100a 60%, #0a0705);
-    border: 1px solid var(--line);
-    box-shadow:
-        0 8px 28px rgba(0, 0, 0, 0.85),
-        0 0 0 1px rgba(212, 169, 78, 0.15),
-        inset 0 1px 0 rgba(212, 169, 78, 0.2);
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    padding: 14px;
-    gap: 5px;
-    cursor: pointer;
-    transition: all 0.2s;
-    position: relative;
-}
-
-#dice::before {
-    content: '';
-    position: absolute;
-    inset: 6px;
-    border-radius: 20px;
-    border: 1px solid var(--line-soft);
-    pointer-events: none;
-}
-
+.cell.center-core { background: radial-gradient(circle at 35% 30%, rgba(232, 196, 106, 0.35), rgba(180, 130, 50, 0.15)); box-shadow: 0 0 14px rgba(232, 196, 106, 0.7); border-radius: 50%; }
+.cell.start-finish { background: radial-gradient(circle at 35% 30%, rgba(232, 196, 106, 0.55), rgba(180, 130, 50, 0.25)); box-shadow: 0 0 18px rgba(232, 196, 106, 0.9); border-radius: 50%; }
+.cell.trap { background: radial-gradient(circle at 35% 30%, rgba(200, 90, 80, 0.35), rgba(120, 40, 30, 0.15)); box-shadow: 0 0 12px rgba(200, 90, 80, 0.6); border-radius: 50%; }
+#player { position: absolute; width: 3.4%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #f0d488, #a8863a 55%, #4a3818); transform: translate(-50%, -50%); z-index: 20; transition: left 0.3s cubic-bezier(0.4, 0.0, 0.2, 1), top 0.3s cubic-bezier(0.4, 0.0, 0.2, 1); box-shadow: 0 0 0 2px rgba(255, 240, 180, 1), 0 0 20px rgba(255, 200, 80, 1), 0 2px 8px rgba(0, 0, 0, 0.9); }
+#player::after { content: ''; position: absolute; inset: -8px; border-radius: 50%; border: 2px solid rgba(255, 220, 120, 0.8); animation: playerHalo 2s infinite ease-in-out; }
+@keyframes playerHalo { 0%, 100% { opacity: 0.4; transform: scale(1); } 50% { opacity: 1; transform: scale(1.25); } }
+#dice-panel { width: 200px; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: 24px 20px; background: linear-gradient(180deg, rgba(20, 16, 10, 0.95), rgba(10, 7, 5, 0.98)); z-index: 5; }
+#dice { width: 86px; height: 86px; border-radius: 26px; background: linear-gradient(145deg, #2a1f12, #14100a 60%, #0a0705); border: 1px solid var(--line); box-shadow: 0 8px 28px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(212, 169, 78, 0.15), inset 0 1px 0 rgba(212, 169, 78, 0.2); display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); padding: 14px; gap: 5px; cursor: pointer; transition: all 0.2s; position: relative; }
+#dice::before { content: ''; position: absolute; inset: 6px; border-radius: 20px; border: 1px solid var(--line-soft); pointer-events: none; }
 #dice:active { transform: scale(0.96); }
 #dice.rolling { animation: roll 0.5s linear; }
 #dice:disabled { opacity: 0.4; cursor: not-allowed; }
-
-@keyframes roll {
-    0% { transform: rotate(0deg) scale(1); }
-    25% { transform: rotate(90deg) scale(0.94); }
-    50% { transform: rotate(180deg) scale(1.06); }
-    75% { transform: rotate(270deg) scale(0.94); }
-    100% { transform: rotate(360deg) scale(1); }
-}
-
-.pip {
-    width: 100%;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 30%, #f0d488, #a8863a 60%, #4a3818);
-    box-shadow: inset 0 -1px 2px rgba(0, 0, 0, 0.6);
-}
-
+@keyframes roll { 0% { transform: rotate(0deg) scale(1); } 25% { transform: rotate(90deg) scale(0.94); } 50% { transform: rotate(180deg) scale(1.06); } 75% { transform: rotate(270deg) scale(0.94); } 100% { transform: rotate(360deg) scale(1); } }
+.pip { width: 100%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #f0d488, #a8863a 60%, #4a3818); box-shadow: inset 0 -1px 2px rgba(0, 0, 0, 0.6); }
 .pip.empty { background: transparent; box-shadow: none; }
-
-#dice-label {
-    font-family: 'Mukta', sans-serif;
-    font-size: 13px;
-    letter-spacing: 4px;
-    color: var(--text-dim);
-    text-transform: uppercase;
-    text-align: center;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
-    min-height: 20px;
-}
-
-#modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(5, 3, 2, 0.92);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.35s ease;
-    z-index: 100;
-}
-
+#dice-label { font-family: 'Mukta', sans-serif; font-size: 13px; letter-spacing: 4px; color: var(--text-dim); text-transform: uppercase; text-align: center; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9); min-height: 20px; }
+#modal { position: fixed; inset: 0; background: rgba(5, 3, 2, 0.92); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 20px; opacity: 0; pointer-events: none; transition: opacity 0.35s ease; z-index: 100; }
 #modal.show { opacity: 1; pointer-events: auto; }
-
-.modal-card {
-    max-width: 420px;
-    width: 100%;
-    background: linear-gradient(180deg, #241c12, #0f0a06);
-    border: 1px solid var(--line);
-    border-radius: 28px;
-    padding: 42px 34px 38px;
-    text-align: center;
-    box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.9),
-        0 0 0 1px rgba(212, 169, 78, 0.15),
-        inset 0 1px 0 rgba(212, 169, 78, 0.12);
-    transform: scale(0.94) translateY(12px);
-    transition: transform 0.4s cubic-bezier(0.34, 1.4, 0.5, 1);
-}
-
+.modal-card { max-width: 420px; width: 100%; background: linear-gradient(180deg, #241c12, #0f0a06); border: 1px solid var(--line); border-radius: 28px; padding: 42px 34px 38px; text-align: center; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(212, 169, 78, 0.15), inset 0 1px 0 rgba(212, 169, 78, 0.12); transform: scale(0.94) translateY(12px); transition: transform 0.4s cubic-bezier(0.34, 1.4, 0.5, 1); }
 #modal.show .modal-card { transform: scale(1) translateY(0); }
-
-.modal-sanskrit {
-    font-family: 'Tiro Devanagari Sanskrit', 'Noto Sans Devanagari', serif;
-    font-size: 44px;
-    color: var(--gold-bright);
-    margin-bottom: 16px;
-    line-height: 1.1;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95), 0 0 20px rgba(212, 169, 78, 0.3);
-}
-
-.modal-title {
-    font-family: 'Mukta', sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    letter-spacing: 4.8px;
-    color: var(--text);
-    text-transform: uppercase;
-    margin-bottom: 20px;
-}
-
-.modal-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 21px;
-    line-height: 1.7;
-    color: var(--text);
-    font-style: italic;
-    margin-bottom: 24px;
-}
-
-.modal-move {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 16px;
-    font-style: italic;
-    color: var(--gold-bright);
-    margin-bottom: 28px;
-}
-
-.modal-btn {
-    padding: 16px 46px;
-    background: transparent;
-    border: 1px solid var(--gold);
-    border-radius: 40px;
-    color: var(--gold-bright);
-    font-family: 'Baloo 2', sans-serif;
-    font-weight: 600;
-    font-size: 16px;
-    letter-spacing: 4.8px;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.25s ease;
-}
-
+.modal-sanskrit { font-family: 'Tiro Devanagari Sanskrit', 'Noto Sans Devanagari', serif; font-size: 44px; color: var(--gold-bright); margin-bottom: 16px; line-height: 1.1; text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95), 0 0 20px rgba(212, 169, 78, 0.3); }
+.modal-title { font-family: 'Mukta', sans-serif; font-weight: 500; font-size: 16px; letter-spacing: 4.8px; color: var(--text); text-transform: uppercase; margin-bottom: 20px; }
+.modal-text { font-family: 'Cormorant Garamond', serif; font-size: 21px; line-height: 1.7; color: var(--text); font-style: italic; margin-bottom: 24px; }
+.modal-move { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-style: italic; color: var(--gold-bright); margin-bottom: 28px; }
+.modal-btn { padding: 16px 46px; background: transparent; border: 1px solid var(--gold); border-radius: 40px; color: var(--gold-bright); font-family: 'Baloo 2', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: 4.8px; text-transform: uppercase; cursor: pointer; transition: all 0.25s ease; }
 .modal-btn:hover { background: rgba(212, 169, 78, 0.15); }
 .modal-btn:active { transform: scale(0.97); }
-
-/* ============ КНОПКА МУЗЫКИ ============ */
-#music-toggle {
-    position: fixed;
-    left: 24px;
-    bottom: 24px;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    border: 1px solid var(--line);
-    background: rgba(20, 16, 10, 0.85);
-    color: var(--text-dim);
-    font-size: 18px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.25s ease;
-    z-index: 60;
-}
-
+#music-toggle { position: fixed; left: 24px; bottom: 24px; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: rgba(20, 16, 10, 0.85); color: var(--text-dim); font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.25s ease; z-index: 60; }
 #music-toggle:hover { color: var(--gold-bright); border-color: var(--gold); }
 #music-toggle.muted { opacity: 0.5; }
-
 @media (max-width: 900px), (orientation: portrait) {
     #app { flex-direction: column; }
-
-    #sidebar {
-        width: 100%;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        padding: 12px 16px;
-    }
-
-    #sidebar .top-block {
-        flex-direction: row;
-        align-items: center;
-        gap: 16px;
-    }
-
+    #sidebar { width: 100%; flex-direction: row; align-items: center; justify-content: space-between; padding: 12px 16px; }
+    #sidebar .top-block { flex-direction: row; align-items: center; gap: 16px; }
     .title { margin-bottom: 0; width: auto; }
-
-    .title .sanskrit-line {
-        font-size: 22px;
-        letter-spacing: 10px;
-        padding-left: 10px;
-    }
-    .title .latin-line {
-        font-size: 13px;
-        letter-spacing: 5px;
-        padding-left: 5px;
-    }
-
+    .title .sanskrit-line { font-size: 22px; letter-spacing: 10px; padding-left: 10px; }
+    .title .latin-line { font-size: 13px; letter-spacing: 5px; padding-left: 5px; }
     .stats { flex-direction: row; gap: 16px; font-size: 12px; }
     .stat b { font-size: 15px; }
-
     #chakra-bar { margin-top: 0; gap: 6px; }
     .chakra-dot { width: 7px; height: 7px; }
-
     #restart { width: 36px; height: 36px; font-size: 15px; margin-top: 0; }
-
     #board-wrap { flex: 1; padding: 8px; min-height: 0; }
     #board { max-height: 100%; }
-
-    #dice-panel {
-        width: 100%;
-        flex-direction: row;
-        justify-content: center;
-        gap: 18px;
-        padding: 12px 16px 18px;
-    }
-
+    #dice-panel { width: 100%; flex-direction: row; justify-content: center; gap: 18px; padding: 12px 16px 18px; }
     #dice { width: 72px; height: 72px; padding: 12px; border-radius: 22px; }
     #dice-label { font-size: 12px; letter-spacing: 3px; }
-
     .modal-sanskrit { font-size: 34px; }
     .modal-card { padding: 30px 24px; border-radius: 22px; }
     .modal-text { font-size: 18px; }
-
     #music-toggle { left: 12px; bottom: 12px; width: 38px; height: 38px; font-size: 16px; }
 }
 </style>
@@ -558,578 +135,320 @@ body {
 <audio id="bg-music" src="1.mp3" loop preload="auto"></audio>
 
 <script>
-/* ============================================================
-   ФОНОВАЯ МУЗЫКА — 1.mp3 в цикле
-   ============================================================ */
 const bgMusic = document.getElementById('bg-music');
 const musicToggle = document.getElementById('music-toggle');
 let musicStarted = false;
-
-function tryPlayMusic() {
-    if (!bgMusic) return;
-    bgMusic.volume = 0.5;
-    const p = bgMusic.play();
-    if (p && p.catch) {
-        p.then(() => {
-            musicStarted = true;
-            musicToggle.classList.remove('muted');
-        }).catch(() => {
-            // Браузер блокирует автозапуск до первого взаимодействия
-            musicStarted = false;
-            musicToggle.classList.add('muted');
-        });
-    }
-}
-
-// Пытаемся запустить сразу
+function tryPlayMusic() { if (!bgMusic) return; bgMusic.volume = 0.5; const p = bgMusic.play(); if (p && p.catch) { p.then(() => { musicStarted = true; musicToggle.classList.remove('muted'); }).catch(() => { musicStarted = false; musicToggle.classList.add('muted'); }); } }
 tryPlayMusic();
+function unlockMusic() { if (!musicStarted) tryPlayMusic(); document.removeEventListener('click', unlockMusic); document.removeEventListener('touchstart', unlockMusic); document.removeEventListener('keydown', unlockMusic); }
+document.addEventListener('click', unlockMusic); document.addEventListener('touchstart', unlockMusic); document.addEventListener('keydown', unlockMusic);
+musicToggle.addEventListener('click', (e) => { e.stopPropagation(); if (bgMusic.paused) tryPlayMusic(); else { bgMusic.pause(); musicToggle.classList.add('muted'); } });
 
-// Если браузер заблокировал — запускаем при первом касании/клике
-function unlockMusic() {
-    if (!musicStarted) tryPlayMusic();
-    document.removeEventListener('click', unlockMusic);
-    document.removeEventListener('touchstart', unlockMusic);
-    document.removeEventListener('keydown', unlockMusic);
-}
-document.addEventListener('click', unlockMusic);
-document.addEventListener('touchstart', unlockMusic);
-document.addEventListener('keydown', unlockMusic);
+if (window.vkBridge) { vkBridge.send('VKWebAppInit').catch(() => {}); vkBridge.send('VKWebAppExpand').catch(() => {}); }
+async function showRewardedAd() { if (!window.vkBridge) return false; try { const check = await vkBridge.send('VKWebAppCheckNativeAds', { ad_format: 'reward' }); if (check && check.result === false) return false; } catch (e) {} const adPromise = vkBridge.send('VKWebAppShowNativeAds', { ad_format: 'reward' }); const timeoutPromise = new Promise((resolve) => setTimeout(() => resolve({ timeout: true }), 30000)); try { const data = await Promise.race([adPromise, timeoutPromise]); if (data && data.timeout) return false; return data && data.result === true; } catch (e) { return false; } }
 
-// Кнопка вкл/выкл
-musicToggle.addEventListener('click', (e) => {
-    e.stopPropagation();
-    if (bgMusic.paused) {
-        tryPlayMusic();
-    } else {
-        bgMusic.pause();
-        musicToggle.classList.add('muted');
-    }
-});
-
-/* ============================================================
-   VK BRIDGE
-   ============================================================ */
-if (window.vkBridge) {
-    vkBridge.send('VKWebAppInit').catch(() => {});
-    vkBridge.send('VKWebAppExpand').catch(() => {});
-}
-
-async function showRewardedAd() {
-    if (!window.vkBridge) return false;
-    try {
-        const check = await vkBridge.send('VKWebAppCheckNativeAds', { ad_format: 'reward' });
-        if (check && check.result === false) return false;
-    } catch (e) {}
-    const adPromise = vkBridge.send('VKWebAppShowNativeAds', { ad_format: 'reward' });
-    const timeoutPromise = new Promise((resolve) => setTimeout(() => resolve({ timeout: true }), 30000));
-    try {
-        const data = await Promise.race([adPromise, timeoutPromise]);
-        if (data && data.timeout) return false;
-        return data && data.result === true;
-    } catch (e) { return false; }
-}
-
-/* ============================================================
-   ПРАВИЛА
-   ============================================================ */
 const TOTAL_CELLS = 72;
 const START_CELL = 68;
 const ENTRY_CELL = 6;
 const TRAP_CELLS = [69, 70, 71];
 
 const CHAKRAS = [
-    { name: 'Муладхара', color: '#7a4038' },
-    { name: 'Свадхистана', color: '#8a6234' },
-    { name: 'Манипура', color: '#8a7a34' },
-    { name: 'Анахата', color: '#4a7050' },
-    { name: 'Вишуддха', color: '#3a6274' },
-    { name: 'Аджна', color: '#4e4478' },
-    { name: 'Сахасрара', color: '#6e3a74' },
-    { name: 'Каузальная', color: '#a8863a' },
+    { name: 'Муладхара', color: '#7a4038' }, { name: 'Свадхистана', color: '#8a6234' },
+    { name: 'Манипура', color: '#8a7a34' }, { name: 'Анахата', color: '#4a7050' },
+    { name: 'Вишуддха', color: '#3a6274' }, { name: 'Аджна', color: '#4e4478' },
+    { name: 'Сахасрара', color: '#6e3a74' }, { name: 'Каузальная', color: '#a8863a' },
 ];
 
-const SNAKES = { 12:2, 16:6, 24:15, 34:22, 42:30, 51:39, 58:47, 67:54 };
-const LADDERS = { 4:14, 9:19, 18:28, 21:32, 28:38, 36:46, 49:57, 62:68 };
+// Классические змеи и стрелы Лилы (по Харишу Джохари)
+const SNAKES = { 12:8, 16:4, 24:7, 29:6, 44:9, 52:35, 55:3, 61:13, 67:1 };
+const LADDERS = { 4:14, 9:19, 10:23, 17:69, 20:32, 22:60, 28:50, 36:46, 37:66, 40:67, 45:56, 51:58, 54:60, 62:68 };
 
 const CELL_POSITIONS = [
-    { x: 6,  y: 92 }, { x: 13, y: 96 }, { x: 20, y: 97 }, { x: 28, y: 96 },
-    { x: 35, y: 97 }, { x: 42, y: 96 }, { x: 50, y: 95 }, { x: 57, y: 93 },
-    { x: 64, y: 90 }, { x: 71, y: 86 }, { x: 78, y: 81 }, { x: 85, y: 75 },
-    { x: 91, y: 67 }, { x: 95, y: 58 }, { x: 96, y: 48 }, { x: 95, y: 38 },
-    { x: 91, y: 28 }, { x: 85, y: 20 }, { x: 78, y: 14 }, { x: 71, y: 9 },
-    { x: 64, y: 6 },  { x: 57, y: 4 },  { x: 50, y: 3 },  { x: 43, y: 4 },
-    { x: 36, y: 6 },  { x: 29, y: 9 },  { x: 22, y: 13 }, { x: 16, y: 19 },
-    { x: 11, y: 27 }, { x: 7,  y: 36 }, { x: 5,  y: 46 }, { x: 5,  y: 56 },
-    { x: 7,  y: 64 }, { x: 11, y: 71 }, { x: 16, y: 77 }, { x: 22, y: 82 },
-    { x: 30, y: 86 }, { x: 38, y: 88 }, { x: 46, y: 88 }, { x: 54, y: 87 },
-    { x: 62, y: 84 }, { x: 69, y: 79 }, { x: 76, y: 73 }, { x: 81, y: 65 },
-    { x: 84, y: 56 }, { x: 84, y: 47 }, { x: 81, y: 38 }, { x: 76, y: 30 },
-    { x: 70, y: 23 }, { x: 62, y: 18 }, { x: 54, y: 15 }, { x: 46, y: 13 },
-    { x: 38, y: 14 }, { x: 30, y: 18 }, { x: 24, y: 23 }, { x: 19, y: 30 },
-    { x: 16, y: 38 }, { x: 15, y: 47 }, { x: 16, y: 56 }, { x: 20, y: 63 },
-    { x: 27, y: 69 }, { x: 34, y: 73 }, { x: 42, y: 75 }, { x: 50, y: 76 },
-    { x: 58, y: 73 }, { x: 65, y: 68 }, { x: 70, y: 60 },
-    { x: 50, y: 17 },
-    { x: 58, y: 12 }, { x: 50, y: 8 }, { x: 42, y: 12 },
-    { x: 50, y: 22 },
+    { x: 5.0,  y: 95.0 },   // 1
+    { x: 16.25, y: 95.0 },  // 2
+    { x: 27.5, y: 95.0 },   // 3
+    { x: 38.75, y: 95.0 },  // 4
+    { x: 50.0, y: 95.0 },   // 5
+    { x: 61.25, y: 95.0 },  // 6
+    { x: 72.5, y: 95.0 },   // 7
+    { x: 83.75, y: 95.0 },  // 8
+    { x: 95.0, y: 95.0 },   // 9
+    { x: 95.0, y: 82.14 },  // 10
+    { x: 83.75, y: 82.14 }, // 11
+    { x: 72.5, y: 82.14 },  // 12
+    { x: 61.25, y: 82.14 }, // 13
+    { x: 50.0, y: 82.14 },  // 14
+    { x: 38.75, y: 82.14 }, // 15
+    { x: 27.5, y: 82.14 },  // 16
+    { x: 16.25, y: 82.14 }, // 17
+    { x: 5.0,  y: 82.14 },  // 18
+    { x: 5.0,  y: 69.29 },  // 19
+    { x: 16.25, y: 69.29 }, // 20
+    { x: 27.5, y: 69.29 },  // 21
+    { x: 38.75, y: 69.29 }, // 22
+    { x: 50.0, y: 69.29 },  // 23
+    { x: 61.25, y: 69.29 }, // 24
+    { x: 72.5, y: 69.29 },  // 25
+    { x: 83.75, y: 69.29 }, // 26
+    { x: 95.0, y: 69.29 },  // 27
+    { x: 95.0, y: 56.43 },  // 28
+    { x: 83.75, y: 56.43 }, // 29
+    { x: 72.5, y: 56.43 },  // 30
+    { x: 61.25, y: 56.43 }, // 31
+    { x: 50.0, y: 56.43 },  // 32
+    { x: 38.75, y: 56.43 }, // 33
+    { x: 27.5, y: 56.43 },  // 34
+    { x: 16.25, y: 56.43 }, // 35
+    { x: 5.0,  y: 56.43 },  // 36
+    { x: 5.0,  y: 43.57 },  // 37
+    { x: 16.25, y: 43.57 }, // 38
+    { x: 27.5, y: 43.57 },  // 39
+    { x: 38.75, y: 43.57 }, // 40
+    { x: 50.0, y: 43.57 },  // 41
+    { x: 61.25, y: 43.57 }, // 42
+    { x: 72.5, y: 43.57 },  // 43
+    { x: 83.75, y: 43.57 }, // 44
+    { x: 95.0, y: 43.57 },  // 45
+    { x: 95.0, y: 30.71 },  // 46
+    { x: 83.75, y: 30.71 }, // 47
+    { x: 72.5, y: 30.71 },  // 48
+    { x: 61.25, y: 30.71 }, // 49
+    { x: 50.0, y: 30.71 },  // 50
+    { x: 38.75, y: 30.71 }, // 51
+    { x: 27.5, y: 30.71 },  // 52
+    { x: 16.25, y: 30.71 }, // 53
+    { x: 5.0,  y: 30.71 },  // 54
+    { x: 5.0,  y: 17.86 },  // 55
+    { x: 16.25, y: 17.86 }, // 56
+    { x: 27.5, y: 17.86 },  // 57
+    { x: 38.75, y: 17.86 }, // 58
+    { x: 50.0, y: 17.86 },  // 59
+    { x: 61.25, y: 17.86 }, // 60
+    { x: 72.5, y: 17.86 },  // 61
+    { x: 83.75, y: 17.86 }, // 62
+    { x: 95.0, y: 17.86 },  // 63
+    { x: 95.0, y: 5.0 },    // 64
+    { x: 83.75, y: 5.0 },   // 65
+    { x: 72.5, y: 5.0 },    // 66
+    { x: 61.25, y: 5.0 },   // 67
+    { x: 50.0, y: 5.0 },    // 68
+    { x: 38.75, y: 5.0 },   // 69
+    { x: 27.5, y: 5.0 },    // 70
+    { x: 16.25, y: 5.0 },   // 71
+    { x: 5.0,  y: 5.0 },    // 72
 ];
 
 const CELLS = [
     null,
-    { name: 'Рождение', sanskrit: 'जन्म', text: 'Вы входите в мир. Игра начинается.' },
-    { name: 'Иллюзия', sanskrit: 'माया', text: 'Вы верите, что видимое — реально. Это лишь Майя.' },
+    { name: 'Рождение', sanskrit: 'जन्म', text: 'Рождение — это вход в кармическую игру. Приняв рождение, вы становитесь подвластны законам кармы [citation:5].' },
+    { name: 'Майя', sanskrit: 'माया', text: 'Иллюзия — вы верите, что видимое реально. Это лишь Майя.' },
     { name: 'Гнев', sanskrit: 'क्रोध', text: 'Гнев ослепляет. Теряете равновесие.' },
-    { name: 'Жадность', sanskrit: 'लोभ', text: 'Желание обладать отдаляет от цели.' },
+    { name: 'Жадность', sanskrit: 'लोभ', text: 'Жадность ведёт к накоплению. Стрела поднимает вас к Очищению (14).' },
+    { name: 'Физический план', sanskrit: 'भूलोक', text: 'План земли, фундамент существования.' },
     { name: 'Заблуждение', sanskrit: 'मोह', text: 'Ложные знания ведут назад.' },
-    { name: 'Обман', sanskrit: 'मद', text: 'Вы горды своими достижениями. Но это ловушка.' },
-    { name: 'Скорбь', sanskrit: 'शोक', text: 'Печаль — часть пути. Но не оставайтесь в ней.' },
-    { name: 'Сострадание', sanskrit: 'दया', text: 'Сердце открывается — вы растёте.' },
-    { name: 'Чистота', sanskrit: 'शुद्धि', text: 'Ум очищается от шума.' },
-    { name: 'Самодисциплина', sanskrit: 'तपस्', text: 'Вы учитесь управлять собой.' },
-    { name: 'Игры', sanskrit: 'क्रीडा', text: 'Отвлечения отвлекают от пути.' },
-    { name: 'Знание', sanskrit: 'ज्ञान', text: 'Свет знания ведёт вперёд.' },
-    { name: 'Мудрость', sanskrit: 'प्रज्ञा', text: 'Различение — ваш компас.' },
-    { name: 'Служение', sanskrit: 'सेवा', text: 'Помощь другим возвышает.' },
-    { name: 'Зависть', sanskrit: 'ईर्ष्या', text: 'Чужая радость ранит. Отпустите.' },
-    { name: 'Праведность', sanskrit: 'धर्म', text: 'Путь дхармы прям.' },
-    { name: 'Размышление', sanskrit: 'चिन्तन', text: 'Тишина ума открывает знание.' },
-    { name: 'Вожделение', sanskrit: 'काम', text: 'Сила желания захватывает.' },
-    { name: 'Покаяние', sanskrit: 'प्रायश्चित्त', text: 'Искренность сжигает прошлое.' },
-    { name: 'Ритуалы', sanskrit: 'कर्मकाण्ड', text: 'Форма помогает, но не заменяет суть.' },
-    { name: 'Огонь', sanskrit: 'अग्नि', text: 'Внутренний огонь трансформирует.' },
-    { name: 'Ревность', sanskrit: 'असूया', text: 'Сомнение разрушает доверие.' },
-    { name: 'Милосердие', sanskrit: 'करुणा', text: 'Открытая ладонь — не потеря.' },
-    { name: 'Видья', sanskrit: 'विद्या', text: 'Прямое видение истины.' },
-    { name: 'Аскеза', sanskrit: 'तप', text: 'Ограничение укрепляет волю.' },
-    { name: 'Ясность', sanskrit: 'स्पष्टता', text: 'Ум прозрачен как горный ручей.' },
-    { name: 'Продвижение', sanskrit: 'प्रगति', text: 'Вы движетесь по пути.' },
-    { name: 'Сознание', sanskrit: 'चेतना', text: 'Свет осознания расширяется.' },
-    { name: 'Правда', sanskrit: 'सत्य', text: 'Истина освобождает.' },
-    { name: 'Радость', sanskrit: 'आनन्द', text: 'Внутренняя радость не зависит от внешнего.' },
-    { name: 'Карма', sanskrit: 'कर्म', text: 'Что посеешь — то пожнёшь.' },
-    { name: 'Ложь', sanskrit: 'असत्य', text: 'Ложь утяжеляет ум.' },
-    { name: 'Вера', sanskrit: 'श्रद्धा', text: 'Доверие несёт через тьму.' },
-    { name: 'Созерцание', sanskrit: 'ध्यान', text: 'Вы наблюдаете себя.' },
-    { name: 'Дхарма', sanskrit: 'धर्म', text: 'Вы на своём пути.' },
-    { name: 'Молитва', sanskrit: 'प्रार्थना', text: 'Связь с высшим становится живой.' },
-    { name: 'Отчаяние', sanskrit: 'निराशा', text: 'Тьма перед рассветом.' },
-    { name: 'Самадхи', sanskrit: 'समाधि', text: 'Тишина внутри.' },
-    { name: 'Блаженство', sanskrit: 'आनन्द', text: 'Радость без причины.' },
-    { name: 'Всеведение', sanskrit: 'सर्वज्ञता', text: 'Знание без усилий.' },
-    { name: 'Растворение', sanskrit: 'लय', text: 'Границы растворяются.' },
-    { name: 'Интуиция', sanskrit: 'प्रतिभा', text: 'Внутренний голос ведёт.' },
-    { name: 'Единство', sanskrit: 'एकता', text: 'Ты — не только тело.' },
-    { name: 'Всесознание', sanskrit: 'विश्वचेतना', text: 'Вы видите игру целиком.' },
-    { name: 'Парамсатья', sanskrit: 'परमसत्य', text: 'Вы — то, что искали.' },
-    { name: 'Свет', sanskrit: 'प्रकाश', text: 'Свет наполняет всё.' },
-    { name: 'Любовь', sanskrit: 'प्रेम', text: 'Любовь — природа бытия.' },
-    { name: 'Творение', sanskrit: 'सृष्टि', text: 'Вы со-творец реальности.' },
-    { name: 'Полнота', sanskrit: 'पूर्णता', text: 'Полнота бытия.' },
-    { name: 'Сатори', sanskrit: 'सत्तोरी', text: 'Вспышка просветления.' },
-    { name: 'Бодхи', sanskrit: 'बोधि', text: 'Вы помните, кто вы есть.' },
-    { name: 'Брахман', sanskrit: 'ब्रह्मन्', text: 'Присутствие во всём.' },
-    { name: 'Брахманда', sanskrit: 'ब्रह्माण्ड', text: 'Вы — часть целого.' },
-    { name: 'Вач', sanskrit: 'वाच्', text: 'Слово стало плотью.' },
-    { name: 'Атман', sanskrit: 'आत्मन्', text: 'Дух ведёт.' },
-    { name: 'Садху', sanskrit: 'साधु', text: 'Святость — это простота.' },
-    { name: 'Гуру', sanskrit: 'गुरु', text: 'Вы — мастер своей судьбы.' },
-    { name: 'Риши', sanskrit: 'ऋषि', text: 'Вы видите будущее.' },
-    { name: 'Аватар', sanskrit: 'अवतार', text: 'Нисхождение в мир ради других.' },
-    { name: 'Мессия', sanskrit: 'मसीहा', text: 'Вы несёте свет людям.' },
-    { name: 'Тарака', sanskrit: 'तारक', text: 'Спасение — в осознании.' },
-    { name: 'Будда', sanskrit: 'बुद्ध', text: 'Пробуждение.' },
-    { name: 'Кришна', sanskrit: 'कृष्ण', text: 'Игра — это танец.' },
-    { name: 'Шива', sanskrit: 'शिव', text: 'Разрушение — часть творения.' },
-    { name: 'Брахма', sanskrit: 'ब्रह्मा', text: 'Творец.' },
-    { name: 'Вишну', sanskrit: 'विष्णु', text: 'Хранитель.' },
-    { name: 'Космическое сознание', sanskrit: 'ब्रह्मन्', text: 'Вы вернулись домой. Игра завершена.' },
-    { name: 'Тамас', sanskrit: 'तमस्', text: 'Ловушка. Замедление пути.' },
-    { name: 'Раджас', sanskrit: 'रजस्', text: 'Ловушка. Замедление пути.' },
-    { name: 'Саттва', sanskrit: 'सत्त्व', text: 'Ловушка. Замедление пути.' },
-    { name: 'Мукти', sanskrit: 'मुक्ति', text: 'Освобождение.' },
+    { name: 'Тщеславие', sanskrit: 'मद', text: 'Гордыня — это ловушка.' },
+    { name: 'Алчность', sanskrit: 'मत्सर', text: 'Неудовлетворённость тем, что есть.' },
+    { name: 'Чувственный план', sanskrit: 'कामलोक', text: 'Стрела возносит к Очищению (19).' },
+    { name: 'Очищение', sanskrit: 'तप', text: 'Тапас — духовный огонь. Стрела возносит на 23.' },
+    { name: 'Развлечения', sanskrit: 'गन्धर्व', text: 'План гандхарв, небесных музыкантов.' },
+    { name: 'Зависть', sanskrit: 'ईर्ष्या', text: 'Змея зависти утягивает вниз к Алчности (8).' },
+    { name: 'Ничтожность', sanskrit: 'अन्तरिक्ष', text: 'План пустоты и тщетности.' },
+    { name: 'Астральный план', sanskrit: 'भुवर्लोक', text: 'Тонкий план существования.' },
+    { name: 'План фантазии', sanskrit: 'नागलोक', text: 'План змей и иллюзий.' },
+    { name: 'Ревность', sanskrit: 'द्वेष', text: 'Змея ревности утягивает вниз к Жадности (4).' },
+    { name: 'Сострадание', sanskrit: 'दया', text: 'Стрела сострадания возносит на 69.' },
+    { name: 'План радости', sanskrit: 'हर्षलोक', text: 'Радость, лёгкость бытия.' },
+    { name: 'План кармы', sanskrit: 'कर्मलोक', text: 'Здесь вершится карма. Стрела чувственного плана возносит на 19.' },
+    { name: 'Благотворительность', sanskrit: 'दान', text: 'Дана — щедрость. Стрела возносит на 32.' },
+    { name: 'Искупление', sanskrit: 'समानपाप', text: 'Искупление сжигает прошлое.' },
+    { name: 'План Дхармы', sanskrit: 'धर्मलोक', text: 'Стрела дхармы возносит на 60.' },
+    { name: 'Небесный план', sanskrit: 'स्वर्गलोक', text: 'План небес, но не освобождение.' },
+    { name: 'Плохая компания', sanskrit: 'कुसङ्ग', text: 'Змея плохой компании утягивает к Тщеславию (7).' },
+    { name: 'Хорошая компания', sanskrit: 'सुसङ्ग', text: 'Хорошее окружение поддерживает.' },
+    { name: 'Печаль', sanskrit: 'दुःख', text: 'Печаль — часть пути. Не оставайтесь в ней.' },
+    { name: 'Самоотверженное служение', sanskrit: 'परमार्थ', text: 'Служение возвышает.' },
+    { name: 'Истинная религиозность', sanskrit: 'सुधर्म', text: 'Стрела возносит на 50.' },
+    { name: 'Неправедность', sanskrit: 'अधर्म', text: 'Змея адхармы утягивает к Заблуждению (6).' },
+    { name: 'Хорошие тенденции', sanskrit: 'उत्तमगति', text: 'Благие наклонности.' },
+    { name: 'План святости', sanskrit: 'यक्षलोक', text: 'План полубогов.' },
+    { name: 'План равновесия', sanskrit: 'महर्लोक', text: 'Стрела благотворительности возносит на 32.' },
+    { name: 'План ароматов', sanskrit: 'गन्धलोक', text: 'Тонкие ароматы.' },
+    { name: 'План вкуса', sanskrit: 'रसलोक', text: 'Тонкие вкусы.' },
+    { name: 'Чистилище', sanskrit: 'नरकलोक', text: 'Змея насилия (Химса) утягивает сюда.' },
+    { name: 'Ясность сознания', sanskrit: 'स्वच्छ', text: 'Стрела возносит на 46.' },
+    { name: 'Гьяна', sanskrit: 'ज्ञान', text: 'Знание. Стрела возносит на 66.' },
+    { name: 'Прана-лока', sanskrit: 'प्राणलोक', text: 'План жизненной энергии.' },
+    { name: 'Апана-лока', sanskrit: 'अपानलोक', text: 'План очищающей энергии.' },
+    { name: 'Вьяна-лока', sanskrit: 'व्यानलोक', text: 'План циркуляции. Стрела возносит на 67.' },
+    { name: 'Человеческий план', sanskrit: 'जनलोक', text: 'План человечества.' },
+    { name: 'План Агни', sanskrit: 'अग्निलोक', text: 'План огня.' },
+    { name: 'Рождение человека', sanskrit: 'मनुष्यजन्म', text: 'Рождение в человеческом теле.' },
+    { name: 'Неведение', sanskrit: 'अविद्या', text: 'Змея неведения утягивает к Чувственному плану (9).' },
+    { name: 'Правильное знание', sanskrit: 'सुविद्या', text: 'Стрела возносит на 56.' },
+    { name: 'Различение', sanskrit: 'विवेक', text: 'Способность различать истинное и ложное.' },
+    { name: 'План нейтральности', sanskrit: 'सरस्वती', text: 'Нейтральность ума.' },
+    { name: 'Солнечный план', sanskrit: 'यमुना', text: 'Солнечная энергия.' },
+    { name: 'Лунный план', sanskrit: 'गंगा', text: 'Лунная энергия.' },
+    { name: 'План аскетизма', sanskrit: 'तपलोक', text: 'Стрела истинной религиозности возносит сюда.' },
+    { name: 'Земля', sanskrit: 'पृथ्वी', text: 'Стрела возносит на 58.' },
+    { name: 'Насилие', sanskrit: 'हिंसा', text: 'Змея насилия утягивает к Чистилищу (35).' },
+    { name: 'План воды', sanskrit: 'जल', text: 'План текучести.' },
+    { name: 'Духовная преданность', sanskrit: 'भक्ति', text: 'Стрела возносит на 60.' },
+    { name: 'Эгоизм', sanskrit: 'अहंकार', text: 'Змея эгоизма утягивает к Гневу (3).' },
+    { name: 'План Реальности', sanskrit: 'सत्यलोक', text: 'План истины.' },
+    { name: 'План Космического блага', sanskrit: 'शिवलोक', text: 'Стрела возносит на 58.' },
+    { name: 'Духовная преданность', sanskrit: 'भक्ति', text: 'Стрела ведёт к Космическому Сознанию (68).' },
+    { name: 'План Шакти', sanskrit: 'शक्ति', text: 'План божественной энергии.' },
+    { name: 'План Реальности', sanskrit: 'सत्यलोक', text: 'Стрела возносит на 70.' },
+    { name: 'Негативный интеллект', sanskrit: 'दुर्बुद्धि', text: 'Змея негативного интеллекта утягивает к Ничтожности (13).' },
+    { name: 'Дурной интеллект', sanskrit: 'कुबुद्धि', text: 'Стрела возносит на 68 — к Освобождению.' },
+    { name: 'План Шивы', sanskrit: 'शिवलोक', text: 'Присутствие Шивы.' },
+    { name: 'План Вишну', sanskrit: 'विष्णुलोक', text: 'Присутствие Вишну.' },
+    { name: 'План Брахмы', sanskrit: 'ब्रह्मलोक', text: 'Присутствие Брахмы.' },
+    { name: 'План Космического блага', sanskrit: 'शिवलोक', text: 'Стрела возносит к Освобождению.' },
+    { name: 'Космическое сознание', sanskrit: 'ब्रह्मन्', text: 'Цель игры. Вы вернулись домой [citation:1][citation:2].' },
+    { name: 'План Абсолюта', sanskrit: 'परमात्मन्', text: 'Ловушка. Замедление пути. Нужно выбросить точное число.' },
+    { name: 'План Абсолюта', sanskrit: 'परमात्मन्', text: 'Ловушка. Замедление пути.' },
+    { name: 'План Абсолюта', sanskrit: 'परमात्मन्', text: 'Ловушка. Замедление пути.' },
+    { name: 'Тамас', sanskrit: 'तमस्', text: 'Тьма. Змея тамогуны утягивает вниз.' },
 ];
 
-let state = {
-    pos: START_CELL, turns: 0, rolling: false, finished: false,
-    entered: false, sixStreak: 0, pendingMove: 0,
-};
+let state = { pos: START_CELL, turns: 0, rolling: false, finished: false, entered: false, sixStreak: 0, pendingMove: 0 };
 
 let audioCtx = null;
-function ensureAudio() {
-    if (!audioCtx) {
-        try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
-        catch (e) { audioCtx = null; }
-    }
-    if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume().catch(() => {});
-    return audioCtx;
-}
-
+function ensureAudio() { if (!audioCtx) { try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { audioCtx = null; } } if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume().catch(() => {}); return audioCtx; }
 function playWoodKnock(delay, intensity) {
-    const ctx = ensureAudio();
-    if (!ctx) return;
-    const t = ctx.currentTime + delay;
-    const dur = 0.13;
+    const ctx = ensureAudio(); if (!ctx) return;
+    const t = ctx.currentTime + delay; const dur = 0.13;
     const buffer = ctx.createBuffer(1, Math.ceil(ctx.sampleRate * dur), ctx.sampleRate);
     const data = buffer.getChannelData(0);
-    for (let i = 0; i < data.length; i++) {
-        const n = i / data.length;
-        data[i] = (Math.random() * 2 - 1) * Math.pow(1 - n, 4);
-    }
-    const src = ctx.createBufferSource();
-    src.buffer = buffer;
-    const modes = [
-        { freq: 210, q: 7, gain: 1.0 },
-        { freq: 380, q: 9, gain: 0.75 },
-        { freq: 620, q: 10, gain: 0.5 },
-        { freq: 920, q: 12, gain: 0.3 },
-    ];
-    const master = ctx.createGain();
-    master.gain.value = intensity * 0.55;
-    const body = ctx.createBiquadFilter();
-    body.type = 'lowpass';
-    body.frequency.value = 1800;
-    body.Q.value = 0.6;
-    modes.forEach(m => {
-        const bp = ctx.createBiquadFilter();
-        bp.type = 'bandpass';
-        bp.frequency.value = m.freq;
-        bp.Q.value = m.q;
-        const g = ctx.createGain();
-        g.gain.value = m.gain;
-        src.connect(bp).connect(g).connect(body);
-    });
-    body.connect(master).connect(ctx.destination);
-    src.start(t);
-    src.stop(t + dur);
+    for (let i = 0; i < data.length; i++) { const n = i / data.length; data[i] = (Math.random() * 2 - 1) * Math.pow(1 - n, 4); }
+    const src = ctx.createBufferSource(); src.buffer = buffer;
+    const modes = [ { freq: 210, q: 7, gain: 1.0 }, { freq: 380, q: 9, gain: 0.75 }, { freq: 620, q: 10, gain: 0.5 }, { freq: 920, q: 12, gain: 0.3 } ];
+    const master = ctx.createGain(); master.gain.value = intensity * 0.55;
+    const body = ctx.createBiquadFilter(); body.type = 'lowpass'; body.frequency.value = 1800; body.Q.value = 0.6;
+    modes.forEach(m => { const bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = m.freq; bp.Q.value = m.q; const g = ctx.createGain(); g.gain.value = m.gain; src.connect(bp).connect(g).connect(body); });
+    body.connect(master).connect(ctx.destination); src.start(t); src.stop(t + dur);
 }
+function playDiceRollSound() { playWoodKnock(0.00, 1.0); playWoodKnock(0.10, 0.6); playWoodKnock(0.19, 0.35); playWoodKnock(0.28, 0.18); playWoodKnock(0.38, 0.09); }
 
-function playDiceRollSound() {
-    playWoodKnock(0.00, 1.0);
-    playWoodKnock(0.10, 0.6);
-    playWoodKnock(0.19, 0.35);
-    playWoodKnock(0.28, 0.18);
-    playWoodKnock(0.38, 0.09);
-}
-
-function getChakra(cellNum) {
-    return Math.min(7, Math.floor((cellNum - 1) / 9));
-}
+function getChakra(cellNum) { return Math.min(7, Math.floor((cellNum - 1) / 9)); }
 
 function buildBoard() {
-    const board = document.getElementById('board');
-    board.innerHTML = '';
+    const board = document.getElementById('board'); board.innerHTML = '';
     for (let i = 1; i <= TOTAL_CELLS; i++) {
         const pos = CELL_POSITIONS[i - 1];
-        const cell = document.createElement('div');
-        cell.className = 'cell';
-        cell.dataset.cell = i;
-        cell.style.left = pos.x + '%';
-        cell.style.top = pos.y + '%';
-        cell.style.width = '3.4%';
+        const cell = document.createElement('div'); cell.className = 'cell'; cell.dataset.cell = i;
+        cell.style.left = pos.x + '%'; cell.style.top = pos.y + '%'; cell.style.width = '3.4%';
         if (i === START_CELL) cell.classList.add('start-finish');
         if (TRAP_CELLS.includes(i)) cell.classList.add('trap');
         board.appendChild(cell);
     }
-    const player = document.createElement('div');
-    player.id = 'player';
-    board.appendChild(player);
-    updatePlayerPosition();
-    buildChakraBar();
+    const player = document.createElement('div'); player.id = 'player'; board.appendChild(player);
+    updatePlayerPosition(); buildChakraBar();
 }
-
-function updatePlayerPosition() {
-    const player = document.getElementById('player');
-    if (!player) return;
-    const pos = CELL_POSITIONS[state.pos - 1];
-    if (!pos) return;
-    player.style.left = pos.x + '%';
-    player.style.top = pos.y + '%';
-}
-
-function buildChakraBar() {
-    const bar = document.getElementById('chakra-bar');
-    bar.innerHTML = '';
-    CHAKRAS.forEach((ch, i) => {
-        const dot = document.createElement('div');
-        dot.className = 'chakra-dot';
-        dot.style.background = ch.color;
-        dot.style.color = ch.color;
-        dot.dataset.chakra = i;
-        bar.appendChild(dot);
-    });
-    updateChakraBar();
-}
-
-function updateChakraBar() {
-    const cur = getChakra(state.pos);
-    document.querySelectorAll('.chakra-dot').forEach(d => {
-        d.classList.toggle('active', +d.dataset.chakra === cur);
-    });
-}
+function updatePlayerPosition() { const player = document.getElementById('player'); if (!player) return; const pos = CELL_POSITIONS[state.pos - 1]; if (!pos) return; player.style.left = pos.x + '%'; player.style.top = pos.y + '%'; }
+function buildChakraBar() { const bar = document.getElementById('chakra-bar'); bar.innerHTML = ''; CHAKRAS.forEach((ch, i) => { const dot = document.createElement('div'); dot.className = 'chakra-dot'; dot.style.background = ch.color; dot.style.color = ch.color; dot.dataset.chakra = i; bar.appendChild(dot); }); updateChakraBar(); }
+function updateChakraBar() { const cur = getChakra(state.pos); document.querySelectorAll('.chakra-dot').forEach(d => { d.classList.toggle('active', +d.dataset.chakra === cur); }); }
 
 function renderDice(value) {
-    const dice = document.getElementById('dice');
-    dice.innerHTML = '';
-    const layouts = {
-        1: [4], 2: [0, 8], 3: [0, 4, 8],
-        4: [0, 2, 6, 8], 5: [0, 2, 4, 6, 8], 6: [0, 2, 3, 5, 6, 8],
-    };
+    const dice = document.getElementById('dice'); dice.innerHTML = '';
+    const layouts = { 1: [4], 2: [0, 8], 3: [0, 4, 8], 4: [0, 2, 6, 8], 5: [0, 2, 4, 6, 8], 6: [0, 2, 3, 5, 6, 8] };
     const pips = layouts[value] || [];
-    for (let i = 0; i < 9; i++) {
-        const p = document.createElement('div');
-        p.className = 'pip' + (pips.includes(i) ? '' : ' empty');
-        dice.appendChild(p);
-    }
+    for (let i = 0; i < 9; i++) { const p = document.createElement('div'); p.className = 'pip' + (pips.includes(i) ? '' : ' empty'); dice.appendChild(p); }
 }
-
 function rollDice() {
     if (state.rolling || state.finished) return;
-    ensureAudio();
-    state.rolling = true;
-    const dice = document.getElementById('dice');
-    dice.disabled = true;
-    dice.classList.add('rolling');
-    playDiceRollSound();
+    ensureAudio(); state.rolling = true;
+    const dice = document.getElementById('dice'); dice.disabled = true; dice.classList.add('rolling'); playDiceRollSound();
     let ticks = 0;
-    const interval = setInterval(() => {
-        renderDice(Math.floor(Math.random() * 6) + 1);
-        ticks++;
-        if (ticks > 8) {
-            clearInterval(interval);
-            finishRoll();
-        }
-    }, 60);
+    const interval = setInterval(() => { renderDice(Math.floor(Math.random() * 6) + 1); ticks++; if (ticks > 8) { clearInterval(interval); finishRoll(); } }, 60);
 }
-
 function finishRoll() {
-    const dice = document.getElementById('dice');
-    dice.classList.remove('rolling');
-    const value = Math.floor(Math.random() * 6) + 1;
-    renderDice(value);
-    state.turns++;
-    document.getElementById('turns').textContent = state.turns;
+    const dice = document.getElementById('dice'); dice.classList.remove('rolling');
+    const value = Math.floor(Math.random() * 6) + 1; renderDice(value);
+    state.turns++; document.getElementById('turns').textContent = state.turns;
 
     if (!state.entered) {
         if (value === 6) {
-            state.entered = true;
-            state.sixStreak = 1;
-            document.getElementById('dice-label').textContent = 'Выпало 6 — вход!';
+            state.entered = true; state.sixStreak = 1;
+            document.getElementById('dice-label').textContent = 'Выпало 6 — Рождение!';
             setTimeout(() => {
-                state.pos = 1;
-                updatePlayerPosition();
-                document.getElementById('pos').textContent = state.pos;
+                state.pos = 1; updatePlayerPosition(); document.getElementById('pos').textContent = state.pos;
                 setTimeout(() => {
-                    state.pos = ENTRY_CELL;
-                    updatePlayerPosition();
-                    updateChakraBar();
-                    document.getElementById('pos').textContent = state.pos;
-                    state.rolling = false;
-                    dice.disabled = false;
-                    document.getElementById('dice-label').textContent = 'Бросьте кубик';
-                    handleLanding();
+                    state.pos = ENTRY_CELL; updatePlayerPosition(); updateChakraBar(); document.getElementById('pos').textContent = state.pos;
+                    state.rolling = false; dice.disabled = false; document.getElementById('dice-label').textContent = 'Бросьте кубик'; handleLanding();
                 }, 500);
             }, 300);
-        } else {
-            document.getElementById('dice-label').textContent = 'Выпало ' + value + '. Нужно 6';
-            state.rolling = false;
-            dice.disabled = false;
-        }
+        } else { document.getElementById('dice-label').textContent = 'Выпало ' + value + '. Нужно 6'; state.rolling = false; dice.disabled = false; }
         return;
     }
 
     if (value === 6) {
         state.sixStreak++;
-        if (state.sixStreak >= 3) {
-            state.pendingMove = 0;
-            state.sixStreak = 0;
-            document.getElementById('dice-label').textContent = 'Три 6 — сгорают!';
-            state.rolling = false;
-            dice.disabled = false;
-            return;
-        } else {
-            state.pendingMove += 6;
-            document.getElementById('dice-label').textContent = '6! Бросайте ещё';
-            state.rolling = false;
-            dice.disabled = false;
-            return;
-        }
+        if (state.sixStreak >= 3) { state.pendingMove = 0; state.sixStreak = 0; document.getElementById('dice-label').textContent = 'Три 6 — сгорают!'; state.rolling = false; dice.disabled = false; return; }
+        else { state.pendingMove += 6; document.getElementById('dice-label').textContent = '6! Бросайте ещё'; state.rolling = false; dice.disabled = false; return; }
     }
-
-    const totalMove = state.pendingMove + value;
-    state.pendingMove = 0;
-    state.sixStreak = 0;
+    const totalMove = state.pendingMove + value; state.pendingMove = 0; state.sixStreak = 0;
     document.getElementById('dice-label').textContent = 'Выпало ' + value;
     animateMove(totalMove, () => handleLanding());
 }
-
 function animateMove(steps, cb) {
-    let remaining = steps;
-    const stepDur = 280;
+    let remaining = steps; const stepDur = 280;
     const step = () => {
         if (remaining <= 0) { cb(); return; }
         const next = state.pos + 1;
         if (next > TOTAL_CELLS) { cb(); return; }
-        state.pos = next;
-        updatePlayerPosition();
-        updateChakraBar();
-        document.getElementById('pos').textContent = state.pos;
-        if (state.pos === START_CELL) {
-            remaining = 0;
-            setTimeout(() => {
-                state.rolling = false;
-                document.getElementById('dice').disabled = false;
-                showFinal();
-            }, stepDur + 100);
-            return;
-        }
-        remaining--;
-        setTimeout(step, stepDur);
+        state.pos = next; updatePlayerPosition(); updateChakraBar(); document.getElementById('pos').textContent = state.pos;
+        if (state.pos === START_CELL) { remaining = 0; setTimeout(() => { state.rolling = false; document.getElementById('dice').disabled = false; showFinal(); }, stepDur + 100); return; }
+        remaining--; setTimeout(step, stepDur);
     };
     step();
 }
-
 function handleLanding() {
     if (TRAP_CELLS.includes(state.pos)) {
-        showModal({
-            title: 'Ловушка — ' + state.pos,
-            sanskrit: CELLS[state.pos].sanskrit,
-            text: CELLS[state.pos].text,
-            move: 'Вернитесь на 68',
-            color: '#c96a5a',
-            then: () => {
-                state.pos = START_CELL;
-                updatePlayerPosition();
-                updateChakraBar();
-                document.getElementById('pos').textContent = state.pos;
-                state.rolling = false;
-                document.getElementById('dice').disabled = false;
-            }
-        });
+        showModal({ title: 'Ловушка — ' + state.pos, sanskrit: CELLS[state.pos].sanskrit, text: CELLS[state.pos].text, move: 'Вернитесь на 68', color: '#c96a5a', then: () => { state.pos = START_CELL; updatePlayerPosition(); updateChakraBar(); document.getElementById('pos').textContent = state.pos; state.rolling = false; document.getElementById('dice').disabled = false; } });
         return;
     }
     const cell = CELLS[state.pos];
-    if (!cell) {
-        state.rolling = false;
-        document.getElementById('dice').disabled = false;
-        return;
-    }
+    if (!cell) { state.rolling = false; document.getElementById('dice').disabled = false; return; }
     if (SNAKES[state.pos]) {
         const to = SNAKES[state.pos];
-        showModal({
-            title: 'Змея — ' + cell.name,
-            sanskrit: cell.sanskrit,
-            text: cell.text,
-            move: 'Змея утянула на клетку ' + to,
-            color: '#c96a5a',
-            then: () => {
-                state.pos = to;
-                updatePlayerPosition();
-                updateChakraBar();
-                document.getElementById('pos').textContent = state.pos;
-                state.rolling = false;
-                document.getElementById('dice').disabled = false;
-            }
-        });
+        showModal({ title: 'Змея — ' + cell.name, sanskrit: cell.sanskrit, text: cell.text, move: 'Змея утянула на клетку ' + to, color: '#c96a5a', then: () => { state.pos = to; updatePlayerPosition(); updateChakraBar(); document.getElementById('pos').textContent = state.pos; state.rolling = false; document.getElementById('dice').disabled = false; } });
         return;
     }
     if (LADDERS[state.pos]) {
         const to = LADDERS[state.pos];
-        showModal({
-            title: 'Стрела — ' + cell.name,
-            sanskrit: cell.sanskrit,
-            text: cell.text,
-            move: 'Стрела возносит на клетку ' + to,
-            color: '#6ab07a',
-            then: () => {
-                state.pos = to;
-                updatePlayerPosition();
-                updateChakraBar();
-                document.getElementById('pos').textContent = state.pos;
-                state.rolling = false;
-                document.getElementById('dice').disabled = false;
-            }
-        });
+        showModal({ title: 'Стрела — ' + cell.name, sanskrit: cell.sanskrit, text: cell.text, move: 'Стрела возносит на клетку ' + to, color: '#6ab07a', then: () => { state.pos = to; updatePlayerPosition(); updateChakraBar(); document.getElementById('pos').textContent = state.pos; state.rolling = false; document.getElementById('dice').disabled = false; } });
         return;
     }
-    showModal({
-        title: 'Клетка ' + state.pos + ' — ' + cell.name,
-        sanskrit: cell.sanskrit,
-        text: cell.text,
-        move: '',
-        color: CHAKRAS[getChakra(state.pos)].color,
-        then: () => {
-            state.rolling = false;
-            document.getElementById('dice').disabled = false;
-        }
-    });
+    showModal({ title: 'Клетка ' + state.pos + ' — ' + cell.name, sanskrit: cell.sanskrit, text: cell.text, move: '', color: CHAKRAS[getChakra(state.pos)].color, then: () => { state.rolling = false; document.getElementById('dice').disabled = false; } });
 }
 
 let modalCallback = null;
-
 function showModal({ title, text, move, color, sanskrit, then }) {
-    document.getElementById('mSanskrit').textContent = sanskrit || '';
-    document.getElementById('mSanskrit').style.color = color || '#d4a94e';
-    document.getElementById('mTitle').textContent = title;
-    document.getElementById('mTitle').style.color = '#e0c084';
-    document.getElementById('mText').textContent = text;
-    document.getElementById('mMove').textContent = move || '';
-    document.getElementById('mMove').style.color = color || '#d4a94e';
-    modalCallback = then || null;
-    document.getElementById('modal').classList.add('show');
+    document.getElementById('mSanskrit').textContent = sanskrit || ''; document.getElementById('mSanskrit').style.color = color || '#d4a94e';
+    document.getElementById('mTitle').textContent = title; document.getElementById('mTitle').style.color = '#e0c084';
+    document.getElementById('mText').textContent = text; document.getElementById('mMove').textContent = move || ''; document.getElementById('mMove').style.color = color || '#d4a94e';
+    modalCallback = then || null; document.getElementById('modal').classList.add('show');
 }
-
-function closeModal() {
-    document.getElementById('modal').classList.remove('show');
-    const cb = modalCallback;
-    modalCallback = null;
-    if (cb) setTimeout(cb, 300);
-}
-
-function showFinal() {
-    state.finished = true;
-    state.rolling = false;
-    showModal({
-        title: 'Космическое сознание',
-        sanskrit: 'ब्रह्मन्',
-        text: 'Вы вернулись в клетку 68. Игра завершена — путь продолжается в жизни.',
-        move: 'नमस्ते',
-        color: '#e8c46a',
-        then: () => {
-            document.getElementById('dice').disabled = true;
-            document.getElementById('dice-label').textContent = 'Игра завершена';
-        }
-    });
-}
+function closeModal() { document.getElementById('modal').classList.remove('show'); const cb = modalCallback; modalCallback = null; if (cb) setTimeout(cb, 300); }
+function showFinal() { state.finished = true; state.rolling = false; showModal({ title: 'Космическое сознание', sanskrit: 'ब्रह्मन्', text: 'Вы вернулись в клетку 68. Игра завершена — путь продолжается в жизни.', move: 'नमस्ते', color: '#e8c46a', then: () => { document.getElementById('dice').disabled = true; document.getElementById('dice-label').textContent = 'Игра завершена'; } }); }
 
 async function newGame() {
-    const btn = document.getElementById('restart');
-    btn.disabled = true;
-    await showRewardedAd();
-    state = {
-        pos: START_CELL, turns: 0, rolling: false, finished: false,
-        entered: false, sixStreak: 0, pendingMove: 0,
-    };
-    document.getElementById('pos').textContent = START_CELL;
-    document.getElementById('turns').textContent = 0;
-    document.getElementById('dice').disabled = false;
-    document.getElementById('dice-label').textContent = 'Бросьте 6';
-    renderDice(1);
-    updatePlayerPosition();
-    updateChakraBar();
-    document.getElementById('modal').classList.remove('show');
-    modalCallback = null;
-    btn.disabled = false;
+    const btn = document.getElementById('restart'); btn.disabled = true; await showRewardedAd();
+    state = { pos: START_CELL, turns: 0, rolling: false, finished: false, entered: false, sixStreak: 0, pendingMove: 0 };
+    document.getElementById('pos').textContent = START_CELL; document.getElementById('turns').textContent = 0;
+    document.getElementById('dice').disabled = false; document.getElementById('dice-label').textContent = 'Бросьте 6'; renderDice(1);
+    updatePlayerPosition(); updateChakraBar(); document.getElementById('modal').classList.remove('show'); modalCallback = null; btn.disabled = false;
 }
 
 document.getElementById('dice').addEventListener('click', rollDice);
 document.getElementById('mBtn').addEventListener('click', closeModal);
 document.getElementById('restart').addEventListener('click', newGame);
-document.getElementById('modal').addEventListener('click', (e) => {
-    if (e.target.id === 'modal') closeModal();
-});
+document.getElementById('modal').addEventListener('click', (e) => { if (e.target.id === 'modal') closeModal(); });
 
-buildBoard();
-renderDice(1);
+buildBoard(); renderDice(1);
 </script>
 </body>
 </html>
