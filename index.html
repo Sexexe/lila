@@ -120,18 +120,11 @@ body { font-family: 'Cormorant Garamond', Georgia, serif; background: var(--bg-0
 #lang-btn { position: fixed; left: 240px; bottom: 24px; width: 56px; height: 36px; border-radius: 18px; border: 1px solid var(--line); background: rgba(20, 16, 10, 0.85); color: var(--gold-bright); font-family: 'Mukta', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 1px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.25s ease; z-index: 60; }
 #lang-btn:hover { color: var(--gold-pale); border-color: var(--gold); background: rgba(176, 138, 52, 0.15); }
 
-/* МОБИЛЬНАЯ ВЕРСИЯ */
 @media (max-width: 900px), (orientation: portrait) {
     #app { flex-direction: column; height: 100dvh; }
-    
     #sidebar { 
-        width: 100%; 
-        flex-direction: row; 
-        align-items: center; 
-        justify-content: space-between; 
-        padding: 6px 10px;
-        flex-shrink: 0;
-        min-height: 44px;
+        width: 100%; flex-direction: row; align-items: center; justify-content: space-between; 
+        padding: 6px 10px; flex-shrink: 0; min-height: 44px;
     }
     #sidebar .top-block { flex-direction: row; align-items: center; gap: 10px; flex-wrap: nowrap; }
     .title { margin-bottom: 0; width: auto; }
@@ -142,49 +135,20 @@ body { font-family: 'Cormorant Garamond', Georgia, serif; background: var(--bg-0
     #chakra-bar { display: none; }
     #restart { width: 30px; height: 30px; font-size: 13px; margin-top: 0; margin-left: 0; }
     
-    #board-wrap { 
-        flex: 1; 
-        padding: 4px; 
-        min-height: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+    #board-wrap { flex: 1; padding: 4px; min-height: 0; display: flex; align-items: center; justify-content: center; }
     #board { 
-        width: 100%;
-        height: 100%;
-        max-height: none;
-        max-width: none;
+        width: 100%; height: 100%; max-height: none; max-width: none;
         aspect-ratio: 8 / 9;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
+        background-size: contain; background-repeat: no-repeat; background-position: center;
         border-radius: 6px;
     }
     
     #dice-panel { 
-        width: 100%; 
-        flex-direction: column;
-        justify-content: center; 
-        align-items: center;
-        gap: 8px; 
-        padding: 8px 16px 12px;
-        flex-shrink: 0;
-        min-height: 90px;
+        width: 100%; flex-direction: column; justify-content: center; align-items: center;
+        gap: 8px; padding: 8px 16px 12px; flex-shrink: 0; min-height: 90px;
     }
-    #dice-label { 
-        font-size: 11px; 
-        letter-spacing: 2px; 
-        min-height: auto;
-        order: 1;
-    }
-    #dice { 
-        width: 64px; 
-        height: 64px; 
-        padding: 10px; 
-        border-radius: 18px; 
-        order: 2;
-    }
+    #dice-label { font-size: 11px; letter-spacing: 2px; min-height: auto; order: 1; }
+    #dice { width: 64px; height: 64px; padding: 10px; border-radius: 18px; order: 2; }
     
     .modal-sanskrit { font-size: 32px; }
     .modal-card { padding: 28px 22px; border-radius: 20px; }
@@ -238,7 +202,6 @@ body { font-family: 'Cormorant Garamond', Georgia, serif; background: var(--bg-0
 <audio id="bg-music" src="1.mp3" loop preload="auto"></audio>
 
 <script>
-// === ПЕРЕВОДЫ ===
 let LANG = 'ru';
 
 const T = {
@@ -272,7 +235,6 @@ const T = {
 
 function t(key) { return T[LANG][key] || key; }
 
-// Названия клеток на двух языках
 const CELLS_RU = [
     null,
     { name: 'Рождение', text: 'Вход в кармическую игру.' },
@@ -462,36 +424,19 @@ const CHAKRAS = [
     { name: 'Сахасрара', color: '#6e3a74' }, { name: 'Каузальная', color: '#a8863a' },
 ];
 
-const CHAKRAS_EN = [
-    { name: 'Muladhara' }, { name: 'Svadhisthana' },
-    { name: 'Manipura' }, { name: 'Anahata' },
-    { name: 'Vishuddha' }, { name: 'Ajna' },
-    { name: 'Sahasrara' }, { name: 'Causal' },
-];
-
 const SNAKES = { 12: 8, 16: 4, 24: 7, 29: 6, 44: 9, 52: 35, 55: 3, 61: 13, 63: 2, 72: 51 };
 const LADDERS = { 10: 23, 17: 69, 20: 32, 22: 60, 27: 41, 28: 50, 37: 66, 45: 67, 46: 62, 54: 68 };
 
-const CELL_POSITIONS = [
-    { x: 9.11,  y: 90.25 }, { x: 19.33, y: 90.25 }, { x: 29.55, y: 90.25 }, { x: 39.77, y: 90.25 },
-    { x: 50.0,  y: 90.25 }, { x: 60.22, y: 90.25 }, { x: 70.44, y: 90.25 }, { x: 80.66, y: 90.25 },
-    { x: 90.89, y: 90.25 }, { x: 90.89, y: 78.75 }, { x: 80.66, y: 78.75 }, { x: 70.44, y: 78.75 },
-    { x: 60.22, y: 78.75 }, { x: 50.0,  y: 78.75 }, { x: 39.77, y: 78.75 }, { x: 29.55, y: 78.75 },
-    { x: 19.33, y: 78.75 }, { x: 9.11,  y: 78.75 }, { x: 9.11,  y: 67.25 }, { x: 19.33, y: 67.25 },
-    { x: 29.55, y: 67.25 }, { x: 39.77, y: 67.25 }, { x: 50.0,  y: 67.25 }, { x: 60.22, y: 67.25 },
-    { x: 70.44, y: 67.25 }, { x: 80.66, y: 67.25 }, { x: 90.89, y: 67.25 }, { x: 90.89, y: 55.75 },
-    { x: 80.66, y: 55.75 }, { x: 70.44, y: 55.75 }, { x: 60.22, y: 55.75 }, { x: 50.0,  y: 55.75 },
-    { x: 39.77, y: 55.75 }, { x: 29.55, y: 55.75 }, { x: 19.33, y: 55.75 }, { x: 9.11,  y: 55.75 },
-    { x: 9.11,  y: 44.25 }, { x: 19.33, y: 44.25 }, { x: 29.55, y: 44.25 }, { x: 39.77, y: 44.25 },
-    { x: 50.0,  y: 44.25 }, { x: 60.22, y: 44.25 }, { x: 70.44, y: 44.25 }, { x: 80.66, y: 44.25 },
-    { x: 90.89, y: 44.25 }, { x: 90.89, y: 32.75 }, { x: 80.66, y: 32.75 }, { x: 70.44, y: 32.75 },
-    { x: 60.22, y: 32.75 }, { x: 50.0,  y: 32.75 }, { x: 39.77, y: 32.75 }, { x: 29.55, y: 32.75 },
-    { x: 19.33, y: 32.75 }, { x: 9.11,  y: 32.75 }, { x: 9.11,  y: 21.25 }, { x: 19.33, y: 21.25 },
-    { x: 29.55, y: 21.25 }, { x: 39.77, y: 21.25 }, { x: 50.0,  y: 21.25 }, { x: 60.22, y: 21.25 },
-    { x: 70.44, y: 21.25 }, { x: 80.66, y: 21.25 }, { x: 90.89, y: 21.25 }, { x: 90.89, y: 9.75 },
-    { x: 80.66, y: 9.75 }, { x: 70.44, y: 9.75 }, { x: 60.22, y: 9.75 }, { x: 50.0,  y: 9.75 },
-    { x: 39.77, y: 9.75 }, { x: 29.55, y: 9.75 }, { x: 19.33, y: 9.75 }, { x: 9.11,  y: 9.75 },
-];
+// ПРАВИЛЬНЫЕ КООРДИНАТЫ ДЛЯ ДОСКИ 8×9 (8 колонок, 9 рядов)
+const CELL_POSITIONS = [];
+for (let row = 0; row < 9; row++) {
+    for (let col = 0; col < 8; col++) {
+        const cellNum = row * 8 + col + 1;
+        const x = (row % 2 === 0) ? (col * 12.5 + 6.25) : ((7 - col) * 12.5 + 6.25);
+        const y = 94.44 - row * 11.11;
+        CELL_POSITIONS[cellNum - 1] = { x: Math.round(x * 100) / 100, y: Math.round(y * 100) / 100 };
+    }
+}
 
 let state = { pos: START_CELL, turns: 0, rolling: false, finished: false, entered: false, sixStreak: 0, pendingMove: 0 };
 
