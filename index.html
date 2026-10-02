@@ -48,7 +48,18 @@ body { font-family: 'Cormorant Garamond', Georgia, serif; background: var(--bg-0
         radial-gradient(ellipse at 50% 100%, rgba(60, 40, 20, 0.5), transparent 60%),
         linear-gradient(180deg, #1a1208 0%, #241810 50%, #1a1208 100%);
 }
-#board { position: relative; height: 100%; max-height: calc(100vh - 40px); aspect-ratio: 1 / 1; background-image: url('lila-board.jpg'); background-size: contain; background-repeat: no-repeat; background-position: center; border-radius: 12px; box-shadow: 0 0 0 1px rgba(176, 138, 52, 0.25), 0 20px 60px rgba(0, 0, 0, 0.85); }
+#board { 
+    position: relative; 
+    height: 100%; 
+    max-height: calc(100vh - 40px); 
+    aspect-ratio: 8 / 9;
+    background-image: url('lila-board.jpg'); 
+    background-size: contain; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    border-radius: 12px; 
+    box-shadow: 0 0 0 1px rgba(176, 138, 52, 0.25), 0 20px 60px rgba(0, 0, 0, 0.85); 
+}
 
 .cell {
     position: absolute; aspect-ratio: 1; border-radius: 50%;
@@ -77,11 +88,7 @@ body { font-family: 'Cormorant Garamond', Georgia, serif; background: var(--bg-0
     background: transparent;
     box-shadow: none;
 }
-#player svg {
-    width: 100%;
-    height: 100%;
-    display: block;
-}
+#player svg { width: 100%; height: 100%; display: block; }
 
 #dice-panel { width: 200px; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: 24px 20px; background: linear-gradient(180deg, rgba(20, 16, 10, 0.95), rgba(10, 7, 5, 0.98)); z-index: 5; }
 #dice { width: 86px; height: 86px; border-radius: 26px; background: linear-gradient(145deg, #2a1f12, #14100a 60%, #0a0705); border: 1px solid var(--line); box-shadow: 0 8px 28px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(212, 169, 78, 0.15), inset 0 1px 0 rgba(212, 169, 78, 0.2); display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); padding: 14px; gap: 5px; cursor: pointer; transition: all 0.2s; position: relative; }
@@ -110,41 +117,34 @@ body { font-family: 'Cormorant Garamond', Georgia, serif; background: var(--bg-0
 #music-toggle:hover { color: var(--gold-bright); border-color: var(--gold); }
 #music-toggle.muted { opacity: 0.5; }
 
+#lang-btn { position: fixed; left: 240px; bottom: 24px; width: 56px; height: 36px; border-radius: 18px; border: 1px solid var(--line); background: rgba(20, 16, 10, 0.85); color: var(--gold-bright); font-family: 'Mukta', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 1px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.25s ease; z-index: 60; }
+#lang-btn:hover { color: var(--gold-pale); border-color: var(--gold); background: rgba(176, 138, 52, 0.15); }
+
 /* МОБИЛЬНАЯ ВЕРСИЯ */
 @media (max-width: 900px), (orientation: portrait) {
-    #app { 
-        flex-direction: column; 
-        height: 100dvh;
-    }
+    #app { flex-direction: column; height: 100dvh; }
     
-    /* Верхняя панель — компактная */
     #sidebar { 
         width: 100%; 
         flex-direction: row; 
         align-items: center; 
         justify-content: space-between; 
-        padding: 8px 12px;
+        padding: 6px 10px;
         flex-shrink: 0;
-        min-height: 52px;
+        min-height: 44px;
     }
-    #sidebar .top-block { 
-        flex-direction: row; 
-        align-items: center; 
-        gap: 12px;
-        flex-wrap: nowrap;
-    }
+    #sidebar .top-block { flex-direction: row; align-items: center; gap: 10px; flex-wrap: nowrap; }
     .title { margin-bottom: 0; width: auto; }
-    .title .sanskrit-line { font-size: 20px; letter-spacing: 4px; }
-    .title .latin-line { font-size: 11px; letter-spacing: 3px; }
-    .stats { flex-direction: row; gap: 12px; font-size: 11px; padding-left: 0; margin-top: 0; }
-    .stat b { font-size: 14px; }
+    .title .sanskrit-line { font-size: 18px; letter-spacing: 3px; }
+    .title .latin-line { font-size: 10px; letter-spacing: 2px; }
+    .stats { flex-direction: row; gap: 10px; font-size: 10px; padding-left: 0; margin-top: 0; }
+    .stat b { font-size: 13px; }
     #chakra-bar { display: none; }
-    #restart { width: 32px; height: 32px; font-size: 14px; margin-top: 0; margin-left: 0; }
+    #restart { width: 30px; height: 30px; font-size: 13px; margin-top: 0; margin-left: 0; }
     
-    /* Игровое поле — занимает всё доступное место */
     #board-wrap { 
         flex: 1; 
-        padding: 6px; 
+        padding: 4px; 
         min-height: 0;
         display: flex;
         align-items: center;
@@ -155,40 +155,42 @@ body { font-family: 'Cormorant Garamond', Georgia, serif; background: var(--bg-0
         height: 100%;
         max-height: none;
         max-width: none;
-        aspect-ratio: 1 / 1;
+        aspect-ratio: 8 / 9;
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
-        border-radius: 8px;
+        border-radius: 6px;
     }
     
-    /* Нижняя панель с кубиком — по центру */
     #dice-panel { 
         width: 100%; 
-        flex-direction: row; 
+        flex-direction: column;
         justify-content: center; 
         align-items: center;
-        gap: 16px; 
-        padding: 10px 16px 14px;
+        gap: 8px; 
+        padding: 8px 16px 12px;
         flex-shrink: 0;
-        min-height: 80px;
-    }
-    #dice { 
-        width: 68px; 
-        height: 68px; 
-        padding: 10px; 
-        border-radius: 20px; 
+        min-height: 90px;
     }
     #dice-label { 
         font-size: 11px; 
         letter-spacing: 2px; 
         min-height: auto;
+        order: 1;
+    }
+    #dice { 
+        width: 64px; 
+        height: 64px; 
+        padding: 10px; 
+        border-radius: 18px; 
+        order: 2;
     }
     
-    .modal-sanskrit { font-size: 34px; }
-    .modal-card { padding: 30px 24px; border-radius: 22px; }
-    .modal-text { font-size: 18px; }
-    #music-toggle { right: 16px; bottom: 90px; width: 38px; height: 38px; font-size: 16px; }
+    .modal-sanskrit { font-size: 32px; }
+    .modal-card { padding: 28px 22px; border-radius: 20px; }
+    .modal-text { font-size: 17px; }
+    #music-toggle { right: 12px; bottom: 12px; width: 38px; height: 38px; font-size: 16px; }
+    #lang-btn { left: 12px; bottom: 12px; width: 52px; height: 34px; font-size: 12px; }
 }
 </style>
 </head>
@@ -202,8 +204,8 @@ body { font-family: 'Cormorant Garamond', Georgia, serif; background: var(--bg-0
                 <span class="latin-line">LEELA</span>
             </div>
             <div class="stats">
-                <div class="stat">Клетка <b id="pos">68</b></div>
-                <div class="stat">Ход <b id="turns">0</b></div>
+                <div class="stat"><span id="lbl-cell">Клетка</span> <b id="pos">68</b></div>
+                <div class="stat"><span id="lbl-turn">Ход</span> <b id="turns">0</b></div>
             </div>
             <div id="chakra-bar"></div>
         </div>
@@ -215,12 +217,13 @@ body { font-family: 'Cormorant Garamond', Georgia, serif; background: var(--bg-0
     </div>
 
     <div id="dice-panel">
+        <div id="dice-label" data-i18n="roll6">Бросьте 6</div>
         <div id="dice" role="button" aria-label="Бросить кубик"></div>
-        <div id="dice-label">Бросьте 6</div>
     </div>
 </div>
 
 <button id="music-toggle" title="Музыка">♪</button>
+<button id="lang-btn">EN</button>
 
 <div id="modal">
     <div class="modal-card">
@@ -228,13 +231,213 @@ body { font-family: 'Cormorant Garamond', Georgia, serif; background: var(--bg-0
         <div class="modal-title" id="mTitle">Клетка</div>
         <div class="modal-text" id="mText"></div>
         <div class="modal-move" id="mMove"></div>
-        <button class="modal-btn" id="mBtn">Продолжить</button>
+        <button class="modal-btn" id="mBtn" data-i18n="continue">Продолжить</button>
     </div>
 </div>
 
 <audio id="bg-music" src="1.mp3" loop preload="auto"></audio>
 
 <script>
+// === ПЕРЕВОДЫ ===
+let LANG = 'ru';
+
+const T = {
+    ru: {
+        cell: 'Клетка', turn: 'Ход', roll6: 'Бросьте 6', continue: 'Продолжить',
+        newGame: 'Новая игра', music: 'Музыка',
+        rolled: 'Выпало', need6: 'Нужно 6', born: 'Выпало 6 — Рождение!',
+        sixMore: '6! Бросайте ещё', threeSix: 'Три 6 — сгорают!',
+        rollDice: 'Бросьте кубик', gameOver: 'Игра завершена',
+        snake: 'Змея', ladder: 'Стрела', trap: 'Ловушка',
+        return68: 'Вернитесь на 68', snakeTo: 'Змея утянула на клетку',
+        ladderTo: 'Стрела возносит на клетку',
+        snake72: 'Змея возвращает на Землю (51) для нового круга',
+        cosmic: 'Космическое сознание', final: 'Вы вернулись в клетку 68. Игра завершена.',
+        namaste: 'नमस्ते', cellTitle: 'Клетка'
+    },
+    en: {
+        cell: 'Cell', turn: 'Turn', roll6: 'Roll a 6', continue: 'Continue',
+        newGame: 'New Game', music: 'Music',
+        rolled: 'Rolled', need6: 'Need a 6', born: 'Rolled 6 — Birth!',
+        sixMore: '6! Roll again', threeSix: 'Three 6s — burn out!',
+        rollDice: 'Roll the dice', gameOver: 'Game Over',
+        snake: 'Snake', ladder: 'Arrow', trap: 'Trap',
+        return68: 'Return to 68', snakeTo: 'Snake pulls you to cell',
+        ladderTo: 'Arrow lifts you to cell',
+        snake72: 'Snake returns you to Earth (51) for a new cycle',
+        cosmic: 'Cosmic Consciousness', final: 'You have returned to cell 68. The game is complete.',
+        namaste: 'नमस्ते', cellTitle: 'Cell'
+    }
+};
+
+function t(key) { return T[LANG][key] || key; }
+
+// Названия клеток на двух языках
+const CELLS_RU = [
+    null,
+    { name: 'Рождение', text: 'Вход в кармическую игру.' },
+    { name: 'Майя', text: 'Иллюзия.' },
+    { name: 'Гнев', text: 'Гнев ослепляет.' },
+    { name: 'Жадность', text: 'Жадность ведёт к накоплению.' },
+    { name: 'Физический план', text: 'План земли.' },
+    { name: 'Заблуждение', text: 'Ложные знания.' },
+    { name: 'Тщеславие', text: 'Гордыня — это ловушка.' },
+    { name: 'Алчность', text: 'Неудовлетворённость.' },
+    { name: 'Чувственный план', text: 'План желаний.' },
+    { name: 'Очищение', text: 'Духовный огонь. Стрела → 23.' },
+    { name: 'Развлечения', text: 'План гандхарв.' },
+    { name: 'Зависть', text: 'Змея → Алчность (8).' },
+    { name: 'Ничтожность', text: 'План пустоты.' },
+    { name: 'Астральный план', text: 'Тонкий план.' },
+    { name: 'План фантазии', text: 'План иллюзий.' },
+    { name: 'Ревность', text: 'Змея → Жадность (4).' },
+    { name: 'Сострадание', text: 'Стрела → 69.' },
+    { name: 'План радости', text: 'Лёгкость бытия.' },
+    { name: 'План кармы', text: 'Здесь вершится карма.' },
+    { name: 'Благотворительность', text: 'Стрела → 32.' },
+    { name: 'Хорошая компания', text: 'Стрела → 60.' },
+    { name: 'Небесный план', text: 'Стрела ведёт сюда.' },
+    { name: 'Плохая компания', text: 'Змея → Тщеславие (7).' },
+    { name: 'Печаль', text: 'Часть пути.' },
+    { name: 'Самоотверженное служение', text: 'Стрела → 41.' },
+    { name: 'Истинная религиозность', text: 'Стрела → 50.' },
+    { name: 'Неправедность', text: 'Змея → Заблуждение (6).' },
+    { name: 'Хорошие тенденции', text: 'Благие наклонности.' },
+    { name: 'План святости', text: 'План полубогов.' },
+    { name: 'План равновесия', text: 'Стрела ведёт сюда.' },
+    { name: 'План ароматов', text: 'Тонкие ароматы.' },
+    { name: 'План вкуса', text: 'Тонкие вкусы.' },
+    { name: 'Чистилище', text: 'Змея насилия утягивает сюда.' },
+    { name: 'Ясность сознания', text: 'План ясности.' },
+    { name: 'Гьяна', text: 'Стрела → 66.' },
+    { name: 'Прана-лока', text: 'План энергии.' },
+    { name: 'Апана-лока', text: 'План очищения.' },
+    { name: 'Вьяна-лока', text: 'План циркуляции.' },
+    { name: 'Человеческий план', text: 'Стрела ведёт сюда.' },
+    { name: 'План Агни', text: 'План огня.' },
+    { name: 'Рождение человека', text: 'В человеческом теле.' },
+    { name: 'Неведение', text: 'Змея → Чувственный план (9).' },
+    { name: 'Правильное знание', text: 'Стрела → 67.' },
+    { name: 'Различение', text: 'Стрела → Счастье (62).' },
+    { name: 'План нейтральности', text: 'Нейтральность ума.' },
+    { name: 'Солнечный план', text: 'Солнечная энергия.' },
+    { name: 'Неверие', text: 'Змея → материальные планы (9).' },
+    { name: 'План аскетизма', text: 'Стрела ведёт сюда.' },
+    { name: 'Земля', text: 'Возврат с 72 для нового круга.' },
+    { name: 'План насилия', text: 'Змея → Чистилище (35).' },
+    { name: 'План воды', text: 'План текучести.' },
+    { name: 'Духовная преданность', text: 'Стрела → Космическое Сознание (68).' },
+    { name: 'Эгоизм', text: 'Змея → Гнев (3).' },
+    { name: 'План Реальности', text: 'План истины.' },
+    { name: 'Ложное эго', text: 'Возвращает к огорчениям.' },
+    { name: 'План Космического блага', text: 'План божественной энергии.' },
+    { name: 'Ясный путь', text: 'Понимание.' },
+    { name: 'План Шакти', text: 'План энергии.' },
+    { name: 'План Реальности', text: 'План истины.' },
+    { name: 'Счастье', text: 'Различение в счастье.' },
+    { name: 'Тамас', text: 'Тьма. Змея → Майя (2).' },
+    { name: 'План Шивы', text: 'Присутствие Шивы.' },
+    { name: 'План Вишну', text: 'Присутствие Вишну.' },
+    { name: 'План Брахмы', text: 'Присутствие Брахмы.' },
+    { name: 'План космического блага', text: 'Стрела ведёт сюда.' },
+    { name: 'Космическое сознание', text: 'Цель игры. Вы вернулись домой.' },
+    { name: 'План Абсолюта', text: 'Ловушка.' },
+    { name: 'План Абсолюта', text: 'Ловушка.' },
+    { name: 'План Абсолюта', text: 'Ловушка.' },
+    { name: 'Тамогуна', text: 'Змея возвращает на Землю (51).' },
+];
+
+const CELLS_EN = [
+    null,
+    { name: 'Birth', text: 'Entry into the karmic game.' },
+    { name: 'Maya', text: 'Illusion.' },
+    { name: 'Anger', text: 'Anger blinds.' },
+    { name: 'Greed', text: 'Greed leads to accumulation.' },
+    { name: 'Physical Plane', text: 'The earthly plane.' },
+    { name: 'Delusion', text: 'False knowledge.' },
+    { name: 'Vanity', text: 'Pride is a trap.' },
+    { name: 'Avarice', text: 'Dissatisfaction.' },
+    { name: 'Sensual Plane', text: 'The plane of desires.' },
+    { name: 'Purification', text: 'Spiritual fire. Arrow → 23.' },
+    { name: 'Entertainment', text: 'The plane of gandharvas.' },
+    { name: 'Envy', text: 'Snake → Avarice (8).' },
+    { name: 'Nothingness', text: 'The plane of emptiness.' },
+    { name: 'Astral Plane', text: 'The subtle plane.' },
+    { name: 'Plane of Fantasy', text: 'The plane of illusions.' },
+    { name: 'Jealousy', text: 'Snake → Greed (4).' },
+    { name: 'Compassion', text: 'Arrow → 69.' },
+    { name: 'Plane of Joy', text: 'Lightness of being.' },
+    { name: 'Plane of Karma', text: 'Here karma is forged.' },
+    { name: 'Charity', text: 'Arrow → 32.' },
+    { name: 'Good Company', text: 'Arrow → 60.' },
+    { name: 'Heavenly Plane', text: 'The arrow leads here.' },
+    { name: 'Bad Company', text: 'Snake → Vanity (7).' },
+    { name: 'Sorrow', text: 'Part of the path.' },
+    { name: 'Selfless Service', text: 'Arrow → 41.' },
+    { name: 'True Religion', text: 'Arrow → 50.' },
+    { name: 'Unrighteousness', text: 'Snake → Delusion (6).' },
+    { name: 'Good Tendencies', text: 'Virtuous inclinations.' },
+    { name: 'Plane of Holiness', text: 'The plane of demigods.' },
+    { name: 'Plane of Balance', text: 'The arrow leads here.' },
+    { name: 'Plane of Fragrance', text: 'Subtle fragrances.' },
+    { name: 'Plane of Taste', text: 'Subtle tastes.' },
+    { name: 'Purgatory', text: 'The snake of violence drags here.' },
+    { name: 'Clarity of Consciousness', text: 'The plane of clarity.' },
+    { name: 'Jnana', text: 'Arrow → 66.' },
+    { name: 'Prana Loka', text: 'The plane of energy.' },
+    { name: 'Apana Loka', text: 'The plane of cleansing.' },
+    { name: 'Vyana Loka', text: 'The plane of circulation.' },
+    { name: 'Human Plane', text: 'The arrow leads here.' },
+    { name: 'Plane of Agni', text: 'The plane of fire.' },
+    { name: 'Human Birth', text: 'In a human body.' },
+    { name: 'Ignorance', text: 'Snake → Sensual Plane (9).' },
+    { name: 'Right Knowledge', text: 'Arrow → 67.' },
+    { name: 'Discernment', text: 'Arrow → Happiness (62).' },
+    { name: 'Plane of Neutrality', text: 'Neutrality of mind.' },
+    { name: 'Solar Plane', text: 'Solar energy.' },
+    { name: 'Disbelief', text: 'Snake → material planes (9).' },
+    { name: 'Plane of Asceticism', text: 'The arrow leads here.' },
+    { name: 'Earth', text: 'Return from 72 for a new cycle.' },
+    { name: 'Plane of Violence', text: 'Snake → Purgatory (35).' },
+    { name: 'Plane of Water', text: 'The plane of fluidity.' },
+    { name: 'Spiritual Devotion', text: 'Arrow → Cosmic Consciousness (68).' },
+    { name: 'Egoism', text: 'Snake → Anger (3).' },
+    { name: 'Plane of Reality', text: 'The plane of truth.' },
+    { name: 'False Ego', text: 'Returns to sorrow.' },
+    { name: 'Plane of Cosmic Good', text: 'The plane of divine energy.' },
+    { name: 'Clear Path', text: 'Understanding.' },
+    { name: 'Plane of Shakti', text: 'The plane of energy.' },
+    { name: 'Plane of Reality', text: 'The plane of truth.' },
+    { name: 'Happiness', text: 'Discernment in happiness.' },
+    { name: 'Tamas', text: 'Darkness. Snake → Maya (2).' },
+    { name: 'Plane of Shiva', text: 'Presence of Shiva.' },
+    { name: 'Plane of Vishnu', text: 'Presence of Vishnu.' },
+    { name: 'Plane of Brahma', text: 'Presence of Brahma.' },
+    { name: 'Plane of Cosmic Good', text: 'The arrow leads here.' },
+    { name: 'Cosmic Consciousness', text: 'The goal of the game. You have returned home.' },
+    { name: 'Plane of the Absolute', text: 'A trap.' },
+    { name: 'Plane of the Absolute', text: 'A trap.' },
+    { name: 'Plane of the Absolute', text: 'A trap.' },
+    { name: 'Tamoguna', text: 'Snake returns you to Earth (51).' },
+];
+
+const SANSKRIT = [
+    null, 'जन्म', 'माया', 'क्रोध', 'लोभ', 'भूलोक', 'मोह', 'मद', 'मत्सर', 'कामलोक',
+    'तप', 'गन्धर्व', 'ईर्ष्या', 'अन्तरिक्ष', 'भुवर्लोक', 'नागलोक', 'द्वेष', 'दया', 'हर्षलोक',
+    'कर्मलोक', 'दान', 'सत्सङ्ग', 'स्वर्गलोक', 'कुसङ्ग', 'दुख', 'परमार्थ', 'सुधर्म', 'अधर्म',
+    'उत्तमगति', 'यक्षलोक', 'महर्लोक', 'गन्धलोक', 'रसलोक', 'नरकलोक', 'स्वच्छ', 'ज्ञान',
+    'प्राणलोक', 'अपानलोक', 'व्यानलोक', 'जनलोक', 'अग्निलोक', 'मनुष्यजन्म', 'अविद्या', 'सुविद्या',
+    'विवेक', 'सरस्वती', 'यमुना', 'नास्तिक्य', 'तपलोक', 'पृथ्वी', 'हिंसा', 'जल', 'भक्ति',
+    'अहंकार', 'सत्यलोक', 'अहंभाव', 'शिवलोक', 'सुगम', 'शक्ति', 'सत्यलोक', 'सुख', 'तमस्',
+    'शिवलोक', 'विष्णुलोक', 'ब्रह्मलोक', 'शिवलोक', 'ब्रह्मन्', 'परमात्मन्', 'परमात्मन्', 'परमात्मन्', 'तमोगुण'
+];
+
+function getCell(num) {
+    const src = LANG === 'en' ? CELLS_EN : CELLS_RU;
+    const c = src[num];
+    return c ? { name: c.name, sanskrit: SANSKRIT[num], text: c.text } : null;
+}
+
 const bgMusic = document.getElementById('bg-music');
 const musicToggle = document.getElementById('music-toggle');
 let musicStarted = false;
@@ -259,6 +462,13 @@ const CHAKRAS = [
     { name: 'Сахасрара', color: '#6e3a74' }, { name: 'Каузальная', color: '#a8863a' },
 ];
 
+const CHAKRAS_EN = [
+    { name: 'Muladhara' }, { name: 'Svadhisthana' },
+    { name: 'Manipura' }, { name: 'Anahata' },
+    { name: 'Vishuddha' }, { name: 'Ajna' },
+    { name: 'Sahasrara' }, { name: 'Causal' },
+];
+
 const SNAKES = { 12: 8, 16: 4, 24: 7, 29: 6, 44: 9, 52: 35, 55: 3, 61: 13, 63: 2, 72: 51 };
 const LADDERS = { 10: 23, 17: 69, 20: 32, 22: 60, 27: 41, 28: 50, 37: 66, 45: 67, 46: 62, 54: 68 };
 
@@ -281,80 +491,6 @@ const CELL_POSITIONS = [
     { x: 70.44, y: 21.25 }, { x: 80.66, y: 21.25 }, { x: 90.89, y: 21.25 }, { x: 90.89, y: 9.75 },
     { x: 80.66, y: 9.75 }, { x: 70.44, y: 9.75 }, { x: 60.22, y: 9.75 }, { x: 50.0,  y: 9.75 },
     { x: 39.77, y: 9.75 }, { x: 29.55, y: 9.75 }, { x: 19.33, y: 9.75 }, { x: 9.11,  y: 9.75 },
-];
-
-const CELLS = [
-    null,
-    { name: 'Рождение', sanskrit: 'जन्म', text: 'Вход в кармическую игру.' },
-    { name: 'Майя', sanskrit: 'माया', text: 'Иллюзия.' },
-    { name: 'Гнев', sanskrit: 'क्रोध', text: 'Гнев ослепляет.' },
-    { name: 'Жадность', sanskrit: 'लोभ', text: 'Жадность ведёт к накоплению.' },
-    { name: 'Физический план', sanskrit: 'भूलोक', text: 'План земли.' },
-    { name: 'Заблуждение', sanskrit: 'मोह', text: 'Ложные знания.' },
-    { name: 'Тщеславие', sanskrit: 'मद', text: 'Гордыня — это ловушка.' },
-    { name: 'Алчность', sanskrit: 'मत्सर', text: 'Неудовлетворённость.' },
-    { name: 'Чувственный план', sanskrit: 'कामलोक', text: 'План желаний.' },
-    { name: 'Очищение', sanskrit: 'तप', text: 'Духовный огонь. Стрела → 23.' },
-    { name: 'Развлечения', sanskrit: 'गन्धर्व', text: 'План гандхарв.' },
-    { name: 'Зависть', sanskrit: 'ईर्ष्या', text: 'Змея → Алчность (8).' },
-    { name: 'Ничтожность', sanskrit: 'अन्तरिक्ष', text: 'План пустоты.' },
-    { name: 'Астральный план', sanskrit: 'भुवर्लोक', text: 'Тонкий план.' },
-    { name: 'План фантазии', sanskrit: 'नागलोक', text: 'План иллюзий.' },
-    { name: 'Ревность', sanskrit: 'द्वेष', text: 'Змея → Жадность (4).' },
-    { name: 'Сострадание', sanskrit: 'दया', text: 'Стрела → 69.' },
-    { name: 'План радости', sanskrit: 'हर्षलोक', text: 'Лёгкость бытия.' },
-    { name: 'План кармы', sanskrit: 'कर्मलोक', text: 'Здесь вершится карма.' },
-    { name: 'Благотворительность', sanskrit: 'दान', text: 'Стрела → 32.' },
-    { name: 'Хорошая компания', sanskrit: 'सत्सङ्ग', text: 'Стрела → 60.' },
-    { name: 'Небесный план', sanskrit: 'स्वर्गलोक', text: 'Стрела ведёт сюда.' },
-    { name: 'Плохая компания', sanskrit: 'कुसङ्ग', text: 'Змея → Тщеславие (7).' },
-    { name: 'Печаль', sanskrit: 'दुःख', text: 'Часть пути.' },
-    { name: 'Самоотверженное служение', sanskrit: 'परमार्थ', text: 'Стрела → 41.' },
-    { name: 'Истинная религиозность', sanskrit: 'सुधर्म', text: 'Стрела → 50.' },
-    { name: 'Неправедность', sanskrit: 'अधर्म', text: 'Змея → Заблуждение (6).' },
-    { name: 'Хорошие тенденции', sanskrit: 'उत्तमगति', text: 'Благие наклонности.' },
-    { name: 'План святости', sanskrit: 'यक्षलोक', text: 'План полубогов.' },
-    { name: 'План равновесия', sanskrit: 'महर्लोक', text: 'Стрела ведёт сюда.' },
-    { name: 'План ароматов', sanskrit: 'गन्धलोक', text: 'Тонкие ароматы.' },
-    { name: 'План вкуса', sanskrit: 'रसलोक', text: 'Тонкие вкусы.' },
-    { name: 'Чистилище', sanskrit: 'नरकलोक', text: 'Змея насилия утягивает сюда.' },
-    { name: 'Ясность сознания', sanskrit: 'स्वच्छ', text: 'План ясности.' },
-    { name: 'Гьяна', sanskrit: 'ज्ञान', text: 'Стрела → 66.' },
-    { name: 'Прана-лока', sanskrit: 'प्राणलोक', text: 'План энергии.' },
-    { name: 'Апана-лока', sanskrit: 'अपानलोक', text: 'План очищения.' },
-    { name: 'Вьяна-лока', sanskrit: 'व्यानलोक', text: 'План циркуляции.' },
-    { name: 'Человеческий план', sanskrit: 'जनलोक', text: 'Стрела ведёт сюда.' },
-    { name: 'План Агни', sanskrit: 'अग्निलोक', text: 'План огня.' },
-    { name: 'Рождение человека', sanskrit: 'मनुष्यजन्म', text: 'В человеческом теле.' },
-    { name: 'Неведение', sanskrit: 'अविद्या', text: 'Змея → Чувственный план (9).' },
-    { name: 'Правильное знание', sanskrit: 'सुविद्या', text: 'Стрела → 67.' },
-    { name: 'Различение', sanskrit: 'विवेक', text: 'Стрела → Счастье (62).' },
-    { name: 'План нейтральности', sanskrit: 'सरस्वती', text: 'Нейтральность ума.' },
-    { name: 'Солнечный план', sanskrit: 'यमुना', text: 'Солнечная энергия.' },
-    { name: 'Неверие', sanskrit: 'नास्तिक्य', text: 'Змея → материальные планы (9).' },
-    { name: 'План аскетизма', sanskrit: 'तपलोक', text: 'Стрела ведёт сюда.' },
-    { name: 'Земля', sanskrit: 'पृथ्वी', text: 'Возврат с 72 для нового круга.' },
-    { name: 'План насилия', sanskrit: 'हिंसा', text: 'Змея → Чистилище (35).' },
-    { name: 'План воды', sanskrit: 'जल', text: 'План текучести.' },
-    { name: 'Духовная преданность', sanskrit: 'भक्ति', text: 'Стрела → Космическое Сознание (68).' },
-    { name: 'Эгоизм', sanskrit: 'अहंकार', text: 'Змея → Гнев (3).' },
-    { name: 'План Реальности', sanskrit: 'सत्यलोक', text: 'План истины.' },
-    { name: 'Ложное эго', sanskrit: 'अहंभाव', text: 'Возвращает к огорчениям.' },
-    { name: 'План Космического блага', sanskrit: 'शिवलोक', text: 'План божественной энергии.' },
-    { name: 'Ясный путь', sanskrit: 'सुगम', text: 'Понимание.' },
-    { name: 'План Шакти', sanskrit: 'शक्ति', text: 'План энергии.' },
-    { name: 'План Реальности', sanskrit: 'सत्यलोक', text: 'План истины.' },
-    { name: 'Счастье', sanskrit: 'सुख', text: 'Различение в счастье.' },
-    { name: 'Тамас', sanskrit: 'तमस्', text: 'Тьма. Змея → Майя (2).' },
-    { name: 'План Шивы', sanskrit: 'शिवलोक', text: 'Присутствие Шивы.' },
-    { name: 'План Вишну', sanskrit: 'विष्णुलोक', text: 'Присутствие Вишну.' },
-    { name: 'План Брахмы', sanskrit: 'ब्रह्मलोक', text: 'Присутствие Брахмы.' },
-    { name: 'План космического блага', sanskrit: 'शिवलोक', text: 'Стрела ведёт сюда.' },
-    { name: 'Космическое сознание', sanskrit: 'ब्रह्मन्', text: 'Цель игры. Вы вернулись домой.' },
-    { name: 'План Абсолюта', sanskrit: 'परमात्मन्', text: 'Ловушка.' },
-    { name: 'План Абсолюта', sanskrit: 'परमात्मन्', text: 'Ловушка.' },
-    { name: 'План Абсолюта', sanskrit: 'परमात्मन्', text: 'Ловушка.' },
-    { name: 'Тамогуна', sanskrit: 'तमोगुण', text: 'Змея возвращает на Землю (51).' },
 ];
 
 let state = { pos: START_CELL, turns: 0, rolling: false, finished: false, entered: false, sixStreak: 0, pendingMove: 0 };
@@ -438,25 +574,25 @@ function finishRoll() {
     if (!state.entered) {
         if (value === 6) {
             state.entered = true; state.sixStreak = 1;
-            document.getElementById('dice-label').textContent = 'Выпало 6 — Рождение!';
+            document.getElementById('dice-label').textContent = t('born');
             setTimeout(() => {
                 state.pos = 1; updatePlayerPosition(); document.getElementById('pos').textContent = state.pos;
                 setTimeout(() => {
                     state.pos = ENTRY_CELL; updatePlayerPosition(); updateChakraBar(); document.getElementById('pos').textContent = state.pos;
-                    state.rolling = false; dice.disabled = false; document.getElementById('dice-label').textContent = 'Бросьте кубик'; handleLanding();
+                    state.rolling = false; dice.disabled = false; document.getElementById('dice-label').textContent = t('rollDice'); handleLanding();
                 }, 500);
             }, 300);
-        } else { document.getElementById('dice-label').textContent = 'Выпало ' + value + '. Нужно 6'; state.rolling = false; dice.disabled = false; }
+        } else { document.getElementById('dice-label').textContent = t('rolled') + ' ' + value + '. ' + t('need6'); state.rolling = false; dice.disabled = false; }
         return;
     }
 
     if (value === 6) {
         state.sixStreak++;
-        if (state.sixStreak >= 3) { state.pendingMove = 0; state.sixStreak = 0; document.getElementById('dice-label').textContent = 'Три 6 — сгорают!'; state.rolling = false; dice.disabled = false; return; }
-        else { state.pendingMove += 6; document.getElementById('dice-label').textContent = '6! Бросайте ещё'; state.rolling = false; dice.disabled = false; return; }
+        if (state.sixStreak >= 3) { state.pendingMove = 0; state.sixStreak = 0; document.getElementById('dice-label').textContent = t('threeSix'); state.rolling = false; dice.disabled = false; return; }
+        else { state.pendingMove += 6; document.getElementById('dice-label').textContent = t('sixMore'); state.rolling = false; dice.disabled = false; return; }
     }
     const totalMove = state.pendingMove + value; state.pendingMove = 0; state.sixStreak = 0;
-    document.getElementById('dice-label').textContent = 'Выпало ' + value;
+    document.getElementById('dice-label').textContent = t('rolled') + ' ' + value;
     animateMove(totalMove, () => handleLanding());
 }
 
@@ -507,28 +643,29 @@ function animateMove(steps, cb) {
 
 function handleLanding() {
     if (TRAP_CELLS.includes(state.pos)) {
-        showModal({ title: 'Ловушка — ' + state.pos, sanskrit: CELLS[state.pos].sanskrit, text: CELLS[state.pos].text, move: 'Вернитесь на 68', color: '#c96a5a', then: () => { state.pos = START_CELL; updatePlayerPosition(); updateChakraBar(); document.getElementById('pos').textContent = state.pos; state.rolling = false; document.getElementById('dice').disabled = false; } });
+        const cell = getCell(state.pos);
+        showModal({ title: t('trap') + ' — ' + state.pos, sanskrit: cell.sanskrit, text: cell.text, move: t('return68'), color: '#c96a5a', then: () => { state.pos = START_CELL; updatePlayerPosition(); updateChakraBar(); document.getElementById('pos').textContent = state.pos; state.rolling = false; document.getElementById('dice').disabled = false; } });
         return;
     }
-    const cell = CELLS[state.pos];
+    const cell = getCell(state.pos);
     if (!cell) { state.rolling = false; document.getElementById('dice').disabled = false; return; }
     
     if (state.pos === 72 && SNAKES[72]) {
         const to = SNAKES[72];
         showModal({ 
-            title: 'Змея — ' + cell.name, 
+            title: t('snake') + ' — ' + cell.name, 
             sanskrit: cell.sanskrit, 
             text: cell.text, 
-            move: 'Змея возвращает на Землю (51) для нового круга', 
+            move: t('snake72'), 
             color: '#c96a5a', 
             then: () => { 
                 state.pos = to; 
                 updatePlayerPosition(); 
                 updateChakraBar(); 
                 document.getElementById('pos').textContent = state.pos;
-                const cell51 = CELLS[state.pos];
+                const cell51 = getCell(state.pos);
                 showModal({ 
-                    title: 'Клетка ' + state.pos + ' — ' + cell51.name, 
+                    title: t('cellTitle') + ' ' + state.pos + ' — ' + cell51.name, 
                     sanskrit: cell51.sanskrit, 
                     text: cell51.text, 
                     move: '', 
@@ -542,16 +679,16 @@ function handleLanding() {
     
     if (SNAKES[state.pos]) {
         const to = SNAKES[state.pos];
-        showModal({ title: 'Змея — ' + cell.name, sanskrit: cell.sanskrit, text: cell.text, move: 'Змея утянула на клетку ' + to, color: '#c96a5a', then: () => { state.pos = to; updatePlayerPosition(); updateChakraBar(); document.getElementById('pos').textContent = state.pos; state.rolling = false; document.getElementById('dice').disabled = false; } });
+        showModal({ title: t('snake') + ' — ' + cell.name, sanskrit: cell.sanskrit, text: cell.text, move: t('snakeTo') + ' ' + to, color: '#c96a5a', then: () => { state.pos = to; updatePlayerPosition(); updateChakraBar(); document.getElementById('pos').textContent = state.pos; state.rolling = false; document.getElementById('dice').disabled = false; } });
         return;
     }
     if (LADDERS[state.pos]) {
         const to = LADDERS[state.pos];
-        showModal({ title: 'Стрела — ' + cell.name, sanskrit: cell.sanskrit, text: cell.text, move: 'Стрела возносит на клетку ' + to, color: '#6ab07a', then: () => { state.pos = to; updatePlayerPosition(); updateChakraBar(); document.getElementById('pos').textContent = state.pos; state.rolling = false; document.getElementById('dice').disabled = false; } });
+        showModal({ title: t('ladder') + ' — ' + cell.name, sanskrit: cell.sanskrit, text: cell.text, move: t('ladderTo') + ' ' + to, color: '#6ab07a', then: () => { state.pos = to; updatePlayerPosition(); updateChakraBar(); document.getElementById('pos').textContent = state.pos; state.rolling = false; document.getElementById('dice').disabled = false; } });
         return;
     }
     
-    showModal({ title: 'Клетка ' + state.pos + ' — ' + cell.name, sanskrit: cell.sanskrit, text: cell.text, move: '', color: CHAKRAS[getChakra(state.pos)].color, then: () => { state.rolling = false; document.getElementById('dice').disabled = false; } });
+    showModal({ title: t('cellTitle') + ' ' + state.pos + ' — ' + cell.name, sanskrit: cell.sanskrit, text: cell.text, move: '', color: CHAKRAS[getChakra(state.pos)].color, then: () => { state.rolling = false; document.getElementById('dice').disabled = false; } });
 }
 
 let modalCallback = null;
@@ -562,7 +699,27 @@ function showModal({ title, text, move, color, sanskrit, then }) {
     modalCallback = then || null; document.getElementById('modal').classList.add('show');
 }
 function closeModal() { document.getElementById('modal').classList.remove('show'); const cb = modalCallback; modalCallback = null; if (cb) setTimeout(cb, 300); }
-function showFinal() { state.finished = true; state.rolling = false; showModal({ title: 'Космическое сознание', sanskrit: 'ब्रह्मन्', text: 'Вы вернулись в клетку 68. Игра завершена.', move: 'नमस्ते', color: '#e8c46a', then: () => { document.getElementById('dice').disabled = true; document.getElementById('dice-label').textContent = 'Игра завершена'; } }); }
+function showFinal() { state.finished = true; state.rolling = false; showModal({ title: t('cosmic'), sanskrit: 'ब्रह्मन्', text: t('final'), move: t('namaste'), color: '#e8c46a', then: () => { document.getElementById('dice').disabled = true; document.getElementById('dice-label').textContent = t('gameOver'); } }); }
+
+function updateUIStrings() {
+    document.getElementById('lbl-cell').textContent = t('cell');
+    document.getElementById('lbl-turn').textContent = t('turn');
+    document.getElementById('mBtn').textContent = t('continue');
+    document.getElementById('restart').title = t('newGame');
+    document.getElementById('music-toggle').title = t('music');
+    document.getElementById('lang-btn').textContent = LANG === 'ru' ? 'EN' : 'RU';
+    if (!state.rolling && !state.finished) {
+        const label = document.getElementById('dice-label');
+        if (label.textContent === 'Бросьте 6' || label.textContent === 'Roll a 6') {
+            label.textContent = t('roll6');
+        }
+    }
+}
+
+function switchLanguage() {
+    LANG = LANG === 'ru' ? 'en' : 'ru';
+    updateUIStrings();
+}
 
 async function newGame() {
     const btn = document.getElementById('restart');
@@ -577,7 +734,7 @@ async function newGame() {
         document.getElementById('pos').textContent = START_CELL;
         document.getElementById('turns').textContent = 0;
         document.getElementById('dice').disabled = false;
-        document.getElementById('dice-label').textContent = 'Бросьте 6';
+        document.getElementById('dice-label').textContent = t('roll6');
         renderDice(1);
         updatePlayerPosition();
         updateChakraBar();
@@ -591,8 +748,9 @@ document.getElementById('dice').addEventListener('click', rollDice);
 document.getElementById('mBtn').addEventListener('click', closeModal);
 document.getElementById('restart').addEventListener('click', newGame);
 document.getElementById('modal').addEventListener('click', (e) => { if (e.target.id === 'modal') closeModal(); });
+document.getElementById('lang-btn').addEventListener('click', switchLanguage);
 
-buildBoard(); renderDice(1);
+buildBoard(); renderDice(1); updateUIStrings();
 </script>
 </body>
 </html>
