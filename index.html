@@ -155,6 +155,7 @@ body { font-family: 'Cormorant Garamond', Georgia, serif; background: var(--bg-0
         width: 100%; flex-direction: row; align-items: center; justify-content: space-between; 
         padding: 8px 12px; flex-shrink: 0; min-height: 48px;
         background: linear-gradient(180deg, rgba(10, 7, 5, 0.98), rgba(20, 16, 10, 0.95));
+        position: relative;
     }
     #sidebar .top-block { flex-direction: row; align-items: center; gap: 12px; flex-wrap: nowrap; flex: 1; }
     .title { margin-bottom: 0; width: auto; }
@@ -164,7 +165,19 @@ body { font-family: 'Cormorant Garamond', Georgia, serif; background: var(--bg-0
     .stats { flex-direction: row; gap: 14px; font-size: 11px; padding-left: 0; margin-top: 0; letter-spacing: 3px; }
     .stat b { font-size: 17px; }
     #chakra-bar { display: none; }
-    #restart { width: 36px; height: 36px; font-size: 16px; margin-top: 0; margin-left: 0; border-color: rgba(200, 165, 100, 0.4); }
+    
+    #restart { 
+        position: fixed;
+        left: 50%;
+        top: 90px;
+        transform: translateX(-50%);
+        width: 42px; height: 42px; font-size: 18px;
+        margin: 0;
+        border-color: rgba(200, 165, 100, 0.55);
+        z-index: 55;
+        background: rgba(20, 16, 10, 0.9);
+    }
+    #restart:active { transform: translateX(-50%) scale(0.9) rotate(-180deg); }
     
     #board-wrap { flex: 1; padding: 6px; min-height: 0; display: flex; align-items: center; justify-content: center; background: transparent; }
     #board { 
@@ -174,6 +187,8 @@ body { font-family: 'Cormorant Garamond', Georgia, serif; background: var(--bg-0
         border-radius: 8px;
         box-shadow: 0 0 0 1px rgba(176, 138, 52, 0.2), 0 10px 40px rgba(0, 0, 0, 0.7);
     }
+    
+    #player { transform: translate(calc(-50% + 1.5mm), -50%); }
     
     #dice-panel { 
         width: 100%; flex-direction: column; justify-content: center; align-items: center;
@@ -644,17 +659,11 @@ function rollDice() {
     const interval = setInterval(() => { renderDice(Math.floor(Math.random() * 6) + 1); ticks++; if (ticks > 8) { clearInterval(interval); finishRoll(); } }, 60);
 }
 
-// Возвращает true, если ход разрешён, false — если нужно ждать
 function isMoveAllowed(fromPos, value) {
-    // С 69 можно: 1 (→70), 2 (→71), 3 (→72)
     if (fromPos === 69) return value <= 3;
-    // С 70 можно: 1 (→71), 2 (→72)
     if (fromPos === 70) return value <= 2;
-    // С 71 можно: только 1 (→72)
     if (fromPos === 71) return value === 1;
-    // С 72 — уже на тамогуне, дальше не идём
     if (fromPos === 72) return false;
-    // На 67: 6 перелетает через 68 (нельзя), остальные — можно
     if (fromPos === 67) return value !== 6;
     return true;
 }
@@ -687,7 +696,6 @@ function finishRoll() {
 
     const totalMove = state.pendingMove + value; state.pendingMove = 0; state.sixStreak = 0;
 
-    // Проверка: разрешён ли ход с текущей позиции
     if (!isMoveAllowed(state.pos, totalMove)) {
         document.getElementById('dice-label').textContent = t('overshoot');
         const cell = getCell(state.pos);
@@ -718,7 +726,6 @@ function animateMove(steps, cb) {
 
         const next = state.pos + 1;
 
-        // Не уходим за 72
         if (next > 72) {
             cb();
             return;
@@ -728,16 +735,6 @@ function animateMove(steps, cb) {
         updatePlayerPosition();
         updateChakraBar();
         document.getElementById('pos').textContent = state.pos;
-
-        // Если встали на 68 — финал
-        if (next === 68) {
-            setTimeout(() => {
-                state.rolling = false;
-                document.getElementById('dice').disabled = true;
-                showFinal();
-            }, stepDur + 100);
-            return;
-        }
 
         remaining--;
         setTimeout(step, stepDur);
@@ -749,13 +746,12 @@ function handleLanding() {
     const cell = getCell(state.pos);
     if (!cell) { state.rolling = false; document.getElementById('dice').disabled = false; return; }
 
-    // На 68 — финал (сюда попадаем по стреле 54→68 или шагом с 67)
+    // Финал ТОЛЬКО при остановке на 68
     if (state.pos === 68) {
         showFinal();
         return;
     }
 
-    // Змея на 72 → 51
     if (state.pos === 72 && SNAKES[72]) {
         const to = SNAKES[72];
         showModal({
@@ -783,17 +779,14 @@ function handleLanding() {
         return;
     }
 
-    // Другие змеи
     if (SNAKES[state.pos]) {
         const to = SNAKES[state.pos];
         showModal({ title: t('snake') + ' — ' + cell.name, sanskrit: cell.sanskrit, text: cell.text, move: t('snakeTo') + ' ' + to, color: '#c96a5a', then: () => { state.pos = to; updatePlayerPosition(); updateChakraBar(); document.getElementById('pos').textContent = state.pos; state.rolling = false; document.getElementById('dice').disabled = false; } });
         return;
     }
 
-    // Стрелы (в т.ч. 54→68 — тогда на следующем шаге сработает проверка 68)
     if (LADDERS[state.pos]) {
         const to = LADDERS[state.pos];
-        // Если стрела ведёт на 68 — сразу финал
         if (to === 68) {
             showModal({ title: t('ladder') + ' — ' + cell.name, sanskrit: cell.sanskrit, text: cell.text, move: t('ladderTo') + ' ' + to, color: '#6ab07a', then: () => { state.pos = 68; updatePlayerPosition(); updateChakraBar(); document.getElementById('pos').textContent = 68; state.rolling = false; document.getElementById('dice').disabled = true; showFinal(); } });
             return;
