@@ -253,7 +253,7 @@ body { font-family: 'Cormorant Garamond', Georgia, serif; background: var(--bg-0
     <button class="show1" data-act="show1">Показать клетку 1</button>
     <button class="save" data-act="save">СОХРАНИТЬ</button>
     <button class="close" data-act="close">Закрыть (C)</button>
-    <div class="hint">Красная = 68, зелёная = 1. Двигай сетку, пока красная не встанет в верхний центральный круг Сахасрары.</div>
+    <div class="hint">Красная = 68, зелёная = 1.</div>
 </div>
 
 <div id="modal">
@@ -302,163 +302,170 @@ const T = {
 
 function t(key) { return T[LANG][key] || key; }
 
+// ==== НАЗВАНИЯ И ОПИСАНИЯ ПО ФАЙЛУ ====
 const CELLS_RU = [
     null,
-    { name: 'Рождение', text: 'Вход в кармическую игру.' },
+    { name: 'Джанма', text: 'Рождение. Вход в кармическую игру.' },
     { name: 'Майя', text: 'Иллюзия.' },
-    { name: 'Гнев', text: 'Гнев ослепляет.' },
-    { name: 'Жадность', text: 'Жадность ведёт к накоплению.' },
-    { name: 'Физический план', text: 'План земли.' },
-    { name: 'Заблуждение', text: 'Ложные знания.' },
-    { name: 'Тщеславие', text: 'Гордыня — это ловушка.' },
-    { name: 'Алчность', text: 'Неудовлетворённость.' },
-    { name: 'Чувственный план', text: 'План желаний.' },
-    { name: 'Очищение', text: 'Духовный огонь. Стрела → 23.' },
-    { name: 'Развлечения', text: 'План гандхарв.' },
-    { name: 'Зависть', text: 'Змея → Алчность (8).' },
-    { name: 'Ничтожность', text: 'План пустоты.' },
-    { name: 'Астральный план', text: 'Тонкий план.' },
-    { name: 'План фантазии', text: 'План иллюзий.' },
-    { name: 'Ревность', text: 'Змея → Жадность (4).' },
-    { name: 'Сострадание', text: 'Стрела → 69.' },
-    { name: 'План радости', text: 'Лёгкость бытия.' },
-    { name: 'План кармы', text: 'Здесь вершится карма.' },
-    { name: 'Благотворительность', text: 'Стрела → 32.' },
-    { name: 'Хорошая компания', text: 'Стрела → 60.' },
-    { name: 'Небесный план', text: 'Стрела ведёт сюда.' },
-    { name: 'Плохая компания', text: 'Змея → Тщеславие (7).' },
-    { name: 'Печаль', text: 'Часть пути.' },
-    { name: 'Самоотверженное служение', text: 'Стрела → 41.' },
-    { name: 'Истинная религиозность', text: 'Стрела → 50.' },
-    { name: 'Неправедность', text: 'Змея → Заблуждение (6).' },
-    { name: 'Хорошие тенденции', text: 'Благие наклонности.' },
-    { name: 'План святости', text: 'План полубогов.' },
-    { name: 'План равновесия', text: 'Стрела ведёт сюда.' },
-    { name: 'План ароматов', text: 'Тонкие ароматы.' },
-    { name: 'План вкуса', text: 'Тонкие вкусы.' },
-    { name: 'Чистилище', text: 'Змея насилия утягивает сюда.' },
-    { name: 'Ясность сознания', text: 'План ясности.' },
-    { name: 'Гьяна', text: 'Стрела → 66.' },
-    { name: 'Прана-лока', text: 'План энергии.' },
-    { name: 'Апана-лока', text: 'План очищения.' },
-    { name: 'Вьяна-лока', text: 'План циркуляции.' },
-    { name: 'Человеческий план', text: 'Стрела ведёт сюда.' },
-    { name: 'План Агни', text: 'План огня.' },
-    { name: 'Рождение человека', text: 'В человеческом теле.' },
-    { name: 'Неведение', text: 'Змея → Чувственный план (9).' },
-    { name: 'Правильное знание', text: 'Стрела → 67.' },
-    { name: 'Различение', text: 'Стрела → Счастье (62).' },
-    { name: 'План нейтральности', text: 'Нейтральность ума.' },
-    { name: 'Солнечный план', text: 'Солнечная энергия.' },
-    { name: 'Неверие', text: 'Змея → материальные планы (9).' },
-    { name: 'План аскетизма', text: 'Стрела ведёт сюда.' },
-    { name: 'Земля', text: 'Возврат с 72 для нового круга.' },
-    { name: 'План насилия', text: 'Змея → Чистилище (35).' },
-    { name: 'План воды', text: 'План текучести.' },
-    { name: 'Духовная преданность', text: 'Стрела → Космическое Сознание (68).' },
-    { name: 'Эгоизм', text: 'Змея → Гнев (3).' },
-    { name: 'План Реальности', text: 'План истины.' },
-    { name: 'Ложное эго', text: 'Возвращает к огорчениям.' },
-    { name: 'План Космического блага', text: 'План божественной энергии.' },
-    { name: 'Ясный путь', text: 'Понимание.' },
-    { name: 'План Шакти', text: 'План энергии.' },
-    { name: 'План Реальности', text: 'План истины.' },
-    { name: 'Счастье', text: 'Различение в счастье.' },
-    { name: 'Тамас', text: 'Тьма. Змея → Майя (2).' },
-    { name: 'План Шивы', text: 'Присутствие Шивы.' },
-    { name: 'План Вишну', text: 'Присутствие Вишну.' },
-    { name: 'План Брахмы', text: 'Присутствие Брахмы.' },
-    { name: 'План космического блага', text: 'Стрела ведёт сюда.' },
-    { name: 'Космическое сознание', text: 'Цель игры. Вы вернулись домой.' },
-    { name: 'План Абсолюта', text: 'Ловушка.' },
-    { name: 'План Абсолюта', text: 'Ловушка.' },
-    { name: 'План Абсолюта', text: 'Ловушка.' },
-    { name: 'Тамогуна', text: 'Змея возвращает на Землю (51).' },
+    { name: 'Кродха', text: 'Гнев.' },
+    { name: 'Лобха', text: 'Жадность / Хотение.' },
+    { name: 'Бху-лока', text: 'Земной (физический) план.' },
+    { name: 'Моха', text: 'Заблуждение / Одержимость.' },
+    { name: 'Мада', text: 'Тщеславие / Гордыня.' },
+    { name: 'Матсарья', text: 'Алчность / Неудовлетворённость.' },
+    { name: 'Кама-лока', text: 'План чувств и желаний.' },
+    { name: 'Тапа', text: 'Очищение / Аскеза. Возносит на 23.' },
+    { name: 'Гандхарвы', text: 'План небесных музыкантов (развлечения).' },
+    { name: 'Ирасья', text: 'Зависть. Низводит на 8.' },
+    { name: 'Антарикша', text: 'Ничтожность / Невесомость.' },
+    { name: 'Бхувар-лока', text: 'План связей / Астральный план.' },
+    { name: 'Нага-лока', text: 'План фантазий / Змеиный план.' },
+    { name: 'Двеша', text: 'Ревность / Отвращение. Низводит на 4.' },
+    { name: 'Дайя', text: 'Сострадание / Сопереживание. Возносит на 69.' },
+    { name: 'Харша-лока', text: 'План радости.' },
+    { name: 'Карма-лока', text: 'План действий.' },
+    { name: 'Дана', text: 'Благотворительность / Отдавание. Возносит на 32.' },
+    { name: 'Самана-папа', text: 'Исправление / Искупление греха.' },
+    { name: 'Дхарма-лока', text: 'План праведности.' },
+    { name: 'Сварга-лока', text: 'Небесный план / Рай.' },
+    { name: 'Ку-санга-лока', text: 'План дурной компании. Низводит на 7.' },
+    { name: 'Су-санга-лока', text: 'План хорошей компании.' },
+    { name: 'Дукха', text: 'Печаль / Страдание.' },
+    { name: 'Парамартха', text: 'Высшая цель / Благо. Возносит на 41.' },
+    { name: 'Судхарма', text: 'Истинная дхарма / Праведность. Возносит на 50.' },
+    { name: 'Адхарма', text: 'Неправедность. Низводит на 6.' },
+    { name: 'Уттама-гати', text: 'Высшее состояние / Развитие.' },
+    { name: 'Якша-лока', text: 'План духов природы.' },
+    { name: 'Махар-лока', text: 'План баланса / Равновесия.' },
+    { name: 'Гандха-лока', text: 'План ароматов.' },
+    { name: 'Раса-лока', text: 'План вкуса.' },
+    { name: 'Нарака-лока', text: 'План чистилища / Ад.' },
+    { name: 'Сваччха', text: 'Чистота / Ясность.' },
+    { name: 'Джняна', text: 'Мудрость / Знание. Возносит на 66.' },
+    { name: 'Прана-лока', text: 'План жизненной энергии.' },
+    { name: 'Апана-лока', text: 'План нисходящей энергии.' },
+    { name: 'Вьяна-лока', text: 'План проникающей энергии.' },
+    { name: 'Джана-лока', text: 'План людей / Человеческий план.' },
+    { name: 'Агни-лока', text: 'План огня.' },
+    { name: 'Манушья-джанма', text: 'Человеческое рождение.' },
+    { name: 'Авидья', text: 'Невежество. Низводит на 9.' },
+    { name: 'Сувидья', text: 'Правильное знание. Возносит на 67.' },
+    { name: 'Вивека', text: 'Различение. Возносит на 62.' },
+    { name: 'Сарасвати', text: 'План нейтральности (река Сарасвати).' },
+    { name: 'Ямуна', text: 'План очищения ума (река Ямуна).' },
+    { name: 'Ганга', text: 'План очищения сердца (река Ганга).' },
+    { name: 'Тапа-лока', text: 'План аскетизма / Подвижничества.' },
+    { name: 'Притхиви', text: 'План земли (первоэлемент).' },
+    { name: 'Химса-лока', text: 'План насилия. Низводит на 35.' },
+    { name: 'Джала-лока', text: 'План воды (первоэлемент).' },
+    { name: 'Бхакти-лока', text: 'План преданности. Возносит на 68.' },
+    { name: 'Ахамкара', text: 'Эго / Чувство «Я». Низводит на 3.' },
+    { name: 'Омкара', text: 'Звук Ом (изначальная вибрация).' },
+    { name: 'Вайю-лока', text: 'План воздуха (первоэлемент).' },
+    { name: 'Теджа-лока', text: 'План света / Радиации.' },
+    { name: 'Сатья-лока', text: 'План истины.' },
+    { name: 'Субуддхи', text: 'Чистый разум.' },
+    { name: 'Дурбуддхи', text: 'Спутанный / Нечистый разум. Низводит на 13.' },
+    { name: 'Сукха', text: 'Счастье / Блаженство.' },
+    { name: 'Тамас', text: 'Невежество / Инерция. Низводит на 2.' },
+    { name: 'Пракрити-лока', text: 'План природы / Материи.' },
+    { name: 'Уранта-лока', text: 'Внутреннее пространство.' },
+    { name: 'Ананда-лока', text: 'План блаженства.' },
+    { name: 'Рудра-лока', text: 'План Шивы (трансформации).' },
+    { name: 'Вайкунтха-лока', text: 'Космическое Сознание — главная цель игры.' },
+    { name: 'Брахма-лока', text: 'План Создателя (Брахмы).' },
+    { name: 'Саттвагуна', text: 'Гуна чистоты и гармонии.' },
+    { name: 'Раджогуна', text: 'Гуна страсти и действия.' },
+    { name: 'Тамогуна', text: 'Гуна хаоса, тьмы и разрушения. Низводит на 51.' },
 ];
 
 const CELLS_EN = [
     null,
-    { name: 'Birth', text: 'Entry into the karmic game.' },
+    { name: 'Janma', text: 'Birth. Entry into the karmic game.' },
     { name: 'Maya', text: 'Illusion.' },
-    { name: 'Anger', text: 'Anger blinds.' },
-    { name: 'Greed', text: 'Greed leads to accumulation.' },
-    { name: 'Physical Plane', text: 'The earthly plane.' },
-    { name: 'Delusion', text: 'False knowledge.' },
-    { name: 'Vanity', text: 'Pride is a trap.' },
-    { name: 'Avarice', text: 'Dissatisfaction.' },
-    { name: 'Sensual Plane', text: 'The plane of desires.' },
-    { name: 'Purification', text: 'Spiritual fire. Arrow → 23.' },
-    { name: 'Entertainment', text: 'The plane of gandharvas.' },
-    { name: 'Envy', text: 'Snake → Avarice (8).' },
-    { name: 'Nothingness', text: 'The plane of emptiness.' },
-    { name: 'Astral Plane', text: 'The subtle plane.' },
-    { name: 'Plane of Fantasy', text: 'The plane of illusions.' },
-    { name: 'Jealousy', text: 'Snake → Greed (4).' },
-    { name: 'Compassion', text: 'Arrow → 69.' },
-    { name: 'Plane of Joy', text: 'Lightness of being.' },
-    { name: 'Plane of Karma', text: 'Here karma is forged.' },
-    { name: 'Charity', text: 'Arrow → 32.' },
-    { name: 'Good Company', text: 'Arrow → 60.' },
-    { name: 'Heavenly Plane', text: 'The arrow leads here.' },
-    { name: 'Bad Company', text: 'Snake → Vanity (7).' },
-    { name: 'Sorrow', text: 'Part of the path.' },
-    { name: 'Selfless Service', text: 'Arrow → 41.' },
-    { name: 'True Religion', text: 'Arrow → 50.' },
-    { name: 'Unrighteousness', text: 'Snake → Delusion (6).' },
-    { name: 'Good Tendencies', text: 'Virtuous inclinations.' },
-    { name: 'Plane of Holiness', text: 'The plane of demigods.' },
-    { name: 'Plane of Balance', text: 'The arrow leads here.' },
-    { name: 'Plane of Fragrance', text: 'Subtle fragrances.' },
-    { name: 'Plane of Taste', text: 'Subtle tastes.' },
-    { name: 'Purgatory', text: 'The snake of violence drags here.' },
-    { name: 'Clarity of Consciousness', text: 'The plane of clarity.' },
-    { name: 'Jnana', text: 'Arrow → 66.' },
-    { name: 'Prana Loka', text: 'The plane of energy.' },
-    { name: 'Apana Loka', text: 'The plane of cleansing.' },
-    { name: 'Vyana Loka', text: 'The plane of circulation.' },
-    { name: 'Human Plane', text: 'The arrow leads here.' },
-    { name: 'Plane of Agni', text: 'The plane of fire.' },
-    { name: 'Human Birth', text: 'In a human body.' },
-    { name: 'Ignorance', text: 'Snake → Sensual Plane (9).' },
-    { name: 'Right Knowledge', text: 'Arrow → 67.' },
-    { name: 'Discernment', text: 'Arrow → Happiness (62).' },
-    { name: 'Plane of Neutrality', text: 'Neutrality of mind.' },
-    { name: 'Solar Plane', text: 'Solar energy.' },
-    { name: 'Disbelief', text: 'Snake → material planes (9).' },
-    { name: 'Plane of Asceticism', text: 'The arrow leads here.' },
-    { name: 'Earth', text: 'Return from 72 for a new cycle.' },
-    { name: 'Plane of Violence', text: 'Snake → Purgatory (35).' },
-    { name: 'Plane of Water', text: 'The plane of fluidity.' },
-    { name: 'Spiritual Devotion', text: 'Arrow → Cosmic Consciousness (68).' },
-    { name: 'Egoism', text: 'Snake → Anger (3).' },
-    { name: 'Plane of Reality', text: 'The plane of truth.' },
-    { name: 'False Ego', text: 'Returns to sorrow.' },
-    { name: 'Plane of Cosmic Good', text: 'The plane of divine energy.' },
-    { name: 'Clear Path', text: 'Understanding.' },
-    { name: 'Plane of Shakti', text: 'The plane of energy.' },
-    { name: 'Plane of Reality', text: 'The plane of truth.' },
-    { name: 'Happiness', text: 'Discernment in happiness.' },
-    { name: 'Tamas', text: 'Darkness. Snake → Maya (2).' },
-    { name: 'Plane of Shiva', text: 'Presence of Shiva.' },
-    { name: 'Plane of Vishnu', text: 'Presence of Vishnu.' },
-    { name: 'Plane of Brahma', text: 'Presence of Brahma.' },
-    { name: 'Plane of Cosmic Good', text: 'The arrow leads here.' },
-    { name: 'Cosmic Consciousness', text: 'The goal of the game. You have returned home.' },
-    { name: 'Plane of the Absolute', text: 'A trap.' },
-    { name: 'Plane of the Absolute', text: 'A trap.' },
-    { name: 'Plane of the Absolute', text: 'A trap.' },
-    { name: 'Tamoguna', text: 'Snake returns you to Earth (51).' },
+    { name: 'Krodha', text: 'Anger.' },
+    { name: 'Lobha', text: 'Greed / Craving.' },
+    { name: 'Bhu-loka', text: 'Earthly (physical) plane.' },
+    { name: 'Moha', text: 'Delusion / Obsession.' },
+    { name: 'Mada', text: 'Vanity / Pride.' },
+    { name: 'Matsarya', text: 'Avarice / Dissatisfaction.' },
+    { name: 'Kama-loka', text: 'Plane of feelings and desires.' },
+    { name: 'Tapa', text: 'Purification / Austerity. Lifts to 23.' },
+    { name: 'Gandharvas', text: 'Plane of celestial musicians (entertainment).' },
+    { name: 'Irasya', text: 'Envy. Pulls down to 8.' },
+    { name: 'Antariksha', text: 'Nothingness / Weightlessness.' },
+    { name: 'Bhuvar-loka', text: 'Plane of connections / Astral plane.' },
+    { name: 'Naga-loka', text: 'Plane of fantasies / Serpent plane.' },
+    { name: 'Dvesha', text: 'Jealousy / Aversion. Pulls down to 4.' },
+    { name: 'Daya', text: 'Compassion / Empathy. Lifts to 69.' },
+    { name: 'Harsha-loka', text: 'Plane of joy.' },
+    { name: 'Karma-loka', text: 'Plane of actions.' },
+    { name: 'Dana', text: 'Charity / Giving. Lifts to 32.' },
+    { name: 'Samana-papa', text: 'Correction / Atonement of sin.' },
+    { name: 'Dharma-loka', text: 'Plane of righteousness.' },
+    { name: 'Svarga-loka', text: 'Heavenly plane / Paradise.' },
+    { name: 'Ku-sanga-loka', text: 'Plane of bad company. Pulls down to 7.' },
+    { name: 'Su-sanga-loka', text: 'Plane of good company.' },
+    { name: 'Dukha', text: 'Sorrow / Suffering.' },
+    { name: 'Paramartha', text: 'Highest goal / Good. Lifts to 41.' },
+    { name: 'Sudharma', text: 'True dharma / Righteousness. Lifts to 50.' },
+    { name: 'Adharma', text: 'Unrighteousness. Pulls down to 6.' },
+    { name: 'Uttama-gati', text: 'Highest state / Evolution.' },
+    { name: 'Yaksha-loka', text: 'Plane of nature spirits.' },
+    { name: 'Mahar-loka', text: 'Plane of balance / Equilibrium.' },
+    { name: 'Gandha-loka', text: 'Plane of fragrances.' },
+    { name: 'Rasa-loka', text: 'Plane of taste.' },
+    { name: 'Naraka-loka', text: 'Plane of purgatory / Hell.' },
+    { name: 'Svachchha', text: 'Purity / Clarity.' },
+    { name: 'Jnana', text: 'Wisdom / Knowledge. Lifts to 66.' },
+    { name: 'Prana-loka', text: 'Plane of life energy.' },
+    { name: 'Apana-loka', text: 'Plane of descending energy.' },
+    { name: 'Vyana-loka', text: 'Plane of pervading energy.' },
+    { name: 'Jana-loka', text: 'Plane of people / Human plane.' },
+    { name: 'Agni-loka', text: 'Plane of fire.' },
+    { name: 'Manushya-janma', text: 'Human birth.' },
+    { name: 'Avidya', text: 'Ignorance. Pulls down to 9.' },
+    { name: 'Suvidya', text: 'Right knowledge. Lifts to 67.' },
+    { name: 'Viveka', text: 'Discernment. Lifts to 62.' },
+    { name: 'Sarasvati', text: 'Plane of neutrality (river Sarasvati).' },
+    { name: 'Yamuna', text: 'Plane of mind purification (river Yamuna).' },
+    { name: 'Ganga', text: 'Plane of heart purification (river Ganga).' },
+    { name: 'Tapa-loka', text: 'Plane of asceticism.' },
+    { name: 'Prithivi', text: 'Plane of earth (element).' },
+    { name: 'Himsa-loka', text: 'Plane of violence. Pulls down to 35.' },
+    { name: 'Jala-loka', text: 'Plane of water (element).' },
+    { name: 'Bhakti-loka', text: 'Plane of devotion. Lifts to 68.' },
+    { name: 'Ahamkara', text: 'Ego / Sense of "I". Pulls down to 3.' },
+    { name: 'Omkara', text: 'Sound Om (primordial vibration).' },
+    { name: 'Vayu-loka', text: 'Plane of air (element).' },
+    { name: 'Teja-loka', text: 'Plane of light / Radiation.' },
+    { name: 'Satya-loka', text: 'Plane of truth.' },
+    { name: 'Subuddhi', text: 'Pure intellect.' },
+    { name: 'Durbuddhi', text: 'Confused / Impure intellect. Pulls down to 13.' },
+    { name: 'Sukha', text: 'Happiness / Bliss.' },
+    { name: 'Tamas', text: 'Ignorance / Inertia. Pulls down to 2.' },
+    { name: 'Prakriti-loka', text: 'Plane of nature / Matter.' },
+    { name: 'Uranta-loka', text: 'Inner space.' },
+    { name: 'Ananda-loka', text: 'Plane of bliss.' },
+    { name: 'Rudra-loka', text: 'Plane of Shiva (transformation).' },
+    { name: 'Vaikuntha-loka', text: 'Cosmic Consciousness — the main goal of the game.' },
+    { name: 'Brahma-loka', text: 'Plane of the Creator (Brahma).' },
+    { name: 'Sattvaguna', text: 'Guna of purity and harmony.' },
+    { name: 'Rajoguna', text: 'Guna of passion and action.' },
+    { name: 'Tamoguna', text: 'Guna of chaos, darkness and destruction. Pulls down to 51.' },
 ];
 
+// ==== ДЕВАНАГАРИ (для известных; для новых — латиница) ====
 const SANSKRIT = [
-    null, 'जन्म', 'माया', 'क्रोध', 'लोभ', 'भूलोक', 'मोह', 'मद', 'मत्सर', 'कामलोक',
+    null,
+    'जन्म', 'माया', 'क्रोध', 'लोभ', 'भूलोक', 'मोह', 'मद', 'मत्सर्य', 'कामलोक',
     'तप', 'गन्धर्व', 'ईर्ष्या', 'अन्तरिक्ष', 'भुवर्लोक', 'नागलोक', 'द्वेष', 'दया', 'हर्षलोक',
-    'कर्मलोक', 'दान', 'सत्सङ्ग', 'स्वर्गलोक', 'कुसङ्ग', 'दुख', 'परमार्थ', 'सुधर्म', 'अधर्म',
-    'उत्तमगति', 'यक्षलोक', 'महर्लोक', 'गन्धलोक', 'रसलोक', 'नरकलोक', 'स्वच्छ', 'ज्ञान',
-    'प्राणलोक', 'अपानलोक', 'व्यानलोक', 'जनलोक', 'अग्निलोक', 'मनुष्यजन्म', 'अविद्या', 'सुविद्या',
-    'विवेक', 'सरस्वती', 'यमुना', 'नास्तिक्य', 'तपलोक', 'पृथ्वी', 'हिंसा', 'जल', 'भक्ति',
-    'अहंकार', 'सत्यलोक', 'अहंभाव', 'शिवलोक', 'सुगम', 'शक्ति', 'सत्यलोक', 'सुख', 'तमस्',
-    'शिवलोक', 'विष्णुलोक', 'ब्रह्मलोक', 'शिवलोक', 'ब्रह्मन्', 'परमात्मन्', 'परमात्मन्', 'परमात्मन्', 'तमोगुण'
+    'कर्मलोक', 'दान', 'समानपाप', 'धर्मलोक', 'स्वर्गलोक', 'कुसङ्गलोक', 'सुसङ्गलोक', 'दुःख', 'परमार्थ',
+    'सुधर्म', 'अधर्म', 'उत्तमगति', 'यक्षलोक', 'महर्लोक', 'गन्धलोक', 'रसलोक', 'नरकलोक', 'स्वच्छ',
+    'ज्ञान', 'प्राणलोक', 'अपानलोक', 'व्यानलोक', 'जनलोक', 'अग्निलोक', 'मनुष्यजन्म', 'अविद्या', 'सुविद्या',
+    'विवेक', 'सरस्वती', 'यमुना', 'गङ्गा', 'तपलोक', 'पृथिवी', 'हिंसालोक', 'जललोक', 'भक्तिलोक',
+    'अहंकार', 'ओंकार', 'वायुलोक', 'तेजलोक', 'सत्यलोक', 'सुबुद्धि', 'दुर्बुद्धि', 'सुख', 'तमस्',
+    'प्रकृतिलोक', 'उरन्तलोक', 'आनन्दलोक', 'रुद्रलोक', 'वैकुण्ठलोक', 'ब्रह्मलोक', 'सत्त्वगुण', 'रजोगुण', 'तमोगुण'
 ];
 
 function getCell(num) {
@@ -482,7 +489,7 @@ async function showRewardedAd() { if (!window.vkBridge) return false; try { cons
 const TOTAL_CELLS = 72;
 const START_CELL = 68;
 const ENTRY_CELL = 6;
-const TRAP_CELLS = [69, 70, 71];
+const TRAP_CELLS = [];
 
 const CHAKRAS = [
     { name: 'Муладхара', color: '#7a4038' }, { name: 'Свадхистана', color: '#8a6234' },
@@ -491,6 +498,7 @@ const CHAKRAS = [
     { name: 'Сахасрара', color: '#6e3a74' }, { name: 'Каузальная', color: '#a8863a' },
 ];
 
+// Змеи (нисходящие) и Стрелы (восходящие) — по файлу + 22→60
 const SNAKES = { 12: 8, 16: 4, 24: 7, 29: 6, 44: 9, 52: 35, 55: 3, 61: 13, 63: 2, 72: 51 };
 const LADDERS = { 10: 23, 17: 69, 20: 32, 22: 60, 27: 41, 28: 50, 37: 66, 45: 67, 46: 62, 54: 68 };
 
@@ -665,86 +673,72 @@ function finishRoll() {
 }
 
 function animateMove(steps, cb) {
-    let remaining = steps; 
+    let remaining = steps;
     const stepDur = 280;
-    
+
     const step = () => {
-        if (remaining <= 0) { 
-            cb(); 
-            return; 
-        }
-        
-        const next = state.pos + 1;
-        
-        if (state.pos < 68 && next > 68) {
-            state.pos = 72;
-            updatePlayerPosition(); 
-            updateChakraBar(); 
-            document.getElementById('pos').textContent = state.pos;
+        if (remaining <= 0) {
             cb();
             return;
         }
-        
+
+        const next = state.pos + 1;
+
         if (next === 68) {
-            state.pos = next; 
-            updatePlayerPosition(); 
-            updateChakraBar(); 
+            state.pos = next;
+            updatePlayerPosition();
+            updateChakraBar();
             document.getElementById('pos').textContent = state.pos;
-            setTimeout(() => { 
-                state.rolling = false; 
-                document.getElementById('dice').disabled = false; 
-                showFinal(); 
+            setTimeout(() => {
+                state.rolling = false;
+                document.getElementById('dice').disabled = false;
+                showFinal();
             }, stepDur + 100);
             return;
         }
-        
-        state.pos = next; 
-        updatePlayerPosition(); 
-        updateChakraBar(); 
+
+        state.pos = next;
+        updatePlayerPosition();
+        updateChakraBar();
         document.getElementById('pos').textContent = state.pos;
-        
-        remaining--; 
+
+        remaining--;
         setTimeout(step, stepDur);
     };
     step();
 }
 
 function handleLanding() {
-    if (TRAP_CELLS.includes(state.pos)) {
-        const cell = getCell(state.pos);
-        showModal({ title: t('trap') + ' — ' + state.pos, sanskrit: cell.sanskrit, text: cell.text, move: t('return68'), color: '#c96a5a', then: () => { state.pos = START_CELL; updatePlayerPosition(); updateChakraBar(); document.getElementById('pos').textContent = state.pos; state.rolling = false; document.getElementById('dice').disabled = false; } });
-        return;
-    }
     const cell = getCell(state.pos);
     if (!cell) { state.rolling = false; document.getElementById('dice').disabled = false; return; }
-    
+
     if (state.pos === 72 && SNAKES[72]) {
         const to = SNAKES[72];
-        showModal({ 
-            title: t('snake') + ' — ' + cell.name, 
-            sanskrit: cell.sanskrit, 
-            text: cell.text, 
-            move: t('snake72'), 
-            color: '#c96a5a', 
-            then: () => { 
-                state.pos = to; 
-                updatePlayerPosition(); 
-                updateChakraBar(); 
+        showModal({
+            title: t('snake') + ' — ' + cell.name,
+            sanskrit: cell.sanskrit,
+            text: cell.text,
+            move: t('snake72'),
+            color: '#c96a5a',
+            then: () => {
+                state.pos = to;
+                updatePlayerPosition();
+                updateChakraBar();
                 document.getElementById('pos').textContent = state.pos;
                 const cell51 = getCell(state.pos);
-                showModal({ 
-                    title: t('cellTitle') + ' ' + state.pos + ' — ' + cell51.name, 
-                    sanskrit: cell51.sanskrit, 
-                    text: cell51.text, 
-                    move: '', 
-                    color: CHAKRAS[getChakra(state.pos)].color, 
-                    then: () => { state.rolling = false; document.getElementById('dice').disabled = false; } 
+                showModal({
+                    title: t('cellTitle') + ' ' + state.pos + ' — ' + cell51.name,
+                    sanskrit: cell51.sanskrit,
+                    text: cell51.text,
+                    move: '',
+                    color: CHAKRAS[getChakra(state.pos)].color,
+                    then: () => { state.rolling = false; document.getElementById('dice').disabled = false; }
                 });
-            } 
+            }
         });
         return;
     }
-    
+
     if (SNAKES[state.pos]) {
         const to = SNAKES[state.pos];
         showModal({ title: t('snake') + ' — ' + cell.name, sanskrit: cell.sanskrit, text: cell.text, move: t('snakeTo') + ' ' + to, color: '#c96a5a', then: () => { state.pos = to; updatePlayerPosition(); updateChakraBar(); document.getElementById('pos').textContent = state.pos; state.rolling = false; document.getElementById('dice').disabled = false; } });
@@ -755,7 +749,7 @@ function handleLanding() {
         showModal({ title: t('ladder') + ' — ' + cell.name, sanskrit: cell.sanskrit, text: cell.text, move: t('ladderTo') + ' ' + to, color: '#6ab07a', then: () => { state.pos = to; updatePlayerPosition(); updateChakraBar(); document.getElementById('pos').textContent = state.pos; state.rolling = false; document.getElementById('dice').disabled = false; } });
         return;
     }
-    
+
     showModal({ title: t('cellTitle') + ' ' + state.pos + ' — ' + cell.name, sanskrit: cell.sanskrit, text: cell.text, move: '', color: CHAKRAS[getChakra(state.pos)].color, then: () => { state.rolling = false; document.getElementById('dice').disabled = false; } });
 }
 
