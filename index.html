@@ -7,7 +7,7 @@
 <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Mukta:wght@300;400;500;600&family=Tiro+Devanagari+Sanskrit:ital@0;1&family=Noto+Sans+Devanagari:wght@400;500;600&family=Yatra+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Mukta:wght@300;400;500;600&family=Tiro+Devanagari+Sanskrit:ital@0;1&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 :root {
@@ -19,17 +19,18 @@
 html, body { height: 100%; overflow: hidden; }
 body { font-family: 'Cormorant Garamond', Georgia, serif; background: var(--bg-0); color: var(--text); user-select: none; -webkit-font-smoothing: antialiased; }
 #app { display: flex; height: 100vh; width: 100vw; position: relative; overflow: hidden; }
+
 #sidebar { width: 240px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; padding: 24px 20px; background: linear-gradient(180deg, rgba(20, 16, 10, 0.95), rgba(10, 7, 5, 0.98)); z-index: 5; }
 #sidebar .top-block { display: flex; flex-direction: column; gap: 8px; width: 100%; }
 
 .title { display: flex; flex-direction: column; align-items: flex-start; width: 100%; margin-bottom: 12px; padding-left: 4px; }
-.title .sanskrit-line, .title .latin-line { display: block; text-align: left; color: var(--gold-bright); line-height: 1; text-shadow: 0 0 4px rgba(232, 196, 106, 0.7), 0 0 14px rgba(212, 169, 78, 0.4), 0 1px 0 rgba(0, 0, 0, 0.9); white-space: nowrap; }
-.title .sanskrit-line { font-family: 'Tiro Devanagari Sanskrit', 'Noto Sans Devanagari', serif; font-size: 46px; letter-spacing: 10px; margin-bottom: 2px; }
-.title .latin-line { font-family: 'Yatra One', 'Baloo 2', sans-serif; font-size: 24px; letter-spacing: 8px; color: var(--gold-pale); text-shadow: 0 0 3px rgba(240, 212, 136, 0.7), 0 0 10px rgba(212, 169, 78, 0.4), 0 1px 0 rgba(0, 0, 0, 0.9); }
+.title .sanskrit-line, .title .latin-line { display: block; text-align: center; color: var(--gold-bright); line-height: 1; text-shadow: 0 0 4px rgba(232, 196, 106, 0.7), 0 0 14px rgba(212, 169, 78, 0.4), 0 1px 0 rgba(0, 0, 0, 0.9); width: 200px; }
+.title .sanskrit-line { font-family: 'Tiro Devanagari Sanskrit', 'Noto Sans Devanagari', serif; font-size: 46px; letter-spacing: 0; margin-bottom: 6px; }
+.title .latin-line { font-family: 'Yatra One', serif; font-weight: 400; font-size: 30px; letter-spacing: 4px; color: var(--gold-pale); text-shadow: 0 0 3px rgba(240, 212, 136, 0.7), 0 0 10px rgba(212, 169, 78, 0.4), 0 1px 0 rgba(0, 0, 0, 0.9); }
 
 .stats { display: flex; flex-direction: column; gap: 6px; font-family: 'Mukta', sans-serif; font-size: 14px; letter-spacing: 2.2px; text-transform: uppercase; color: var(--text-dim); padding-left: 4px; margin-top: 8px; }
 .stat { display: flex; align-items: baseline; gap: 10px; }
-.stat b { color: var(--gold-bright); font-family: 'Baloo 2', sans-serif; font-weight: 600; font-size: 19px; letter-spacing: 1px; text-shadow: 0 0 10px rgba(212, 169, 78, 0.4); }
+.stat b { color: var(--gold-bright); font-family: 'Yatra One', serif; font-weight: 400; font-size: 20px; letter-spacing: 1px; text-shadow: 0 0 10px rgba(212, 169, 78, 0.4); }
 
 #chakra-bar { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 20px; padding-left: 4px; }
 .chakra-dot { width: 9px; height: 9px; border-radius: 50%; transition: all 0.35s ease; opacity: 0.3; border: 1px solid rgba(212, 169, 78, 0.3); }
@@ -43,16 +44,13 @@ body { font-family: 'Cormorant Garamond', Georgia, serif; background: var(--bg-0
 #board-wrap {
     flex: 1; display: flex; align-items: center; justify-content: center; padding: 20px; min-width: 0;
     position: relative; z-index: 2;
-    background:
-        radial-gradient(ellipse at 50% 40%, rgba(220, 195, 150, 0.15), transparent 70%),
-        radial-gradient(ellipse at 50% 100%, rgba(60, 40, 20, 0.5), transparent 60%),
-        linear-gradient(180deg, #1a1208 0%, #241810 50%, #1a1208 100%);
+    background: radial-gradient(ellipse at 50% 40%, rgba(220, 195, 150, 0.15), transparent 70%), radial-gradient(ellipse at 50% 100%, rgba(60, 40, 20, 0.5), transparent 60%), linear-gradient(180deg, #1a1208 0%, #241810 50%, #1a1208 100%);
 }
 #board { 
     position: relative; 
     height: 100%; 
     max-height: calc(100vh - 40px); 
-    aspect-ratio: 8 / 9;
+    aspect-ratio: 2112 / 1984;
     background-image: url('lila-board.jpg'); 
     background-size: contain; 
     background-repeat: no-repeat; 
@@ -61,34 +59,65 @@ body { font-family: 'Cormorant Garamond', Georgia, serif; background: var(--bg-0
     box-shadow: 0 0 0 1px rgba(176, 138, 52, 0.25), 0 20px 60px rgba(0, 0, 0, 0.85); 
 }
 
-.cell {
-    position: absolute; aspect-ratio: 1; border-radius: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 3;
-    border: none;
-    background: transparent;
-    box-shadow: none;
-    transition: none;
-    display: flex; align-items: center; justify-content: center;
-    overflow: hidden; pointer-events: none;
-}
-.cell .num { display: none; }
-.cell.center-core { background: transparent; box-shadow: none; }
-.cell.start-finish { background: transparent; box-shadow: none; }
-.cell.trap { background: transparent; box-shadow: none; }
-
 #player {
     position: absolute;
-    width: 7.5%;
     aspect-ratio: 1;
     transform: translate(-50%, -50%);
-    z-index: 20;
-    transition: left 0.3s cubic-bezier(0.4, 0.0, 0.2, 1),
-                top 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    z-index: 30;
+    transition: left 0.4s cubic-bezier(0.4, 0.0, 0.2, 1),
+                top 0.4s cubic-bezier(0.4, 0.0, 0.2, 1),
+                width 0.3s ease;
     background: transparent;
     box-shadow: none;
+    pointer-events: none;
 }
 #player svg { width: 100%; height: 100%; display: block; }
+
+#grid-overlay { position: absolute; inset: 0; pointer-events: none; z-index: 25; display: none; }
+#grid-overlay.on { display: block; }
+#grid-overlay .cell-dot {
+    position: absolute; width: 14px; height: 14px; margin-left: -7px; margin-top: -7px;
+    border-radius: 50%;
+    background: rgba(232, 196, 106, 0.15);
+    border: 2px solid rgba(232, 196, 106, 0.9);
+    box-shadow: 0 0 6px rgba(232, 196, 106, 0.8);
+    pointer-events: none;
+}
+#grid-overlay .cell-dot.c68 {
+    background: rgba(220, 90, 90, 0.35);
+    border-color: #ff5a5a;
+    box-shadow: 0 0 10px #ff5a5a;
+    width: 20px; height: 20px; margin-left: -10px; margin-top: -10px;
+}
+#grid-overlay .cell-dot.c1 {
+    background: rgba(90, 200, 120, 0.35);
+    border-color: #5ac878;
+    box-shadow: 0 0 10px #5ac878;
+    width: 18px; height: 18px; margin-left: -9px; margin-top: -9px;
+}
+
+#calib-panel {
+    position: fixed; right: 12px; top: 12px; z-index: 200;
+    background: rgba(15, 10, 6, 0.96); border: 1px solid var(--gold);
+    border-radius: 12px; padding: 12px; color: var(--gold-bright);
+    font-family: 'Mukta', sans-serif; font-size: 13px; display: none;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.9); width: 260px;
+}
+#calib-panel.on { display: block; }
+#calib-panel h4 { font-family: 'Yatra One', serif; font-weight: 400; font-size: 14px; margin-bottom: 8px; letter-spacing: 2px; color: var(--gold-pale); }
+#calib-panel .row { display: flex; gap: 6px; margin-bottom: 6px; align-items: center; flex-wrap: wrap; }
+#calib-panel button {
+    background: rgba(176,138,52,0.2); border: 1px solid var(--gold); color: var(--gold-bright);
+    border-radius: 6px; padding: 6px 10px; cursor: pointer; font-family: inherit; font-size: 13px; font-weight: 600;
+    min-width: 34px;
+}
+#calib-panel button:hover { background: rgba(176,138,52,0.45); }
+#calib-panel .val { font-family: monospace; font-size: 11px; color: var(--gold-bright); }
+#calib-panel .hint { font-size: 11px; color: var(--text-dim); margin-top: 8px; line-height: 1.4; }
+#calib-panel .save { background: rgba(106,176,122,0.3); border-color: #6ab07a; color: #a8e0b8; width: 100%; margin-top: 6px; padding: 9px; }
+#calib-panel .show68 { background: rgba(200,90,90,0.3); border-color: #ff5a5a; color: #ffc0c0; width: 100%; margin-top: 6px; padding: 9px; }
+#calib-panel .show1 { background: rgba(90,200,120,0.25); border-color: #5ac878; color: #b8e8c8; width: 100%; margin-top: 6px; padding: 9px; }
+#calib-panel .close { background: transparent; border-color: rgba(200,120,100,0.6); color: #e0a090; width: 100%; margin-top: 6px; padding: 6px; }
 
 #dice-panel { width: 200px; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: 24px 20px; background: linear-gradient(180deg, rgba(20, 16, 10, 0.95), rgba(10, 7, 5, 0.98)); z-index: 5; }
 #dice { width: 86px; height: 86px; border-radius: 26px; background: linear-gradient(145deg, #2a1f12, #14100a 60%, #0a0705); border: 1px solid var(--line); box-shadow: 0 8px 28px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(212, 169, 78, 0.15), inset 0 1px 0 rgba(212, 169, 78, 0.2); display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); padding: 14px; gap: 5px; cursor: pointer; transition: all 0.2s; position: relative; }
@@ -106,10 +135,10 @@ body { font-family: 'Cormorant Garamond', Georgia, serif; background: var(--bg-0
 .modal-card { max-width: 420px; width: 100%; background: linear-gradient(180deg, #241c12, #0f0a06); border: 1px solid var(--line); border-radius: 28px; padding: 42px 34px 38px; text-align: center; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(212, 169, 78, 0.15), inset 0 1px 0 rgba(212, 169, 78, 0.12); transform: scale(0.94) translateY(12px); transition: transform 0.4s cubic-bezier(0.34, 1.4, 0.5, 1); }
 #modal.show .modal-card { transform: scale(1) translateY(0); }
 .modal-sanskrit { font-family: 'Tiro Devanagari Sanskrit', 'Noto Sans Devanagari', serif; font-size: 44px; color: var(--gold-bright); margin-bottom: 16px; line-height: 1.1; text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95), 0 0 20px rgba(212, 169, 78, 0.3); }
-.modal-title { font-family: 'Mukta', sans-serif; font-weight: 500; font-size: 16px; letter-spacing: 4.8px; color: var(--text); text-transform: uppercase; margin-bottom: 20px; }
+.modal-title { font-family: 'Yatra One', serif; font-weight: 400; font-size: 15px; letter-spacing: 4px; color: var(--text); text-transform: uppercase; margin-bottom: 20px; }
 .modal-text { font-family: 'Cormorant Garamond', serif; font-size: 21px; line-height: 1.7; color: var(--text); font-style: italic; margin-bottom: 24px; }
 .modal-move { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-style: italic; color: var(--gold-bright); margin-bottom: 28px; }
-.modal-btn { padding: 16px 46px; background: transparent; border: 1px solid var(--gold); border-radius: 40px; color: var(--gold-bright); font-family: 'Baloo 2', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: 4.8px; text-transform: uppercase; cursor: pointer; transition: all 0.25s ease; }
+.modal-btn { padding: 16px 46px; background: transparent; border: 1px solid var(--gold); border-radius: 40px; color: var(--gold-bright); font-family: 'Yatra One', serif; font-weight: 400; font-size: 14px; letter-spacing: 4px; text-transform: uppercase; cursor: pointer; transition: all 0.25s ease; }
 .modal-btn:hover { background: rgba(212, 169, 78, 0.15); }
 .modal-btn:active { transform: scale(0.97); }
 
@@ -117,44 +146,49 @@ body { font-family: 'Cormorant Garamond', Georgia, serif; background: var(--bg-0
 #music-toggle:hover { color: var(--gold-bright); border-color: var(--gold); }
 #music-toggle.muted { opacity: 0.5; }
 
-#lang-btn { position: fixed; left: 240px; bottom: 24px; width: 56px; height: 36px; border-radius: 18px; border: 1px solid var(--line); background: rgba(20, 16, 10, 0.85); color: var(--gold-bright); font-family: 'Mukta', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 1px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.25s ease; z-index: 60; }
+#lang-btn { position: fixed; left: 240px; bottom: 24px; width: 56px; height: 36px; border-radius: 18px; border: 1px solid var(--line); background: rgba(20, 16, 10, 0.85); color: var(--gold-bright); font-family: 'Yatra One', serif; font-size: 13px; font-weight: 400; letter-spacing: 1px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.25s ease; z-index: 60; }
 #lang-btn:hover { color: var(--gold-pale); border-color: var(--gold); background: rgba(176, 138, 52, 0.15); }
 
 @media (max-width: 900px), (orientation: portrait) {
     #app { flex-direction: column; height: 100dvh; }
     #sidebar { 
         width: 100%; flex-direction: row; align-items: center; justify-content: space-between; 
-        padding: 6px 10px; flex-shrink: 0; min-height: 44px;
+        padding: 8px 12px; flex-shrink: 0; min-height: 48px;
+        background: linear-gradient(180deg, rgba(10, 7, 5, 0.98), rgba(20, 16, 10, 0.95));
     }
-    #sidebar .top-block { flex-direction: row; align-items: center; gap: 10px; flex-wrap: nowrap; }
+    #sidebar .top-block { flex-direction: row; align-items: center; gap: 12px; flex-wrap: nowrap; flex: 1; }
     .title { margin-bottom: 0; width: auto; }
-    .title .sanskrit-line { font-size: 18px; letter-spacing: 3px; }
-    .title .latin-line { font-size: 10px; letter-spacing: 2px; }
-    .stats { flex-direction: row; gap: 10px; font-size: 10px; padding-left: 0; margin-top: 0; }
-    .stat b { font-size: 13px; }
+    .title .sanskrit-line, .title .latin-line { width: 110px; }
+    .title .sanskrit-line { font-size: 22px; letter-spacing: 0; }
+    .title .latin-line { font-size: 15px; letter-spacing: 2px; }
+    .stats { flex-direction: row; gap: 14px; font-size: 11px; padding-left: 0; margin-top: 0; letter-spacing: 3px; }
+    .stat b { font-size: 17px; }
     #chakra-bar { display: none; }
-    #restart { width: 30px; height: 30px; font-size: 13px; margin-top: 0; margin-left: 0; }
+    #restart { width: 36px; height: 36px; font-size: 16px; margin-top: 0; margin-left: 0; border-color: rgba(200, 165, 100, 0.4); }
     
-    #board-wrap { flex: 1; padding: 4px; min-height: 0; display: flex; align-items: center; justify-content: center; }
+    #board-wrap { flex: 1; padding: 6px; min-height: 0; display: flex; align-items: center; justify-content: center; background: transparent; }
     #board { 
         width: 100%; height: 100%; max-height: none; max-width: none;
-        aspect-ratio: 8 / 9;
+        aspect-ratio: 2112 / 1984;
         background-size: contain; background-repeat: no-repeat; background-position: center;
-        border-radius: 6px;
+        border-radius: 8px;
+        box-shadow: 0 0 0 1px rgba(176, 138, 52, 0.2), 0 10px 40px rgba(0, 0, 0, 0.7);
     }
     
     #dice-panel { 
         width: 100%; flex-direction: column; justify-content: center; align-items: center;
-        gap: 8px; padding: 8px 16px 12px; flex-shrink: 0; min-height: 90px;
+        gap: 10px; padding: 10px 16px 16px; flex-shrink: 0; min-height: 110px;
+        background: linear-gradient(0deg, rgba(10, 7, 5, 0.98), rgba(20, 16, 10, 0.95));
     }
-    #dice-label { font-size: 11px; letter-spacing: 2px; min-height: auto; order: 1; }
-    #dice { width: 64px; height: 64px; padding: 10px; border-radius: 18px; order: 2; }
+    #dice-label { font-size: 13px; letter-spacing: 5px; min-height: auto; order: 1; color: var(--gold-mid); }
+    #dice { width: 72px; height: 72px; padding: 12px; border-radius: 22px; order: 2; }
+    
+    #lang-btn { left: 12px; bottom: 16px; width: 60px; height: 40px; font-size: 13px; border-radius: 20px; }
+    #music-toggle { right: 12px; bottom: 16px; width: 44px; height: 44px; font-size: 18px; }
     
     .modal-sanskrit { font-size: 32px; }
     .modal-card { padding: 28px 22px; border-radius: 20px; }
     .modal-text { font-size: 17px; }
-    #music-toggle { right: 12px; bottom: 12px; width: 38px; height: 38px; font-size: 16px; }
-    #lang-btn { left: 12px; bottom: 12px; width: 52px; height: 34px; font-size: 12px; }
 }
 </style>
 </head>
@@ -177,11 +211,13 @@ body { font-family: 'Cormorant Garamond', Georgia, serif; background: var(--bg-0
     </div>
 
     <div id="board-wrap">
-        <div id="board"></div>
+        <div id="board">
+            <div id="grid-overlay"></div>
+        </div>
     </div>
 
     <div id="dice-panel">
-        <div id="dice-label" data-i18n="roll6">Бросьте 6</div>
+        <div id="dice-label">Бросьте 6</div>
         <div id="dice" role="button" aria-label="Бросить кубик"></div>
     </div>
 </div>
@@ -189,13 +225,44 @@ body { font-family: 'Cormorant Garamond', Georgia, serif; background: var(--bg-0
 <button id="music-toggle" title="Музыка">♪</button>
 <button id="lang-btn">EN</button>
 
+<div id="calib-panel">
+    <h4>КАЛИБРОВКА 9×8</h4>
+    <div class="row"><span class="val" id="vx">x0 / x1</span></div>
+    <div class="row">
+        <button data-act="xl">←</button>
+        <button data-act="xr">→</button>
+        <button data-act="xl2">⇐</button>
+        <button data-act="xr2">⇒</button>
+    </div>
+    <div class="row"><span class="val" id="vy">y0 / y1</span></div>
+    <div class="row">
+        <button data-act="yu">↑</button>
+        <button data-act="yd">↓</button>
+        <button data-act="yu2">⇑</button>
+        <button data-act="yd2">⇓</button>
+    </div>
+    <div class="row">
+        <button data-act="sx-">шире X</button>
+        <button data-act="sx+">уже X</button>
+    </div>
+    <div class="row">
+        <button data-act="sy-">выше Y</button>
+        <button data-act="sy+">ниже Y</button>
+    </div>
+    <button class="show68" data-act="show68">Показать клетку 68</button>
+    <button class="show1" data-act="show1">Показать клетку 1</button>
+    <button class="save" data-act="save">СОХРАНИТЬ</button>
+    <button class="close" data-act="close">Закрыть (C)</button>
+    <div class="hint">Красная = 68, зелёная = 1. Двигай сетку, пока красная не встанет в верхний центральный круг Сахасрары.</div>
+</div>
+
 <div id="modal">
     <div class="modal-card">
         <div class="modal-sanskrit" id="mSanskrit"></div>
         <div class="modal-title" id="mTitle">Клетка</div>
         <div class="modal-text" id="mText"></div>
         <div class="modal-move" id="mMove"></div>
-        <button class="modal-btn" id="mBtn" data-i18n="continue">Продолжить</button>
+        <button class="modal-btn" id="mBtn">Продолжить</button>
     </div>
 </div>
 
@@ -427,18 +494,33 @@ const CHAKRAS = [
 const SNAKES = { 12: 8, 16: 4, 24: 7, 29: 6, 44: 9, 52: 35, 55: 3, 61: 13, 63: 2, 72: 51 };
 const LADDERS = { 10: 23, 17: 69, 20: 32, 22: 60, 27: 41, 28: 50, 37: 66, 45: 67, 46: 62, 54: 68 };
 
-// ПРАВИЛЬНЫЕ КООРДИНАТЫ ДЛЯ ДОСКИ 8×9 (8 колонок, 9 рядов)
-const CELL_POSITIONS = [];
-for (let row = 0; row < 9; row++) {
-    for (let col = 0; col < 8; col++) {
-        const cellNum = row * 8 + col + 1;
-        const x = (row % 2 === 0) ? (col * 12.5 + 6.25) : ((7 - col) * 12.5 + 6.25);
-        const y = 94.44 - row * 11.11;
-        CELL_POSITIONS[cellNum - 1] = { x: Math.round(x * 100) / 100, y: Math.round(y * 100) / 100 };
+const DEFAULT_CAL = { x0: 3.5, x1: 96.5, y0: 3.0, y1: 97.0 };
+let CAL = { ...DEFAULT_CAL };
+try {
+    const saved = localStorage.getItem('leela_cal');
+    if (saved) CAL = JSON.parse(saved);
+} catch(e) {}
+
+let CELL_POSITIONS = [];
+function recomputeCells() {
+    CELL_POSITIONS = [];
+    const ROWS = 8;
+    const COLS = 9;
+    const cellW = (CAL.x1 - CAL.x0) / COLS;
+    const cellH = (CAL.y1 - CAL.y0) / ROWS;
+    for (let row = 0; row < ROWS; row++) {
+        for (let col = 0; col < COLS; col++) {
+            const cellNum = row * COLS + col + 1;
+            const colInRow = (row % 2 === 0) ? col : (COLS - 1 - col);
+            const x = CAL.x0 + (colInRow + 0.5) * cellW;
+            const y = CAL.y1 - (row + 0.5) * cellH;
+            CELL_POSITIONS[cellNum - 1] = { x, y };
+        }
     }
 }
+recomputeCells();
 
-let state = { pos: START_CELL, turns: 0, rolling: false, finished: false, entered: false, sixStreak: 0, pendingMove: 0 };
+let state = { pos: START_CELL, turns: 0, rolling: false, finished: false, entered: false, sixStreak: 0, pendingMove: 0, savedPos: START_CELL };
 
 let audioCtx = null;
 function ensureAudio() { if (!audioCtx) { try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { audioCtx = null; } } if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume().catch(() => {}); return audioCtx; }
@@ -462,15 +544,9 @@ function getChakra(cellNum) { return Math.min(7, Math.floor((cellNum - 1) / 9));
 let maskIdCounter = 0;
 
 function buildBoard() {
-    const board = document.getElementById('board'); board.innerHTML = '';
-    for (let i = 1; i <= TOTAL_CELLS; i++) {
-        const pos = CELL_POSITIONS[i - 1];
-        const cell = document.createElement('div'); cell.className = 'cell'; cell.dataset.cell = i;
-        cell.style.left = pos.x + '%'; cell.style.top = pos.y + '%'; cell.style.width = '3.4%';
-        if (i === START_CELL) cell.classList.add('start-finish');
-        if (TRAP_CELLS.includes(i)) cell.classList.add('trap');
-        board.appendChild(cell);
-    }
+    const board = document.getElementById('board');
+    const oldP = document.getElementById('player');
+    if (oldP) oldP.remove();
 
     const player = document.createElement('div');
     player.id = 'player';
@@ -494,7 +570,54 @@ function buildBoard() {
 
     updatePlayerPosition(); buildChakraBar();
 }
-function updatePlayerPosition() { const player = document.getElementById('player'); if (!player) return; const pos = CELL_POSITIONS[state.pos - 1]; if (!pos) return; player.style.left = pos.x + '%'; player.style.top = pos.y + '%'; }
+
+function getImgBox() {
+    const board = document.getElementById('board');
+    const boardRect = board.getBoundingClientRect();
+    const boardW = boardRect.width;
+    const boardH = boardRect.height;
+    const imgAspect = 2112 / 1984;
+    const boardAspect = boardW / boardH;
+    let imgW, imgH, imgX, imgY;
+    if (boardAspect > imgAspect) {
+        imgH = boardH;
+        imgW = imgH * imgAspect;
+        imgX = (boardW - imgW) / 2;
+        imgY = 0;
+    } else {
+        imgW = boardW;
+        imgH = imgW / imgAspect;
+        imgX = 0;
+        imgY = (boardH - imgH) / 2;
+    }
+    return { imgW, imgH, imgX, imgY };
+}
+
+function updatePlayerPosition() {
+    const player = document.getElementById('player');
+    const board = document.getElementById('board');
+    if (!player || !board) return;
+
+    const pos = CELL_POSITIONS[state.pos - 1];
+    if (!pos) return;
+
+    const { imgW, imgH, imgX, imgY } = getImgBox();
+
+    const px = imgX + (pos.x / 100) * imgW;
+    const py = imgY + (pos.y / 100) * imgH;
+
+    const size = imgW * 0.075;
+
+    player.style.left = px + 'px';
+    player.style.top = py + 'px';
+    player.style.width = size + 'px';
+    player.style.height = size + 'px';
+
+    if (document.getElementById('grid-overlay').classList.contains('on')) {
+        renderGridOverlay();
+    }
+}
+
 function buildChakraBar() { const bar = document.getElementById('chakra-bar'); bar.innerHTML = ''; CHAKRAS.forEach((ch, i) => { const dot = document.createElement('div'); dot.className = 'chakra-dot'; dot.style.background = ch.color; dot.style.color = ch.color; dot.dataset.chakra = i; bar.appendChild(dot); }); updateChakraBar(); }
 function updateChakraBar() { const cur = getChakra(state.pos); document.querySelectorAll('.chakra-dot').forEach(d => { d.classList.toggle('active', +d.dataset.chakra === cur); }); }
 
@@ -675,7 +798,7 @@ async function newGame() {
     } catch (e) {
         console.warn('Ошибка рекламы:', e);
     } finally {
-        state = { pos: START_CELL, turns: 0, rolling: false, finished: false, entered: false, sixStreak: 0, pendingMove: 0 };
+        state = { pos: START_CELL, turns: 0, rolling: false, finished: false, entered: false, sixStreak: 0, pendingMove: 0, savedPos: START_CELL };
         document.getElementById('pos').textContent = START_CELL;
         document.getElementById('turns').textContent = 0;
         document.getElementById('dice').disabled = false;
@@ -689,6 +812,83 @@ async function newGame() {
     }
 }
 
+function renderGridOverlay() {
+    const ov = document.getElementById('grid-overlay');
+    ov.innerHTML = '';
+    const { imgW, imgH, imgX, imgY } = getImgBox();
+    CELL_POSITIONS.forEach((p, i) => {
+        const dot = document.createElement('div');
+        dot.className = 'cell-dot';
+        const num = i + 1;
+        if (num === 68) dot.classList.add('c68');
+        if (num === 1) dot.classList.add('c1');
+        dot.style.left = (imgX + (p.x / 100) * imgW) + 'px';
+        dot.style.top = (imgY + (p.y / 100) * imgH) + 'px';
+        ov.appendChild(dot);
+    });
+}
+
+function toggleCalib() {
+    const ov = document.getElementById('grid-overlay');
+    const panel = document.getElementById('calib-panel');
+    ov.classList.toggle('on');
+    panel.classList.toggle('on');
+    if (ov.classList.contains('on')) {
+        state.savedPos = state.pos;
+        renderGridOverlay();
+        updatePlayerPosition();
+    } else {
+        state.pos = state.savedPos || state.pos;
+        updatePlayerPosition();
+    }
+}
+
+function updateCalibUI() {
+    document.getElementById('vx').textContent = 'x0=' + CAL.x0.toFixed(2) + '  x1=' + CAL.x1.toFixed(2);
+    document.getElementById('vy').textContent = 'y0=' + CAL.y0.toFixed(2) + '  y1=' + CAL.y1.toFixed(2);
+}
+
+document.getElementById('calib-panel').addEventListener('click', (e) => {
+    const act = e.target.dataset.act;
+    if (!act) return;
+    const step = 0.2;
+    const stepBig = 1.0;
+    if (act === 'xl') { CAL.x0 -= step; CAL.x1 -= step; }
+    if (act === 'xr') { CAL.x0 += step; CAL.x1 += step; }
+    if (act === 'xl2') { CAL.x0 -= stepBig; CAL.x1 -= stepBig; }
+    if (act === 'xr2') { CAL.x0 += stepBig; CAL.x1 += stepBig; }
+    if (act === 'yu') { CAL.y0 -= step; CAL.y1 -= step; }
+    if (act === 'yd') { CAL.y0 += step; CAL.y1 += step; }
+    if (act === 'yu2') { CAL.y0 -= stepBig; CAL.y1 -= stepBig; }
+    if (act === 'yd2') { CAL.y0 += stepBig; CAL.y1 += stepBig; }
+    if (act === 'sx-') { const c = (CAL.x0 + CAL.x1) / 2; CAL.x0 = c + (CAL.x0 - c) * 1.02; CAL.x1 = c + (CAL.x1 - c) * 1.02; }
+    if (act === 'sx+') { const c = (CAL.x0 + CAL.x1) / 2; CAL.x0 = c + (CAL.x0 - c) * 0.98; CAL.x1 = c + (CAL.x1 - c) * 0.98; }
+    if (act === 'sy-') { const c = (CAL.y0 + CAL.y1) / 2; CAL.y0 = c + (CAL.y0 - c) * 1.02; CAL.y1 = c + (CAL.y1 - c) * 1.02; }
+    if (act === 'sy+') { const c = (CAL.y0 + CAL.y1) / 2; CAL.y0 = c + (CAL.y0 - c) * 0.98; CAL.y1 = c + (CAL.y1 - c) * 0.98; }
+    if (act === 'show68') { state.pos = 68; document.getElementById('pos').textContent = 68; }
+    if (act === 'show1') { state.pos = 1; document.getElementById('pos').textContent = 1; }
+    if (act === 'save') {
+        try { localStorage.setItem('leela_cal', JSON.stringify(CAL)); alert('Сохранено!'); } catch(e) { alert('Не удалось сохранить'); }
+    }
+    if (act === 'close') { toggleCalib(); return; }
+    recomputeCells();
+    updateCalibUI();
+    updatePlayerPosition();
+});
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'c' || e.key === 'C' || e.key === 'с' || e.key === 'С') {
+        toggleCalib();
+    }
+});
+
+window.addEventListener('resize', () => { updatePlayerPosition(); });
+window.addEventListener('orientationchange', () => { setTimeout(updatePlayerPosition, 300); });
+
+const preloadImg = new Image();
+preloadImg.onload = () => updatePlayerPosition();
+preloadImg.src = 'lila-board.jpg';
+
 document.getElementById('dice').addEventListener('click', rollDice);
 document.getElementById('mBtn').addEventListener('click', closeModal);
 document.getElementById('restart').addEventListener('click', newGame);
@@ -696,6 +896,7 @@ document.getElementById('modal').addEventListener('click', (e) => { if (e.target
 document.getElementById('lang-btn').addEventListener('click', switchLanguage);
 
 buildBoard(); renderDice(1); updateUIStrings();
+updateCalibUI();
 </script>
 </body>
 </html>
