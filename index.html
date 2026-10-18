@@ -636,15 +636,13 @@ body.mobile-portrait .header{
   grid-template-columns:1fr auto 1fr;
   gap:var(--u2);
 }
-/* правый блок сдвигаем от края — под системные значки VK */
 body.mobile-portrait .header-right{
   justify-self:end;
-  padding-right:calc(var(--u6) + env(safe-area-inset-right, 0px));
+  padding-right:calc(var(--u4) + env(safe-area-inset-right, 0px));
 }
-/* REC — по центру шапки, но чуть левее, чтобы не упираться в правый блок */
 body.mobile-portrait #recBtn{
   justify-self:center;
-  transform:translateX(calc(-1 * var(--u5)));
+  transform:translateX(23px);
 }
   grid-template-columns:1fr auto auto;
   gap:var(--u2);
