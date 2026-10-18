@@ -82,7 +82,7 @@ html,body{
 
 /* ============ HEADER (h = 55 = φ·34) ============ */
 .header{
-  display:flex;align-items:center;justify-content:space-between;
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;justify-content:stretch;
   padding:var(--u2) var(--u3);height:var(--header-h);
   background:var(--panel);border:var(--hair);border-radius:var(--r-l);
   backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);
@@ -630,7 +630,12 @@ input[type=file]{display:none}
 
 /* ============ MOBILE PORTRAIT ============ */
 body.mobile-portrait .app{padding:var(--u1);gap:var(--u1)}
-body.mobile-portrait .header{padding:var(--u1) var(--u2);height:var(--u5)}
+body.mobile-portrait .header{
+  padding:var(--u1) var(--u2);
+  height:var(--u5);
+  grid-template-columns:1fr auto auto;
+  gap:var(--u2);
+}
 body.mobile-portrait .logo{font-size:var(--f2);letter-spacing:.24em}
 body.mobile-portrait .logo-icon{width:var(--u4);height:var(--u4);font-size:var(--f2)}
 body.mobile-portrait .lang-opt{padding:3px var(--u2);font-size:9px}
@@ -703,11 +708,12 @@ body.mobile-portrait .ad-status-btn{font-size:8px;padding:0 var(--u1)}
       </div>
       <div class="logo"><div class="logo-icon">☾</div>DJ BOX <b>3D</b></div>
     </div>
-    <div class="header-right">
-      <button class="icon-btn" onclick="openInfoModal()" title="Info">ⓘ</button>
-      <button class="rec-btn" id="recBtn" onclick="toggleRecording()">
+    <button style="justify-self:center" class="rec-btn" id="recBtn" onclick="toggleRecording()">
         <div class="rec-dot"></div><span id="recLabel">REC</span>
       </button>
+    <div class="header-right">
+      <button class="icon-btn" onclick="openInfoModal()" title="Info">ⓘ</button>
+      
     </div>
   </div>
 
