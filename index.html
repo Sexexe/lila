@@ -633,6 +633,19 @@ body.mobile-portrait .app{padding:var(--u1);gap:var(--u1)}
 body.mobile-portrait .header{
   padding:var(--u1) var(--u2);
   height:var(--u5);
+  grid-template-columns:1fr auto 1fr;
+  gap:var(--u2);
+}
+/* правый блок сдвигаем от края — под системные значки VK */
+body.mobile-portrait .header-right{
+  justify-self:end;
+  padding-right:calc(var(--u6) + env(safe-area-inset-right, 0px));
+}
+/* REC — по центру шапки, но чуть левее, чтобы не упираться в правый блок */
+body.mobile-portrait #recBtn{
+  justify-self:center;
+  transform:translateX(calc(-1 * var(--u5)));
+}
   grid-template-columns:1fr auto auto;
   gap:var(--u2);
 }
