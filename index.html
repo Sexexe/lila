@@ -652,14 +652,71 @@ body.mobile-portrait .logo-icon{width:var(--u4);height:var(--u4);font-size:var(-
 body.mobile-portrait .lang-opt{padding:3px var(--u2);font-size:9px}
 body.mobile-portrait .rec-btn{padding:3px var(--u2);height:var(--u4);font-size:9px}
 body.mobile-portrait .icon-btn{width:var(--u4);height:var(--u4)}
+/* --- PATCH: mobile header — REC +6mm, right safe area --- */
+body.mobile-portrait .header{
+  padding:var(--u1) var(--u2);
+  height:var(--u5);
+  grid-template-columns:1fr auto 1fr;
+  gap:var(--u2);
+}
+body.mobile-portrait .header-right{
+  justify-self:end;
+  padding-right:calc(var(--u4) + env(safe-area-inset-right, 0px));
+}
+body.mobile-portrait #recBtn{
+  justify-self:center;
+  transform:translateX(6mm);
+}
+
 body.mobile-portrait .tabs{height:var(--u4)}
 body.mobile-portrait .tab{font-size:9px;gap:3px;letter-spacing:.14em}
 body.mobile-portrait .mixer-decks{grid-template-columns:1fr;overflow-y:auto}
 body.mobile-portrait .mixer{width:100%;flex:0 0 auto;flex-direction:row;flex-wrap:wrap;justify-content:center;gap:var(--u1);padding:var(--u2)}
-body.mobile-portrait .faders-row{width:auto;flex:1;min-width:var(--u8);gap:var(--u3)}
-body.mobile-portrait .fader-slider{height:var(--u6)}
-body.mobile-portrait .sync-btn{width:var(--u5);height:var(--u5);font-size:9px}
+
+
+
 body.mobile-portrait .swap-btn{width:var(--u4);height:var(--u4);font-size:var(--f2)}
+/* --- PATCH: mobile mixer — horizontal faders, SYNC -1cm, LOOP -5mm --- */
+body.mobile-portrait .mixer{
+  width:100%;
+  flex:0 0 auto;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:var(--u1);
+  padding:var(--u2);
+}
+body.mobile-portrait .faders-row{
+  width:100%;
+  flex:1 1 100%;
+  flex-direction:row;
+  align-items:center;
+  justify-content:center;
+  gap:var(--u4);
+}
+body.mobile-portrait .fader-group{
+  flex-direction:row;
+  align-items:center;
+  gap:var(--u2);
+  flex:1;
+  justify-content:center;
+}
+body.mobile-portrait .fader-slider{
+  writing-mode:horizontal-tb;
+  direction:ltr;
+  width:var(--u7);
+  height:2px;
+}
+body.mobile-portrait .sync-btn{
+  width:var(--u5);
+  height:var(--u5);
+  font-size:9px;
+  transform:translateX(-1cm);
+}
+body.mobile-portrait .loop-btn{
+  transform:translateX(-5mm);
+}
+
 body.mobile-portrait .vu-meter{flex-basis:100%}
 body.mobile-portrait .deck{flex-direction:row;flex-wrap:wrap;justify-content:center;padding:var(--u2);gap:var(--u1)}
 body.mobile-portrait .deck-label{order:-1;width:100%;text-align:center;border-bottom:none}
