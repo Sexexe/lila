@@ -630,23 +630,7 @@ input[type=file]{display:none}
 
 /* ============ MOBILE PORTRAIT ============ */
 body.mobile-portrait .app{padding:var(--u1);gap:var(--u1)}
-body.mobile-portrait .header{
-  padding:var(--u1) var(--u2);
-  height:var(--u5);
-  grid-template-columns:1fr auto 1fr;
-  gap:var(--u2);
-}
-body.mobile-portrait .header-right{
-  justify-self:end;
-  padding-right:calc(var(--u4) + env(safe-area-inset-right, 0px));
-}
-body.mobile-portrait #recBtn{
-  justify-self:center;
-  transform:translateX(23px);
-}
-  grid-template-columns:1fr auto auto;
-  gap:var(--u2);
-}
+body.mobile-portrait .header{padding:var(--u1) var(--u2);height:var(--u5)}
 body.mobile-portrait .logo{font-size:var(--f2);letter-spacing:.24em}
 body.mobile-portrait .logo-icon{width:var(--u4);height:var(--u4);font-size:var(--f2)}
 body.mobile-portrait .lang-opt{padding:3px var(--u2);font-size:9px}
@@ -662,10 +646,11 @@ body.mobile-portrait .header{
 body.mobile-portrait .header-right{
   justify-self:end;
   padding-right:calc(var(--u4) + env(safe-area-inset-right, 0px));
+  transform:translateX(-4mm);
 }
 body.mobile-portrait #recBtn{
   justify-self:center;
-  transform:translateX(6mm);
+  transform:translateX(4mm);
 }
 
 body.mobile-portrait .tabs{height:var(--u4)}
