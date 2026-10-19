@@ -727,6 +727,19 @@ body.mobile-portrait .radio-station{padding:var(--u1) 0}
 body.mobile-portrait .bottom-bar{padding:var(--u1) var(--u2)}
 body.mobile-portrait .ad-bar{height:var(--u4)}
 body.mobile-portrait .ad-status-btn{font-size:8px;padding:0 var(--u1)}
+/* PATCH: donor depth */
+.sampler-effect-sub{display:flex;justify-content:space-between;align-items:center;margin:6px 0 4px;font-size:9px;color:var(--moon-30);text-transform:uppercase;letter-spacing:.14em;font-weight:700}
+.sampler-effect-sub .sampler-effect-value{color:var(--moon-70);font-size:9px}
+.sampler-effect{background:linear-gradient(180deg,rgba(20,24,34,.75) 0%,rgba(8,10,15,.85) 100%);border:1px solid var(--moon-08);border-top-color:var(--moon-15);box-shadow:inset 0 2px 6px rgba(0,0,0,.6),0 1px 0 rgba(233,237,247,.05),inset 0 1px 0 rgba(233,237,247,.06)}
+.sampler-effect input[type=range]{height:4px;background:linear-gradient(180deg,#000 0%,#0a0c12 100%);box-shadow:inset 0 1px 3px rgba(0,0,0,.9),0 1px 0 rgba(233,237,247,.06)}
+.sampler-effect input[type=range]::-webkit-slider-thumb{width:16px;height:16px;background:linear-gradient(180deg,var(--moon) 0%,rgba(233,237,247,.55) 100%);border:1px solid #000;box-shadow:0 2px 4px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.9)}
+.sampler-transport button{background:linear-gradient(180deg,rgba(40,46,60,.85) 0%,rgba(14,17,25,.9) 100%);border:1px solid #000;border-top-color:var(--moon-15);box-shadow:0 3px 6px rgba(0,0,0,.5),inset 0 1px 0 rgba(233,237,247,.10);text-shadow:0 -1px 0 rgba(0,0,0,.8)}
+.sampler-transport button:active{transform:translateY(1px);box-shadow:inset 0 2px 4px rgba(0,0,0,.6);background:linear-gradient(180deg,rgba(14,17,25,.9) 0%,rgba(40,46,60,.85) 100%);border-top-color:#000}
+.sampler-actions button,.sampler-actions label{background:linear-gradient(180deg,rgba(40,46,60,.85) 0%,rgba(14,17,25,.9) 100%);border:1px solid #000;border-top-color:var(--moon-15);box-shadow:0 3px 6px rgba(0,0,0,.5),inset 0 1px 0 rgba(233,237,247,.10);text-shadow:0 -1px 0 rgba(0,0,0,.8)}
+.sampler-actions button:active,.sampler-actions label:active{transform:translateY(1px);box-shadow:inset 0 2px 4px rgba(0,0,0,.6);background:linear-gradient(180deg,rgba(14,17,25,.9) 0%,rgba(40,46,60,.85) 100%);border-top-color:#000}
+.sampler-pad{background:linear-gradient(180deg,rgba(28,32,44,.85) 0%,rgba(10,12,18,.9) 100%);border:1px solid var(--moon-08);border-top-color:var(--moon-15);box-shadow:0 3px 6px rgba(0,0,0,.5),inset 0 1px 0 rgba(233,237,247,.10);text-shadow:0 -1px 0 rgba(0,0,0,.8)}
+.sampler-pad:active{transform:translateY(1px);box-shadow:inset 0 2px 4px rgba(0,0,0,.6)}
+.sampler-eq-slider-wrap{background:linear-gradient(180deg,#000 0%,#0a0c12 100%);box-shadow:inset 0 3px 6px rgba(0,0,0,.9),inset 0 -1px 1px rgba(233,237,247,.05)}
 </style>
 </head>
 <body>
@@ -876,6 +889,10 @@ body.mobile-portrait .ad-status-btn{font-size:8px;padding:0 var(--u1)}
           <div class="sampler-effect"><div class="sampler-effect-label"><span data-i18n="reverb">Реверб</span><span class="sampler-effect-value" id="revVal">0%</span></div><input type="range" id="rev" min="0" max="1" step="0.01" value="0"></div>
           <div class="sampler-effect"><div class="sampler-effect-label"><span data-i18n="chorus">Хорус</span><span class="sampler-effect-value" id="chorMixVal">Выкл</span></div><input type="range" id="chorMix" min="0" max="1" step="0.01" value="0"></div>
           <div class="sampler-effect"><div class="sampler-effect-label"><span data-i18n="flanger">Флэнжер</span><span class="sampler-effect-value" id="flaMixVal">Выкл</span></div><input type="range" id="flaMix" min="0" max="1" step="0.01" value="0"></div>
+        <div class="sampler-effect"><div class="sampler-effect-label"><span data-i18n="tremolo">Тремоло</span><span class="sampler-effect-value" id="tremVal">0%</span></div><input type="range" id="trem" min="0" max="1" step="0.01" value="0"></div>
+<div class="sampler-effect"><div class="sampler-effect-label"><span data-i18n="invert">Инверт</span><span class="sampler-effect-value" id="invertVal">Выкл</span></div><div style="display:flex;align-items:center;gap:6px;margin-top:4px;font-size:9px;color:var(--moon-30)"><input type="checkbox" id="invertOn"><label for="invertOn">Реверс</label></div></div>
+<div class="sampler-effect"><div class="sampler-effect-label"><span>Хорус</span><span class="sampler-effect-value" id="chorMixVal">Выкл</span></div><div class="sampler-effect-sub"><span>Rate</span><span class="sampler-effect-value" id="chorRateVal">1.5 Hz</span></div><input type="range" id="chorRate" min="0.1" max="5" step="0.1" value="1.5"><div class="sampler-effect-sub"><span>Depth</span><span class="sampler-effect-value" id="chorDepthVal">50%</span></div><input type="range" id="chorDepth" min="0" max="1" step="0.01" value="0.5"><div class="sampler-effect-sub"><span>Mix</span><span class="sampler-effect-value" id="chorMixSubVal">0%</span></div><input type="range" id="chorMix" min="0" max="1" step="0.01" value="0"></div>
+<div class="sampler-effect"><div class="sampler-effect-label"><span>Флэнжер</span><span class="sampler-effect-value" id="flaMixVal">Выкл</span></div><div class="sampler-effect-sub"><span>Rate</span><span class="sampler-effect-value" id="flaRateVal">0.5 Hz</span></div><input type="range" id="flaRate" min="0.1" max="5" step="0.1" value="0.5"><div class="sampler-effect-sub"><span>Depth</span><span class="sampler-effect-value" id="flaDepthVal">50%</span></div><input type="range" id="flaDepth" min="0" max="1" step="0.01" value="0.5"><div class="sampler-effect-sub"><span>Feedback</span><span class="sampler-effect-value" id="flaFbVal">0%</span></div><input type="range" id="flaFb" min="0" max="0.95" step="0.01" value="0"><div class="sampler-effect-sub"><span>Mix</span><span class="sampler-effect-value" id="flaMixSubVal">0%</span></div><input type="range" id="flaMix" min="0" max="1" step="0.01" value="0"></div>
         </div>
         <div class="sampler-eq">
           <div class="sampler-eq-header caps" data-i18n="eq12">12-ПОЛОСНЫЙ ЭКВАЛАЙЗЕР</div>
@@ -2725,6 +2742,21 @@ function updateOrientation(){
 }
 window.addEventListener('resize',updateOrientation);
 window.addEventListener('orientationchange',()=>setTimeout(updateOrientation,100));
+/* PATCH: sampler FX */
+(function(){
+function bind(){
+  var ids=["tempo","pitch","volSmp","pan","rev","del","dist","filt","trem","chorRate","chorDepth","chorMix","flaRate","flaDepth","flaFb","flaMix"];
+  ids.forEach(function(id){var el=$(id);if(el&&!el._b){el._b=1;el.addEventListener("input",function(){try{updateLabelsSampler();saveCurrentSettingsSampler();updateAllChainsSampler();}catch(e){}});}});
+  var fo=$("filtOn");if(fo&&!fo._b){fo._b=1;fo.addEventListener("change",function(){try{updateLabelsSampler();saveCurrentSettingsSampler();updateAllChainsSampler();}catch(e){}});}
+  var io=$("invertOn");if(io&&!io._b){io._b=1;io.addEventListener("change",function(e){var b=slots[activeSlot];if(!b){e.target.checked=false;return;}try{pushHistorySampler(activeSlot);}catch(_){}for(var c=0;c<b.numberOfChannels;c++)b.getChannelData(c).reverse();slotSettings[activeSlot].invert=e.target.checked;try{updateLabelsSampler();drawSamplerWave();updateAllChainsSampler();setBottomStatus(e.target.checked?"Реверс вкл":"Реверс выкл");}catch(_){}});}
+}
+if(typeof I18N==="object"){var add={ru:{tremolo:"Тремоло",invert:"Инверт",reverse:"Реверс"},en:{tremolo:"Tremolo",invert:"Invert",reverse:"Reverse"}};Object.keys(add).forEach(function(l){if(I18N[l])Object.assign(I18N[l],add[l]);});}
+if(typeof defaultSlotSampler==="function"&&!defaultSlotSampler._fx){var o1=defaultSlotSampler;window.defaultSlotSampler=function(){var d=o1.apply(this,arguments);d.trem=0;d.invert=false;d.chorRate=1.5;d.chorDepth=0.5;d.chorMix=0;d.flaRate=0.5;d.flaDepth=0.5;d.flaFb=0;d.flaMix=0;return d;};defaultSlotSampler._fx=1;}
+if(typeof saveCurrentSettingsSampler==="function"&&!saveCurrentSettingsSampler._fx){var o2=saveCurrentSettingsSampler;window.saveCurrentSettingsSampler=function(){o2.apply(this,arguments);var s=slotSettings[activeSlot];if(!s)return;var g=function(id){var e=$(id);return e?e.value:0};s.trem=+g("trem");s.invert=$("invertOn")?$("invertOn").checked:false;s.chorRate=+g("chorRate")||1.5;s.chorDepth=+g("chorDepth");s.chorMix=+g("chorMix");s.flaRate=+g("flaRate")||0.5;s.flaDepth=+g("flaDepth");s.flaFb=+g("flaFb");s.flaMix=+g("flaMix");};saveCurrentSettingsSampler._fx=1;}
+if(typeof loadSlotSettingsSampler==="function"&&!loadSlotSettingsSampler._fx){var o3=loadSlotSettingsSampler;window.loadSlotSettingsSampler=function(i){o3.apply(this,arguments);var s=slotSettings[i];if(!s)return;var set=function(id,v){var e=$(id);if(e)e.value=v};set("trem",s.trem||0);if($("invertOn"))$("invertOn").checked=!!s.invert;set("chorRate",s.chorRate||1.5);set("chorDepth",s.chorDepth||0.5);set("chorMix",s.chorMix||0);set("flaRate",s.flaRate||0.5);set("flaDepth",s.flaDepth||0.5);set("flaFb",s.flaFb||0);set("flaMix",s.flaMix||0);try{updateLabelsSampler();}catch(e){}};loadSlotSettingsSampler._fx=1;}
+if(typeof updateLabelsSampler==="function"&&!updateLabelsSampler._fx){var o4=updateLabelsSampler;window.updateLabelsSampler=function(){o4.apply(this,arguments);var g=function(id){var e=$(id);return e?e.value:0};var tv=$("tremVal");if(tv)tv.textContent=Math.round(+g("trem")*100)+"%";var iv=$("invertVal");if(iv)iv.textContent=$("invertOn")&&$("invertOn").checked?"Вкл":"Выкл";var cr=$("chorRateVal");if(cr)cr.textContent=(+g("chorRate")).toFixed(1)+" Hz";var cd=$("chorDepthVal");if(cd)cd.textContent=Math.round(+g("chorDepth")*100)+"%";var cms=$("chorMixSubVal");if(cms)cms.textContent=Math.round(+g("chorMix")*100)+"%";var cmv=$("chorMixVal");if(cmv)cmv.textContent=(+g("chorMix"))<0.01?"Выкл":Math.round(+g("chorMix")*100)+"%";var fr=$("flaRateVal");if(fr)fr.textContent=(+g("flaRate")).toFixed(1)+" Hz";var fd=$("flaDepthVal");if(fd)fd.textContent=Math.round(+g("flaDepth")*100)+"%";var ff=$("flaFbVal");if(ff)ff.textContent=Math.round(+g("flaFb")*100)+"%";var fms=$("flaMixSubVal");if(fms)fms.textContent=Math.round(+g("flaMix")*100)+"%";var fmv=$("flaMixVal");if(fmv)fmv.textContent=(+g("flaMix"))<0.01?"Выкл":Math.round(+g("flaMix")*100)+"%";};updateLabelsSampler._fx=1;}
+document.addEventListener("DOMContentLoaded",function(){bind();setTimeout(bind,300);});
+})();
 </script>
 </body>
 </html>
