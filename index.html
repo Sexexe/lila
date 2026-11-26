@@ -8,7 +8,15 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="mobile-web-app-capable" content="yes">
 <title>CROCODILE HUNTER</title>
-<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script>
+(function(){var M=["https://unpkg.com/three@0.160.0/","https://cdn.jsdelivr.net/npm/three@0.160.0/","https://fastly.jsdelivr.net/npm/three@0.160.0/"],K="croc_cdn_v1",i=0;
+try{var s=JSON.parse(localStorage.getItem(K)||"{}");if(typeof s.i==="number"&&s.i>=0&&s.i<M.length)i=s.i;}catch(e){}
+var q=new URLSearchParams(location.search).get("cdn");if(q!==null){var n=parseInt(q,10);if(n>=0&&n<M.length)i=n;}
+window.__CROC_MIRRORS=M;window.__CROC_CDN={i:i,key:K,base:M[i],n:M.length};
+var t=document.createElement("script");t.type="importmap";
+t.textContent=JSON.stringify({imports:{"three":M[i]+"build/three.module.js","three/addons/":M[i]+"examples/jsm/"}});
+document.head.appendChild(t);})();
+</script>
 
 
 
@@ -153,7 +161,7 @@ let colaBottles=[],colaSpawnedToday=false;
 let isLeftMouseDown=false,isRightMouseDown=false,isTwoFingersTouching=false;
 let burstInterval=null;
 const BURST_RATE=125;
-let missionLevel=1,crocodileSpeedMultiplier=1.0;
+let missionLevel=1,crocodileSpeedMultiplier=1;
 let starting=false,missionChanging=false,restarting=false;
 let bulletPool=[],particlePool=[],smokePool=[],casingPool=[];
 let bulletInstanced=null,particleInstanced=null,smokeInstanced=null,casingInstanced=null;
