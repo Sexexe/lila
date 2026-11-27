@@ -87,6 +87,20 @@ canvas{display:block;position:fixed;top:0;left:0;width:100%;height:100%;z-index:
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rye&display=swap"><style>@font-face{font-family:'Rye';font-style:normal;font-weight:400;font-display:swap;src:url('./Rye-Regular.woff2') format('woff2')}</style>
 <script async src="https://sad.adsgram.ai/js/ad.min.js"></script>
 <script async src='//libtl.com/sdk.js' data-zone='12367383' data-sdk='show_12367383'></script>
+<style>
+/* === CROC PC FULLSCREEN PATCH === */
+/* На ПК убираем мобильную рамку, на телефоне не трогаем */
+@media (pointer:fine) and (min-width:801px){
+  html,body{width:100vw!important;height:100vh!important;max-width:none!important;max-height:none!important;margin:0!important;padding:0!important;overflow:hidden!important;background:#1a120b!important}
+  #ui-layer{width:100vw!important;height:100vh!important;max-width:none!important;max-height:none!important}
+  canvas{width:100vw!important;height:100vh!important;max-width:none!important;max-height:none!important;position:fixed!important;top:0!important;left:0!important}
+  .poster-screen{width:100vw!important;height:100vh!important}
+  #crocFullscreenBtn{display:flex!important}
+}
+#crocFullscreenBtn{display:none;position:fixed;top:12px;right:12px;z-index:2147483000;width:48px;height:48px;border-radius:8px;background:rgba(92,58,30,.85);border:2px solid #8b5a2b;color:#f4e4bc;font-size:22px;align-items:center;justify-content:center;cursor:pointer;user-select:none;box-shadow:0 2px 8px rgba(0,0,0,.5)}
+#crocFullscreenBtn:active{transform:scale(.92)}
+/* === END CROC PC FULLSCREEN PATCH === */
+</style>
 </head>
 <body translate="no" class="notranslate">
 <div id="ui-layer">
@@ -4467,7 +4481,7 @@ showRewardAd().then(()=>{ missionChanging = false; sG(); });
 }
 function returnToMenu(){ia=false;pl.d=true;isLeftMouseDown=false;isRightMouseDown=false;isTwoFingersTouching=false;stopBurst();MusicManager.pauseAll();if(sndSea)sndSea.volume=0;
 if(sndFire)sndFire.volume=0;if(sndRiv)sndRiv.volume=0;if(ax)ax.suspend();const overlay=getEl('overlay');const loseScreen=getEl('lose-screen');const missionScreen=getEl('mission-success-screen');if(overlay)overlay.style.display='flex';if(loseScreen)loseScreen.style.display='none';if(missionScreen)missionScreen.style.display='none';const startBtn=getEl('startBtn');if(startBtn){startBtn.classList.remove('btn-disabled');startBtn.innerText='START HUNT';}const loadBar=getEl('loading-bar');if(loadBar)loadBar.style.width='0%';let loadProgress=0;const loadInterval=setInterval(()=>{loadProgress+=Math.random()*15+5;if(loadProgress>=100){loadProgress=100;clearInterval(loadInterval);if(startBtn)startBtn.classList.remove('btn-disabled');}if(loadBar)loadBar.style.width=loadProgress+'%';},30);exitPointerLockSafe();}
-const SPLASH_TEXT = 'CROCOCOLA';
+const SPLASH_TEXT = 'CROXXX';
 const SPLASH_DURATION = 30000;
 let splashTimer = null;
 let splashActive = false;
@@ -5377,6 +5391,85 @@ window.__crocPerf=function(){var i=rnd.info;var s={drawCalls:i.render.calls,tria
 window.__PATCHER_ACTIVE=applied;
 log("OK","патчер активен: "+applied.join(", "));
 })();
+</script>
+<script>
+/* === CROC PC FULLSCREEN JS === */
+(function(){
+  if(!matchMedia("(pointer:fine)").matches||innerWidth<801) return;
+  function ensureBtn(){
+    if(document.getElementById("crocFullscreenBtn")) return;
+    var b=document.createElement("div");
+    b.id="crocFullscreenBtn";
+    b.title="Fullscreen (F11)";
+    b.textContent="\u26F6";
+    b.addEventListener("click",function(){
+      try{
+        if(!document.fullscreenElement){
+          var el=document.documentElement;
+          if(el.requestFullscreen) el.requestFullscreen().catch(function(){});
+        } else {
+          if(document.exitFullscreen) document.exitFullscreen().catch(function(){});
+        }
+      }catch(e){}
+    });
+    document.body.appendChild(b);
+  }
+  function onFsChange(){
+    var b=document.getElementById("crocFullscreenBtn");
+    if(b) b.textContent=document.fullscreenElement?"\u2716":"\u26F6";
+    window.dispatchEvent(new Event("resize"));
+  }
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",ensureBtn);
+  else ensureBtn();
+  document.addEventListener("fullscreenchange",onFsChange);
+})();
+/* === END CROC PC FULLSCREEN JS === */
+</script>
+<style>
+/* CROC PC FULLSCREEN PATCH v11 */
+@media (pointer:fine) and (min-width:801px){
+html,body{width:100vw!important;height:100vh!important;max-width:none!important;max-height:none!important;margin:0!important;padding:0!important;overflow:hidden!important;background:#1a120b!important}
+#ui-layer{width:100vw!important;height:100vh!important;max-width:none!important;max-height:none!important}
+canvas{width:100vw!important;height:100vh!important;max-width:none!important;max-height:none!important;position:fixed!important;top:0!important;left:0!important}
+.poster-screen{width:100vw!important;height:100vh!important}
+#crocFullscreenBtn{display:flex!important}
+}
+#crocFullscreenBtn{display:none;position:fixed;top:12px;right:12px;z-index:2147483000;width:48px;height:48px;border-radius:8px;background:rgba(92,58,30,.85);border:2px solid #8b5a2b;color:#f4e4bc;font-size:22px;align-items:center;justify-content:center;cursor:pointer;user-select:none;box-shadow:0 2px 8px rgba(0,0,0,.5)}
+#crocFullscreenBtn:active{transform:scale(.92)}
+/* END CROC PC FULLSCREEN PATCH */
+</style>
+<script>
+/* CROC PC FULLSCREEN JS v11 */
+(function(){
+  if(!matchMedia("(pointer:fine)").matches||innerWidth<801) return;
+  function ensureBtn(){
+    if(document.getElementById("crocFullscreenBtn")) return;
+    var b=document.createElement("div");
+    b.id="crocFullscreenBtn";
+    b.title="Fullscreen (F11)";
+    b.textContent="\u26F6";
+    b.addEventListener("click",function(){
+      try{
+        if(!document.fullscreenElement){
+          var el=document.documentElement;
+          if(el.requestFullscreen) el.requestFullscreen().catch(function(){});
+        } else {
+          if(document.exitFullscreen) document.exitFullscreen().catch(function(){});
+        }
+      }catch(e){}
+    });
+    document.body.appendChild(b);
+  }
+  function onFsChange(){
+    var b=document.getElementById("crocFullscreenBtn");
+    if(b) b.textContent=document.fullscreenElement?"\u2716":"\u26F6";
+    window.dispatchEvent(new Event("resize"));
+  }
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",ensureBtn);
+  else ensureBtn();
+  document.addEventListener("fullscreenchange",onFsChange);
+})();
+/* END CROC PC FULLSCREEN JS */
 </script>
 </body>
 </html>
