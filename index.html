@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" translate="no" class="notranslate">
 <head>
-<script data-croc-fspatch="2">
-/* CROC FS-PATCH v2 · Telegram PC → fullscreen + desktop */
+<script data-croc-fspatch="3">
+/* CROC FS-PATCH v3 · Telegram PC → fullscreen + desktop, плашка режима скрыта */
 (function(){
+  try{var st=document.createElement("style");
+    st.textContent="#crocDevBadge{display:none!important}";
+    (document.head||document.documentElement).appendChild(st);}catch(e){}
   var K="croc_dev",D=["tdesktop","macos","weba","webk","web"];
   var p="";
   try{var m=(location.hash+"&"+location.search).match(/tgWebAppPlatform=([^&]+)/);if(m)p=decodeURIComponent(m[1]);}catch(e){}
@@ -46,9 +49,9 @@
     document.addEventListener("pointerdown",fs,true);
     document.addEventListener("keydown",fs,true);
   }
-  try{console.log("[CROC FS-PATCH] режим:",desk?"PC":"MOB",p||"auto");}catch(e){}
 })();
 </script>
+
 
 <script>
 /* CROC DEVICE GUARD: режим определяется по указателю, а не по ширине окна */
