@@ -1,6 +1,55 @@
 <!DOCTYPE html>
 <html lang="en" translate="no" class="notranslate">
 <head>
+<script data-croc-fspatch="2">
+/* CROC FS-PATCH v2 · Telegram PC → fullscreen + desktop */
+(function(){
+  var K="croc_dev",D=["tdesktop","macos","weba","webk","web"];
+  var p="";
+  try{var m=(location.hash+"&"+location.search).match(/tgWebAppPlatform=([^&]+)/);if(m)p=decodeURIComponent(m[1]);}catch(e){}
+  var inTG=/tgWebAppData=/.test(location.hash)||!!p;
+  if(inTG){
+    var s=document.createElement("script");s.src="https://telegram.org/js/telegram-web-app.js";
+    s.onload=function(){try{var t=window.Telegram.WebApp;t.ready();t.expand();if(t.disableVerticalSwipes)t.disableVerticalSwipes();}catch(e){}};
+    document.head.appendChild(s);
+  }
+  try{var tg0=window.Telegram&&window.Telegram.WebApp;if(tg0&&tg0.platform&&tg0.platform!=="unknown")p=String(tg0.platform);}catch(e){}
+  var desk;
+  if(p)desk=D.indexOf(p)>=0;
+  else{
+    var u=navigator.userAgent||"";
+    var mob=/Android|iPhone|iPad|iPod|IEMobile|Opera Mini|webOS|BlackBerry/i.test(u);
+    var ipad=/Macintosh/i.test(u)&&(navigator.maxTouchPoints||0)>0;
+    desk=!mob&&!ipad;
+  }
+  var q=null;try{q=new URLSearchParams(location.search).get("dev");}catch(e){}
+  var manual=false;try{manual=sessionStorage.getItem("croc_fs_manual")==="1";}catch(e){}
+  document.addEventListener("keydown",function(e){if(e.key==="F9"){try{sessionStorage.setItem("croc_fs_manual","1");}catch(e2){}}},true);
+  if(q!=="pc"&&q!=="mob"&&!manual){try{localStorage.setItem(K,desk?"pc":"mob");}catch(e){}}
+  if(desk){
+    var done=false;
+    function fs(){
+      if(done)return;done=true;
+      document.removeEventListener("pointerdown",fs,true);
+      document.removeEventListener("keydown",fs,true);
+      try{var t=window.Telegram&&window.Telegram.WebApp;
+        if(t){try{t.expand();}catch(e){}
+          if(t.requestFullscreen&&(!t.isVersionAtLeast||t.isVersionAtLeast("8.0"))){
+            try{var r=t.requestFullscreen();if(r&&r.catch)r.catch(function(){});}catch(e){}
+          }
+        }
+      }catch(e){}
+      try{var el=document.documentElement;
+        if(!document.fullscreenElement&&el.requestFullscreen){var pr=el.requestFullscreen();if(pr&&pr.catch)pr.catch(function(){});}
+      }catch(e){}
+    }
+    document.addEventListener("pointerdown",fs,true);
+    document.addEventListener("keydown",fs,true);
+  }
+  try{console.log("[CROC FS-PATCH] режим:",desk?"PC":"MOB",p||"auto");}catch(e){}
+})();
+</script>
+
 <script>
 /* CROC DEVICE GUARD: режим определяется по указателю, а не по ширине окна */
 (function(){
