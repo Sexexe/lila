@@ -91,9 +91,8 @@ try{console.log("[CROC] режим:",isMob?"MOBILE":"DESKTOP",forced?("(форс
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="mobile-web-app-capable" content="yes">
 <title>CROCODILE HUNTER</title>
-<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
 <script>
-(function(){var M=["https://cdn.jsdelivr.net/npm/three@0.160.0/","https://cdn.jsdelivr.net/npm/three@0.160.0/","https://fastly.jsdelivr.net/npm/three@0.160.0/"],K="croc_cdn_v3",i=0;
+(function(){var M=["https://cdn.jsdelivr.net/npm/three@0.160.0/","https://fastly.jsdelivr.net/npm/three@0.160.0/","https://unpkg.com/three@0.160.0/"],K="croc_cdn_v3",i=0;
 try{var s=JSON.parse(localStorage.getItem(K)||"{}");if(typeof s.i==="number"&&s.i>=0&&s.i<M.length)i=s.i;}catch(e){}
 var q=new URLSearchParams(location.search).get("cdn");if(q!==null){var n=parseInt(q,10);if(n>=0&&n<M.length)i=n;}
 window.__CROC_CDN={i:i,n:M.length,base:M[i],key:K,list:M};
@@ -206,6 +205,37 @@ function mount(){
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",mount);else mount();
 })();
 </script>
+<script src="https://sad.adsgram.ai/js/ad.min.js"></script>
+<script>
+/* CROC BOOT GUARD: заставка, watchdog зеркал, экран ошибки, корректное завершение */
+(function(){
+"use strict";var K="croc_boot_v2",S={};try{S=JSON.parse(localStorage.getItem(K)||"{}")}catch(e){S={}}
+function save(){try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}
+var css=document.createTextNode("#crocBoot{position:fixed;inset:0;z-index:2147483646;display:flex;align-items:center;justify-content:center;padding:16px;background:radial-gradient(120% 90% at 50% 30%,#2a1c10,#140d07 60%,#0a0604);font-family:Georgia,serif;transition:opacity .5s}#crocBoot.gone{opacity:0;pointer-events:none}.cbp{width:min(430px,100%);max-height:calc(100dvh - 40px);overflow-y:auto;background:linear-gradient(#f4e4bc,#e8d5a3 55%,#f4e4bc);border:4px double #5c3a1e;padding:20px 18px;box-shadow:0 18px 50px rgba(0,0,0,.75);transform:rotate(-.6deg)}.cbp::-webkit-scrollbar{width:10px}.cbp::-webkit-scrollbar-thumb{background:#8b5a2b;border-radius:8px;border:2px solid #e8d5a3}.cbk{text-align:center;font-size:10px;letter-spacing:.4em;text-transform:uppercase;color:#5c3a1e;font-weight:700}.cbt{font-family:Rye,Georgia,serif;text-align:center;color:#8b0000;font-size:clamp(22px,6vw,30px);margin:8px 0 4px;text-transform:uppercase;letter-spacing:2px}.cbs{text-align:center;font-size:12px;color:#6b4423;margin-bottom:12px}.cbb{height:12px;background:rgba(26,18,11,.35);border:1px solid #8b5a2b;border-radius:6px;overflow:hidden}.cbb i{display:block;height:100%;width:6%;background:linear-gradient(90deg,#cc0000,#8b0000);transition:width .35s}.cbst{display:flex;justify-content:space-between;font-size:11px;color:#6b4423;font-weight:700;margin-top:6px}.cbe{margin-top:11px;border:2px solid #8b0000;background:rgba(139,0,0,.09);border-radius:7px;padding:10px;display:none}.cbe.on{display:block}.cbe pre{font-family:ui-monospace,monospace;font-size:10px;line-height:1.45;color:#4a2a15;white-space:pre-wrap;word-break:break-word;max-height:140px;overflow:auto;background:rgba(255,255,255,.35);border:1px solid rgba(139,90,43,.4);border-radius:5px;padding:7px}.cbn{display:block;width:100%;margin-top:8px;padding:11px;font-family:Rye,Georgia,serif;font-size:13px;letter-spacing:2px;text-transform:uppercase;background:linear-gradient(#8b5a2b,#5c3a1e);border:3px solid #5c3a1e;color:#f4e4bc;cursor:pointer}.cbn.gold{background:linear-gradient(#ffd700,#b8860b);color:#3a2010;border-color:#b8860b}");
+var st=document.createElement("style");st.appendChild(css);document.head.appendChild(st);
+var root,bar,stg,pct,eb,ep,acts,p=6,done=false,failed=false;
+function build(){root=document.createElement("div");root.id="crocBoot";root.innerHTML='<div class="cbp"><div class="cbk">Загрузка охоты</div><div class="cbt">Crocodile Hunter</div><div class="cbs" id="cbS">Готовим остров и крокодилов…</div><div class="cbb"><i id="cbB"></i></div><div class="cbst"><span id="cbT">Инициализация</span><b id="cbP">6%</b></div><div class="cbe" id="cbE"><pre id="cbPre"></pre></div><div id="cbA"></div></div>';document.body.appendChild(root);
+bar=root.querySelector("#cbB");stg=root.querySelector("#cbT");pct=root.querySelector("#cbP");eb=root.querySelector("#cbE");ep=root.querySelector("#cbPre");acts=root.querySelector("#cbA");API.stage("Загрузка three.js",14);}
+function report(e){return ["CROCODILE HUNTER · отчёт","Дата: "+new Date().toISOString(),"URL: "+location.href,"CDN: "+(window.__CROC_CDN?window.__CROC_CDN.base:"static"),"UA: "+navigator.userAgent,"Ошибка: "+(e&&e.message?e.message:String(e)),(e&&e.stack?String(e.stack).split("\n").slice(0,5).join("\n"):"")].join("\n")}
+var API={stage:function(n,v){p=Math.max(p,Math.min(99,v));if(stg){stg.textContent=n;pct.textContent=Math.round(p)+"%";bar.style.width=p+"%"}},
+ok:function(){if(done)return;done=true;S.t=0;save();API.stage("Готово",100);if(stg)stg.textContent="Остров готов";if(root)setTimeout(function(){root.classList.add("gone");setTimeout(function(){if(root&&root.parentNode)root.parentNode.removeChild(root)},600)},200)},
+fail:function(e){if(done||failed||!root)return;failed=true;eb.classList.add("on");ep.textContent=report(e);root.querySelector("#cbS").textContent="Мир не собрался. Ниже — что случилось.";if(stg){stg.textContent="Ошибка";pct.textContent="—"}bar.style.width="100%";acts.innerHTML="";
+var mk=function(cls,txt,fn){var b=document.createElement("button");b.className="cbn "+cls;b.textContent=txt;b.onclick=fn;acts.appendChild(b)};
+if(window.__CROC_CDN)mk("gold","Сменить источник",function(){var C=window.__CROC_CDN;S.t=0;save();location.search="?cdn="+((C.i+1)%C.n)});
+mk("","Повторить",function(){S.t=0;save();location.reload()});
+mk("","Скопировать отчёт",function(){var t=ep.textContent;function fb(){var a=document.createElement("textarea");a.value=t;a.style.cssText="position:fixed;opacity:0";document.body.appendChild(a);a.select();try{document.execCommand("copy")}catch(x){}a.remove()}if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).catch(fb);else fb()});}};
+window.__CROC_BOOT=API;
+addEventListener("error",function(e){if(window.__crocModuleReady||window.__crocSceneReady)return;if(e&&(e.error||e.message))API.fail(e.error||new Error(e.message))},true);
+addEventListener("unhandledrejection",function(e){if(window.__crocModuleReady||window.__crocSceneReady)return;var r=e.reason;API.fail(r instanceof Error?r:new Error(typeof r==="string"?r:"Модуль отклонён"))});
+var t0=Date.now(),wd=setInterval(function(){if(done||failed){clearInterval(wd);return}if(window.__crocModuleReady||window.__crocSceneReady){clearInterval(wd);API.ok();return}var el=Date.now()-t0;
+if(el>4000&&el<15000)API.stage("Сборка мира",Math.min(70,14+el/230));
+if(el>=15000){clearInterval(wd);var C=window.__CROC_CDN;
+if(C&&(S.t||0)<2){S.t=(S.t||0)+1;save();if(stg)stg.textContent="Источник молчит — пробуем другой";setTimeout(function(){location.search="?cdn="+((C.i+1)%C.n)},700)}
+else{S.t=0;save();API.fail(new Error("three.js не загрузился за 15 с. Проверь интернет или смени источник."))}}},400);
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",build);else build();
+})();
+</script>
+
 </head>
 <body translate="no" class="notranslate">
 <div id="ui-layer">
@@ -315,9 +345,24 @@ const _sunArc=new THREE.Vector3(),_moonArc=new THREE.Vector3();
 const domCache=new Map();
 const getEl=(id)=>{if(!domCache.has(id))domCache.set(id,document.getElementById(id));return domCache.get(id);};
 function rndFast() { return Math.random(); }
-const vkBridge=window.vkBridge;
-let vkBridgeReady=false,isVkEnvironment=false;
-if(vkBridge){try{vkBridge.send('VKWebAppInit').then(()=>{vkBridgeReady=true;isVkEnvironment=true;console.log('VK Bridge ready');}).catch((e)=>{isVkEnvironment=false;console.warn('VK Bridge init failed',e);});vkBridge.subscribe((event)=>{if(!event.detail||!event.detail.type)return;const{type}=event.detail;if(type==='VKWebAppViewHide')handleVisibilityChange(true);else if(type==='VKWebAppViewRestore')handleVisibilityChange(false);});}catch(e){}}
+/* ================= TELEGRAM MINI APP + ADSGRAM (вместо VK Bridge) ================= */
+const ADSGRAM_REWARD_BLOCK_ID = "";        // blockId «Reward» из cabinet.adsgram.ai
+const ADSGRAM_INTERSTITIAL_BLOCK_ID = "";  // blockId «Interstitial» оттуда же
+function tgNow(){return (window.Telegram&&window.Telegram.WebApp)?window.Telegram.WebApp:null;}
+function tgEnv(){var t=tgNow();return !!(t&&t.platform&&t.platform!=="unknown");}
+let __tgReady=false;
+function tgSetup(){var t=tgNow();if(!t||__tgReady)return;__tgReady=true;try{
+t.ready();t.expand();
+t.setHeaderColor&&t.setHeaderColor("#1a120b");
+t.setBackgroundColor&&t.setBackgroundColor("#1a120b");
+t.disableVerticalSwipes&&t.disableVerticalSwipes();
+t.enableClosingConfirmation&&t.enableClosingConfirmation();
+if(t.BackButton){t.BackButton.onClick(function(){try{if(document.querySelector("body>div>iframe")&&window.__closeMusmush){window.__closeMusmush();return;}if(typeof returnToMenu==="function")returnToMenu();}catch(e){}});t.BackButton.show();}
+}catch(e){}}
+tgSetup();
+(function(){var n=0;var iv=setInterval(function(){n++;if(__tgReady||n>60){clearInterval(iv);return;}tgSetup();},200);})();
+let adsgramReward=null,adsgramInterstitial=null;
+try{if(window.Adsgram){if(ADSGRAM_REWARD_BLOCK_ID)adsgramReward=window.Adsgram.init({blockId:ADSGRAM_REWARD_BLOCK_ID});if(ADSGRAM_INTERSTITIAL_BLOCK_ID)adsgramInterstitial=window.Adsgram.init({blockId:ADSGRAM_INTERSTITIAL_BLOCK_ID});}}catch(e){adsgramReward=null;adsgramInterstitial=null;}
 document.addEventListener('visibilitychange',()=>handleVisibilityChange(document.hidden));
 let isMuted=false;
 function handleVisibilityChange(isHidden){if(isHidden){if(ax&&ax.state==='running')ax.suspend();if(MusicManager.ready)MusicManager.pauseAll();}else{if(!adInProgress){if(ax&&ax.state==='suspended')ax.resume().catch(()=>{});if(MusicManager.ready)MusicManager.resumeAll();}}}
@@ -327,7 +372,7 @@ let lastInterstitialDay = 0;
 let prevEveningState = false;
 function restoreMusicAfterAd(){if(isMuted)return;if(MusicManager.ready)MusicManager.resumeAll();if(ax&&ax.state==='suspended'){ax.resume().catch(()=>{});}if(cam)updateMusicVolume();}
 function showInterstitialAd(){
-if(!isVkEnvironment || !vkBridge) return;
+if(!adsgramInterstitial) return;
 if(adInProgress) return;
 const now = performance.now();
 if(now - lastInterstitialTime < INTERSTITIAL_COOLDOWN) return;
@@ -338,26 +383,55 @@ ia = false;
 let settled = false;
 const finishAd = function(){ if(settled) return; settled = true; clearTimeout(timeout); adInProgress = false; ia = prevIa; restoreMusicAfterAd(); };
 const timeout = setTimeout(finishAd, 12000);
-try{ const p = vkBridge.send('VKWebAppShowNativeAds', { ad_format: 'interstitial' }); if(p && p.then){ p.then(function(){ finishAd(); }).catch(function(err){ console.warn('Interstitial ad failed:', err); finishAd(); }); } else { finishAd(); } }catch(err){ console.warn('Interstitial ad error:', err); finishAd(); }
+try { adsgramInterstitial.show().then(finishAd).catch(finishAd); } catch(err) { finishAd(); }
 }
 function showRewardAd(){
 return new Promise((resolve)=>{
-if(!isVkEnvironment || !vkBridge){ resolve(false); return; }
+if(!adsgramReward || adInProgress){ resolve(false); return; }
 adInProgress = true;
 let settled = false;
-const timeout = setTimeout(()=>{ if(!settled){ settled = true; adInProgress = false; restoreMusicAfterAd(); resolve(false); } }, 60000);
-vkBridge.send('VKWebAppShowNativeAds', { ad_format: 'reward', useWaterfall: true })
-.then(()=>{ if(settled) return; settled = true; clearTimeout(timeout); adInProgress = false; restoreMusicAfterAd(); resolve(true); })
-.catch(()=>{ if(settled) return; settled = true; clearTimeout(timeout); adInProgress = false; restoreMusicAfterAd(); resolve(false); });
+const settle = function(ok){ if(settled) return; settled = true; clearTimeout(timeout); adInProgress = false; restoreMusicAfterAd(); resolve(ok); };
+const timeout = setTimeout(()=>settle(false), 60000);
+try { adsgramReward.show().then(()=>settle(true)).catch(()=>settle(false)); } catch(err) { settle(false); }
 });
 }
 let lastTapticTime=0;
-function vkTapticFeedback(t='light'){const now=performance.now();const min=t==='light'?90:220;if(now-lastTapticTime<min)return null;lastTapticTime=now;return isVkEnvironment&&vkBridge?vkBridge.send('VKWebAppTapticFeedback',{type:t}).catch(()=>{}):null;}
-function saveGoldProgress(){const data=JSON.stringify({gold:pl.g,missionLevel:missionLevel,csm:crocodileSpeedMultiplier});if(isVkEnvironment&&vkBridge)vkBridge.send('VKWebAppStorageSet',{key:'croc_hunter_gold',value:data}).catch(()=>{});try{localStorage.setItem('croc_hunter_gold',data)}catch(e){}}
+function vkTapticFeedback(t='light'){ // имя сохранено — все вызовы в игре работают без правок
+const now=performance.now();const min=t==='light'?90:220;
+if(now-lastTapticTime<min)return null;lastTapticTime=now;
+try{var tg=tgNow();
+if(tgEnv()&&tg.HapticFeedback){
+if(t==='light'||t==='medium'||t==='heavy'||t==='rigid'||t==='soft')tg.HapticFeedback.impactOccurred(t);
+else tg.HapticFeedback.notificationOccurred(t);
+}}catch(e){}
+return null;
+}
+const CROC_SAVE_KEY='croc_hunter_gold';
+function saveGoldProgress(){
+const data=JSON.stringify({gold:pl.g,missionLevel:missionLevel,csm:crocodileSpeedMultiplier});
+try{localStorage.setItem(CROC_SAVE_KEY,data)}catch(e){}
+try{var tg=tgNow();if(tgEnv()&&tg.CloudStorage)tg.CloudStorage.setItem(CROC_SAVE_KEY,data,()=>{});}catch(e){}
+}
 let lastSaveTime=0;function saveGoldProgressThrottled(){const now=performance.now();if(now-lastSaveTime>5000){lastSaveTime=now;saveGoldProgress();}}
-function loadGoldProgress(){return new Promise((resolve)=>{if(isVkEnvironment&&vkBridge){vkBridge.send('VKWebAppStorageGet',{keys:['croc_hunter_gold']}).then((data)=>{if(data&&data.keys&&data.keys.length>0&&data.keys[0].value){try{resolve(JSON.parse(data.keys[0].value))}catch(e){resolve(null)}}else{try{const d=localStorage.getItem('croc_hunter_gold');resolve(d?JSON.parse(d):null)}catch(e){resolve(null)}}}).catch(()=>{try{const d=localStorage.getItem('croc_hunter_gold');resolve(d?JSON.parse(d):null)}catch(e){resolve(null)}});}else{try{const d=localStorage.getItem('croc_hunter_gold');resolve(d?JSON.parse(d):null)}catch(e){resolve(null)}}});}
+function loadGoldProgress(){
+return new Promise((resolve)=>{
+const fromLocal=()=>{try{const d=localStorage.getItem(CROC_SAVE_KEY);return d?JSON.parse(d):null}catch(e){return null}};
+var tg=tgNow();
+if(!(tgEnv()&&tg.CloudStorage)){resolve(fromLocal());return;}
+let done=false;
+const finish=(v)=>{if(done)return;done=true;resolve(v);};
+const t=setTimeout(()=>finish(fromLocal()),2500);
+try{
+tg.CloudStorage.getItem(CROC_SAVE_KEY,(err,value)=>{
+clearTimeout(t);
+if(!err&&value){try{finish(JSON.parse(value));return;}catch(e){}}
+finish(fromLocal());
+});
+}catch(e){clearTimeout(t);finish(fromLocal());}
+});
+}
 function showCheatMessage(msg){const el=getEl('cheat-msg');el.textContent=msg;el.style.display='block';setTimeout(()=>{el.style.display='none';},3000);}
-function setLoadingBackground(){const bg=getEl('loading-bg');if(isMob)bg.style.backgroundImage='url("https://sexexe.github.io/croco/ekran2.jpg")';else bg.style.backgroundImage='url("https://sexexe.github.io/croco/ekran.jpg")';}
+function setLoadingBackground(){const bg=getEl('loading-bg');if(isMob)bg.style.backgroundImage='url("ekran2.jpg")';else bg.style.backgroundImage='url("ekran.jpg")';}
 function exitPointerLockSafe(){try{if(document.pointerLockElement)document.exitPointerLock();}catch(e){}}
 let ax=null,_noiseBuffer=null,_masterOutput=null,_delayIn=null;
 let sndSea=null,sndFire=null,sndRiv=null;
@@ -4504,7 +4578,7 @@ for(let i=0;i<particlePool.length;i++){const p=particlePool[i];if(!p.userData.ac
 updateBulletInstances();updateParticleInstances();updateSmokeInstances(d);updateCasingInstances(d);
 }
 function showLoseUI(){const desc=getEl('lose-desc');if(desc)desc.innerHTML='<span class="scl-gold">GOLD</span>: '+pl.g+'<br>The crocodiles won.';const loseScreen=getEl('lose-screen');if(loseScreen)loseScreen.style.display='flex';exitPointerLockSafe();}
-function showSuccessUI(){const missionScreen=getEl('mission-success-screen');const missionBg=getEl('mission-bg');const playBtn=getEl('playBtn');if(missionBg){if(isMob)missionBg.style.backgroundImage='url("https://sexexe.github.io/croco/ekran2F.jpg")';else missionBg.style.backgroundImage='url("https://sexexe.github.io/croco/ekranF.jpg")';}if(playBtn)playBtn.classList.remove('btn-disabled');if(missionScreen)missionScreen.style.display='block';}
+function showSuccessUI(){const missionScreen=getEl('mission-success-screen');const missionBg=getEl('mission-bg');const playBtn=getEl('playBtn');if(missionBg){if(isMob)missionBg.style.backgroundImage='url("ekran2F.jpg")';else missionBg.style.backgroundImage='url("ekranF.jpg")';}if(playBtn)playBtn.classList.remove('btn-disabled');if(missionScreen)missionScreen.style.display='block';}
 function showMissionSuccess(){stopMusic();saveGoldProgress();showSuccessUI();exitPointerLockSafe();}
 function nextMission(){
 if(missionChanging) return;
