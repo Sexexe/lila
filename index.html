@@ -346,8 +346,8 @@ const domCache=new Map();
 const getEl=(id)=>{if(!domCache.has(id))domCache.set(id,document.getElementById(id));return domCache.get(id);};
 function rndFast() { return Math.random(); }
 /* ================= TELEGRAM MINI APP + ADSGRAM (вместо VK Bridge) ================= */
-const ADSGRAM_REWARD_BLOCK_ID = "";        // blockId «Reward» из cabinet.adsgram.ai
-const ADSGRAM_INTERSTITIAL_BLOCK_ID = "";  // blockId «Interstitial» оттуда же
+const ADSGRAM_REWARD_BLOCK_ID = "62229";
+const ADSGRAM_INTERSTITIAL_BLOCK_ID = "int-62230";
 function tgNow(){return (window.Telegram&&window.Telegram.WebApp)?window.Telegram.WebApp:null;}
 function tgEnv(){var t=tgNow();return !!(t&&t.platform&&t.platform!=="unknown");}
 let __tgReady=false;
